@@ -6,7 +6,7 @@ categories: Braille
 ---
 En este post. vamos  hacer un breve repaso del código braille, y daremos unas bases de braille matemático.
 
-# Guía para la escritura de fórmulas en braille
+# Guía básica para la escritura de fórmulas en braille
 
 Esta guía pretende ser un documento orientativo y muy general sobre el código braille, y en especial, sobre el braille matemático. Para tener una idea más precisa y detallada de las distintas representaciones sugerimos consultar referencias dedicadas a este fin.
 
@@ -20,9 +20,17 @@ Esta guía pretende ser un documento orientativo y muy general sobre el código 
  
 
 
- La signografía braille en este tutorial  se indicará alternativamente con sus símbolos en la codificación ut-8, o mediante expresiones entre corchetes  especificando los puntos que deben ir en cada celda, de manera que cuando aparezca una coma indicará que los siguientes puntos van en la próxima celda. Una celda especificada con el cero “0”, significa una celda en blanco. Una expresión en braille irá delimitada entre corchetes (“[“ y “]”). Por ejemplo, [125,135,123,1,0,1,0,2345,135,145,135,234] es la expresión “hola a todos”, cuya expresión en braille es:
-⠓⠕⠇⠁⠀⠁⠀⠞⠕⠙⠕⠎
+ La signografía braille en este tutorial  se indicará alternativamente con sus símbolos en la codificación ut-8 (braille), o mediante expresiones numéricas (código numérico)  entre corchetes  especificando los puntos que deben ir en cada celda, de manera que cuando aparezca una coma indicará que los siguientes puntos van en la próxima celda. Una celda especificada con el cero, “0”, significa una celda en blanco. Una expresión en braille irá delimitada entre corchetes (“[“ y “]”). Por ejemplo, la expresión en código numérico, 
+ 
+ [125,135,123,1,0,1,0,2345,135,145,135,234]
+ 
+  es la expresión 
+  
+  “hola a todos”
+  
+  , cuya expresión en braille es:
 
+⠓⠕⠇⠁⠀⠁⠀⠞⠕⠙⠕⠎
 
 
   La escritura en braille se puede realizar en papel perforando los puntos de un arreglo de celdas  distribuidas en filas, por medio de una máquina Perkins o manualmente con punzón. También se puede escribir con el código braille en un computador con la ayuda de un periférico llamado línea braille  o teclado braille. Tanto la máquina Perkins como la línea braille disponen de una serie de teclas que corresponden a los distintos puntos de las celdas braille. Así el punto 1 se activa con la tecla que corresponde al dedo índice de la mano izquierda, el punto 2 con el corazón de la mano izquierda, el 3 con el anular izquierdo, el 7 con el meñique izquierdo, el 4 con el índice derecho, el 5 con el corazón derecho,  el 6 con el anular derecho y el 8 con el  meñique derecho. Además existe una tecla central que se activa con cualquier pulgar que sirve para generar una celda en blanco o espacio. Las combinaciones de puntos que forman un carácter braille se ejecutan simultáneamente a un tiempo. 
@@ -40,76 +48,81 @@ Esta guía pretende ser un documento orientativo y muy general sobre el código 
 
 Las letras minúsculas del alfabeto castellano se representan  del siguiente modo:
 
-a	[1]	⠁
+|letra|código numérico|braille|
+|-|---|-|
+|a|[1]|⠁|
+|-|---|-|
+|b|[12]|⠃|
+|-|---|-|
+|c|[14]|⠉|
+|-|---|-|
+|d|[145]|⠙|
+|-|---|-|
+|e|[15]|⠑|
+|-|---|-|
+|f|[124]|⠋|
+|-|---|-|
+|g|[1245]|⠛|
+|-|---|-|
+|h|[125]|⠓|
+|-|---|-|
+|i|[24]|⠊|
+|-|---|-|
+|j|[245]|⠚|
+|-|---|-|
+|k|[13]|⠅|
+|-|---|-|
+|l|[123]|⠇|
+|-|---|-|
+|m|[134]|⠍|
+|-|---|-|
+|n|[1345]|⠝|
+|-|---|-|
+|ñ|[12456]|⠻|
+|-|---|-|
+|o|[135]|⠕|
+|-|---|-|
+|p|[1234]|⠏|
+|-|---|-|
+|q|[12345]|⠟|
+|-|---|-|
+|r|[1235]|⠗|
+|-|---|-|
+|s|[234]|⠎|
+|-|---|-|
+|t|[2345]|⠞|
+|-|---|-|
+|u|[136]|⠥|
+|-|---|-|
+|v|[1236]|⠧|
+|-|---|-|
+|w|[2456]|⠺|
+|-|---|-|
+|x|[1346]|⠭|
+|-|---|-|
+|y|[13456]|⠽|
+|-|---|-|
+|z|[1356]|⠵|
+|-|---|-|
 
-b	[12]	⠃
+Notar que la secuencia de la "a" hasta la "j" se repite desde la "k" hasta la "t" (exceptuando la "ñ") añadiendo el punto "3", y luego desde la "u" hasta la "z" (exceptuando la "w") añadiendo los puntos 3 y 6.
 
-c	[14]	⠉
+ Las vocales acentuadas (con acento agudo), y la u con diéresis son:
 
-d	[145]	⠙
-
-e	[15]	⠑
-
-f	[124]	⠋
-
-g	[1245]	⠛
-
-h	[125]	⠓
-
-i	[24]	⠊
-
-j	[245]	⠚
-
-k	[13]	⠅
-
-l	[123]	⠇
-
-m	[134]	⠍
-
-n	[1345]	⠝
-
-ñ	[12456]	⠻
-
-o	[135]	⠕
-
-p	[1234]	⠏
-
-q	[12345]	⠟
-
-r	[1235]	⠗
-
-s	[234]	⠎
-
-t	[2345]	⠞
-
-u	[136]	⠥
-
-v	[1236]	⠧
-
-w	[2456]	⠺
-
-x	[1346]	⠭
-
-y	[13456]	⠽
-
-z	[1356]	⠵
-
-Notar que la secuencia de la "a" hasta la "j" se repite desde la "k" hasta la "t" (exceptuando la "ñ") añadiendo el punto "3", y luego desde la "u" hasta la "z" (exceptuando la "w") añadiendo los puntos "3" y "6".
-
-  Las vocales acentuadas (con acento agudo), son:
-
-á	[12356]	⠷
-
-é	[2346]	⠮
-
-í	[34]	⠌
-
-ó	[346]	⠬
-
-ú	[23456]	⠾
- La "u" con diéresis, 
-
-ü	[1256]	⠳
+|letra|código numérico|braille|
+|-|---|-|
+|á|[12356]|⠷|
+|-|---|-|
+|é|[2346]|⠮|
+|-|---|-|
+|í|[34]|⠌|
+|-|---|-|
+|ó|[346]|⠬|
+|-|---|-|
+|ú|[23456]|⠾|
+|-|---|-|
+|ü|[1256]|⠳|
+|-|---|-|
 
 Para escribir las mayúsculas debemos anteponer al código de la letra el símbolo [46], ⠨, es decir, [46,1], ⠨⠁, corresponde a la "A". 
 
@@ -124,55 +137,58 @@ Cuando escribimos un número de varias cifras podemos anteponer el símbolo nume
    Otros símbolos ortográficos son:
 
 
-.	[3]	⠄
-
-
-,	[2]	⠂
-
-;	[23]	⠆
-
-:	[25]	⠒
-
-¿ ó ?	[26]	⠢
-
-¡ ó !	[235]	⠖
-
-"	[236]	⠦
-
-(	[126]	⠣
-
-)	[345]	⠜
-
-...	[3,3,3]	⠄⠄⠄
-
-[	[12356]	⠷
-
-]	[23456]	⠾
-
-{	[5,123]	⠐⠇
-
-}	[456,2]	⠸⠂
-
--	[36]	⠤
-*	[35]	⠔
-
-'	[3]	⠄
-
-/	[6,2]	⠠⠂
-
-\	[5,3]	⠐⠄
-
-+	[235]	⠖
-
-❌	[236]	⠦
-
-˜	[256]	⠲
-
-=	[2356]	⠶
-
-%	[456,356]	⠸⠴
-
-@	[5]	⠐
+|signo|código numérico|braille|
+|-|-|-|
+|.|[3]|⠄|
+|-|-|-|
+|,|[2]|⠂|
+|-|-|-|
+|;|[23]|⠆|
+|-|-|-|
+|\:|[25]|⠒|
+|-|-|-|
+|¿ ó ?|[26]|⠢|
+|-|-|-|
+|¡ ó !|[235]|⠖|
+|-|-|-|
+|"|[236]|⠦|
+|-|-|-|
+|'|[3]|⠄|
+|-|-|-|
+|˜|[256]|⠲|
+|-|-|-|
+|…|[3,3,3]|⠄⠄⠄|
+|-|-|-|
+|(|[126]|⠣|
+|-|-|-|
+|)|[345]|⠜|
+|-|-|-|
+|[|[12356]|⠷|
+|-|-|-|
+|]|[23456]|⠾|
+|-|-|-|
+|{|[5,123]|⠐⠇|
+|-|-|-|
+|}|[456,2]|⠸⠂|
+|-|-|-|
+|\-|[36]|⠤|
+|-|-|-|
+|\+|[235]|⠖|
+|-|-|-|
+|❌|[236]|⠦|
+|-|-|-|
+|\*|[35]|⠔|
+|-|-|-|
+|/|[6,2]|⠠⠂|
+|-|-|-|
+|\ |[5,3]|⠐⠄|
+|-|-|-|
+|=|[2356]|⠶|
+|-|-|-|
+|%|[456,356]|⠸⠴|
+|-|-|-|
+|@|[5]|⠐|
+|-|-|-|
 
 ## 3.- BRAILLE MATEMÁTICO BASICO
 
@@ -183,22 +199,82 @@ Dado que los números en braille se componen del signo “numerador” (puntos [
 Los puntos [2356], ⠶, corresponden al signo = (igual).
 
 
+###### Potencias 
 Para expresar potencias usamos los puntos [16], ⠡, así
 
 ⠭⠡⠼⠃ 
 
 representa “x al cuadrado”.
  
-Las raíces cuadradas se expresan por la combinación de dos celdas [1246,156], ⠫⠱, así escribimos,
+ ###### Raíces cuadradas simples
+Las raíces cuadradas se expresan por la combinación de dos celdas [1246,156], ⠫⠱, así escribimos:
+
+“raíz cuadrada de 9”
+
+ escribimos los puntos en código numérico, 
+ 
+ [1246,156,3456,24],
+
+y en braille,
+
+⠫⠱⠼⠊
+
+La expresión en braille,
 
 ⠫⠱⠼⠊⠶⠼⠉
 
 expresa la igualdad de la raíz cuadrada de nueve y tres.
 
+  
+
+###### Subíndices y superíndices
+Para escribir subíndices escribimos los puntos [34], ⠌, y a continuación el subíndice. Así 
+para representar 
+
+“z sub n”,
+ 
+ escribimos en código numérico: 
+ [1356,34,1345]
+ 
+ y en braille,
+ 
+ ⠵⠌⠝
+
+
+Los superíndices se escriben igual que las potencias, ya que al igual que sucede en la escritura en tinta, la simbología de una u otra expresión no se distingue, aunque su significado sea distinto. Corresponde al lector discernir si se refiere a un significado u otro. 
+
+Así para representar 
+
+“x súper  0”,
+
+ escribimos en código numérico:
+ 
+  [1346,16,3456,245],
+  
+  y en braille,
+  
+⠭⠡⠼⠚
+  
+
+
+
+###### Fracciones simples
+
   Para expresar fracciones simples se usa los puntos [256], ⠲, así la fracción “5/2” se expresa en braille como:
 
 ⠼⠑⠲⠼⠃
 
+Otro ejemplo,
+
+"x dividido por 9”,
+
+en código numérico es escribimos:
+
+ [1346,256,3456,24],
+ 
+ y en braille,
+
+⠭⠲⠼⠊
 
 
 #### EXPRESIONES COMPLEJAS
@@ -210,17 +286,19 @@ En el ámbito específico de las fórmulas matemáticas lo escrito en tinta adqu
 
 ##### PARÉNTESIS AUXILIARES
 
-Los puntos para abrir paréntesis auxiliares son los puntos [26], ⠢, y para cerrar [35],  ⠔,. Éstos se usan en casos como fracciones, raíces, exponentes (o superíndices) y subíndices compuestos. Nótese que lo anterior se representa en tinta a partir del tamaño o posición, de manera que, por ejemplo, para escribir una fracción compuesta basta con escribir el numerador “2x+3”, debajo de Èl una línea horizontal que lo abarca completamente la cual indica “partido por” y posteriormente, debajo de esa línea, el denominador (por ejemplo “x+2”. En braille, en cambio, debemos escribir entre paréntesis auxiliares el numerador, a continuación el signo “partido por” (puntos [256], ⠲) y luego el denominador también entre paréntesis auxiliares. De no ponerse numerador y denominador entre paréntesis auxiliares, la fórmula escrita podría ser interpretada de manera incorrecta. Por ejemplo, si en tinta el signo “partido por” en lugar de ser una línea que abarca completamente numerador y denominador --de manera que queda claro qué está arriba y qué está abajo-- fuera un cuadrado, no quedaría claro en nuestro ejemplo si a “2x” le sumamos la fracción “3/x” y luego le sumamos “2”, o si a “2x” se le suma la fracción “3/(x+2)”, o si el “2x+3”  es dividido solo por la “x” y a esto se le suma “2”. Pues bien, esto es lo que sucede en la escritura en braille, ya que el signo “partido por” se escribe en una celda.
+Los puntos para abrir paréntesis auxiliares son los puntos [26], ⠢, y para cerrar [35],  ⠔,. Éstos se usan en casos como fracciones, raíces, exponentes (o superíndices) y subíndices compuestos. 
+
+Nótese que lo anterior se representa en tinta a partir del tamaño o posición, de manera que, por ejemplo, para escribir una fracción compuesta basta con escribir el numerador “2x+3”, debajo de Èl una línea horizontal que lo abarca completamente la cual indica “partido por” y posteriormente, debajo de esa línea, el denominador (por ejemplo “x+2”. En braille, en cambio, debemos escribir entre paréntesis auxiliares el numerador, a continuación el signo “partido por” (puntos [256], ⠲) y luego el denominador también entre paréntesis auxiliares. De no ponerse numerador y denominador entre paréntesis auxiliares, la fórmula escrita podría ser interpretada de manera incorrecta. Por ejemplo, si en tinta el signo “partido por” en lugar de ser una línea que abarca completamente numerador y denominador --de manera que queda claro qué está arriba y qué está abajo-- fuera un cuadrado, no quedaría claro en nuestro ejemplo si a “2x” le sumamos la fracción “3/x” y luego le sumamos “2”, o si a “2x” se le suma la fracción “3/(x+2)”, o si el “2x+3”  es dividido solo por la “x” y a esto se le suma “2”. Pues bien, esto es lo que sucede en la escritura en braille, ya que el signo “partido por” se escribe en una celda.
 De manera similar sucede con las raíces compuestas. En tinta se escribe dentro del radical todo aquello a lo que se le quiere sacar raíz. En braille se deben escribir los puntos [1246, 156], ⠫⠱, para indicar raíz cuadrada, a continuación abrir paréntesis auxiliares, escribir el radicando y posteriormente cerrar paréntesis auxiliares. Por ejemplo, para escribir raíz cuadrada de “5x+2”, escribimos:
  [1246, 156, 26, 5x+2, 35]. 
-SUPERÍNDICES Y SUBÍNDICES
 
 
 Para escribir subíndices escribimos los puntos [34], ⠌, y a continuación el subíndice. En caso de que éste sea compuesto, debemos escribirlo en paréntesis auxiliares. Por ejemplo, para representar “z” con subíndice “n-1”, escribimos: 
+
 ⠵⠌⠢⠝⠤⠼⠁⠔
+
 De manera análoga sucede con los exponentes o superíndices. El signo “elevado a” se representa con los puntos [16], ⠡. Cuando el exponente es compuesto utilizamos paréntesis auxiliares. Por ejemplo, para representar “x” elevado al exponente “n+1”, escribimos:
 ⠭⠡⠢⠝⠖⠼⠁⠔
 
-En caso de fracciones, raíces, subíndices y exponentes simples, el uso de los paréntesis auxiliares no es  necesario. Así, para representar “raíz cuadrada de 9” escribimos los puntos [1246,156,3456,24], ⠫⠱⠼⠊; para representar “x/9”, escribimos: [1346,256,3456,24], ⠭⠲⠼⠊; para representar “z sub n”, escribimos: [1356,34,1345], ⠵⠌⠝; para representar “x elevado a 9”, escribimos: [1346,16,3456,24], ⠭⠡⠼⠊; etc.
 
 
