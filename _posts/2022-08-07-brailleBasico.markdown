@@ -126,7 +126,7 @@ Notar que la secuencia de la "a" hasta la "j" se repite desde la "k" hasta la "t
 
 Para escribir las mayúsculas debemos anteponer al código de la letra el símbolo [46], ⠨, es decir, [46,1], ⠨⠁, corresponde a la "A". 
 
-Los dígitos del "1" al "9" y el "0" se escriben con las letras "a" a la "i" y "j", respectivamente, anteponiendo el símbolo "numerador", [3456], ⠼. Así [3456,15], ⠼⠑, corresponde al "5", etc. 
+Los dígitos del 1 al 9 y el 0 se escriben con las letras "a" a la "i" y "j", respectivamente, anteponiendo el símbolo "numerador", [3456], ⠼. Así [3456,15], ⠼⠑, corresponde al "5", etc. 
 
 Cuando escribimos un número de varias cifras podemos anteponer el símbolo numerador a cada cifra  o bien sólo anteponerlo al primer dígito desde la izquierda, por ejemplo, [3456,1,245,14], ⠼⠁⠚⠉, corresponde al número "103".
 
@@ -193,8 +193,17 @@ Cuando escribimos un número de varias cifras podemos anteponer el símbolo nume
 ## 3.- BRAILLE MATEMÁTICO BASICO
 
 #### EXPRESIONES ALGEBRAICAS SIMPLES
-Dado que los números en braille se componen del signo “numerador” (puntos [3456], ⠼) seguido de las letras de la “a” a la “j” para representar los números del “1” al “0” respectivamente, en los casos en que a continuación de un número vaya una letra minúscula del alfabeto latino, es necesario distinguir ésta con el punto [5], ⠐, siempre y cuando sean letras que den lugar a confusiones. Por ejemplo, para escribir “5x” no será necesario incluir el punto [5] antes de la “x”, ya que ésta en sí no representa ningún número en braille. Sin embargo, en los casos en que la letra que suceda al número sea alguna de la “a” a la “j”, sí se hará necesario preceder la letra por el punto [5]. Por ejemplo, para representar “10n=20c”, escribimos: 
-[3456,1,245,1345,2356,3456,12,245,5,13], ⠼⠁⠚⠝⠶⠼⠃⠚⠐⠅
+Dado que los números en braille se componen del signo “numerador” (puntos [3456], ⠼) seguido de las letras de la “a” a la “j” para representar los números del 1 al 0 respectivamente, en los casos en que a continuación de un número vaya una letra minúscula del alfabeto latino, es necesario distinguir ésta con el punto [5], ⠐, siempre y cuando sean letras que den lugar a confusiones. Por ejemplo, para escribir “5x” no será necesario incluir el punto [5], ⠐, antes de la “x”, ya que ésta en sí no representa ningún número en braille. Sin embargo, en los casos en que la letra que suceda al número sea alguna de la “a” a la “j”, sí se hará necesario preceder la letra por el punto [5], ⠐. Por ejemplo, para representar 
+
+“10n=20c”,
+
+ escribimos en código numérico: 
+
+[3456,1,245,1345,2356,3456,12,245,5,13], 
+
+que en braille luce,
+
+⠼⠁⠚⠝⠶⠼⠃⠚⠐⠅
 
 Los puntos [2356], ⠶, corresponden al signo = (igual).
 
@@ -206,7 +215,8 @@ Para expresar potencias usamos los puntos [16], ⠡, así
 
 representa “x al cuadrado”.
  
- ###### Raíces cuadradas simples
+###### Raíces cuadradas simples
+
 Las raíces cuadradas se expresan por la combinación de dos celdas [1246,156], ⠫⠱, así escribimos:
 
 “raíz cuadrada de 9”
@@ -268,7 +278,7 @@ Otro ejemplo,
 
 "x dividido por 9”,
 
-en código numérico es escribimos:
+en código numérico escribimos:
 
  [1346,256,3456,24],
  
@@ -286,11 +296,34 @@ En el ámbito específico de las fórmulas matemáticas lo escrito en tinta adqu
 
 ##### PARÉNTESIS AUXILIARES
 
-Los puntos para abrir paréntesis auxiliares son los puntos [26], ⠢, y para cerrar [35],  ⠔,. Éstos se usan en casos como fracciones, raíces, exponentes (o superíndices) y subíndices compuestos. 
+Los puntos para abrir paréntesis auxiliares son los puntos [26], ⠢, y para cerrar [35],  ⠔. Éstos se usan en casos como fracciones, raíces, exponentes (o superíndices) y subíndices compuestos. 
 
-Nótese que lo anterior se representa en tinta a partir del tamaño o posición, de manera que, por ejemplo, para escribir una fracción compuesta basta con escribir el numerador “2x+3”, debajo de Èl una línea horizontal que lo abarca completamente la cual indica “partido por” y posteriormente, debajo de esa línea, el denominador (por ejemplo “x+2”. En braille, en cambio, debemos escribir entre paréntesis auxiliares el numerador, a continuación el signo “partido por” (puntos [256], ⠲) y luego el denominador también entre paréntesis auxiliares. De no ponerse numerador y denominador entre paréntesis auxiliares, la fórmula escrita podría ser interpretada de manera incorrecta. Por ejemplo, si en tinta el signo “partido por” en lugar de ser una línea que abarca completamente numerador y denominador --de manera que queda claro qué está arriba y qué está abajo-- fuera un cuadrado, no quedaría claro en nuestro ejemplo si a “2x” le sumamos la fracción “3/x” y luego le sumamos “2”, o si a “2x” se le suma la fracción “3/(x+2)”, o si el “2x+3”  es dividido solo por la “x” y a esto se le suma “2”. Pues bien, esto es lo que sucede en la escritura en braille, ya que el signo “partido por” se escribe en una celda.
-De manera similar sucede con las raíces compuestas. En tinta se escribe dentro del radical todo aquello a lo que se le quiere sacar raíz. En braille se deben escribir los puntos [1246, 156], ⠫⠱, para indicar raíz cuadrada, a continuación abrir paréntesis auxiliares, escribir el radicando y posteriormente cerrar paréntesis auxiliares. Por ejemplo, para escribir raíz cuadrada de “5x+2”, escribimos:
- [1246, 156, 26, 5x+2, 35]. 
+Nótese que lo anterior se representa en tinta a partir del tamaño o posición, de manera que, por ejemplo, para escribir una fracción compuesta basta con escribir el numerador “2x+3”, debajo de Èl una línea horizontal que lo abarca completamente la cual indica “partido por” y posteriormente, debajo de esa línea, el denominador (por ejemplo “x+2”. En braille, en cambio, debemos escribir entre paréntesis auxiliares el numerador, a continuación el signo “partido por” (puntos [256], ⠲) y luego el denominador también entre paréntesis auxiliares. De no ponerse numerador y denominador entre paréntesis auxiliares, la fórmula escrita podría ser interpretada de manera incorrecta. Por ejemplo, si en tinta el signo “partido por” en lugar de ser una línea que abarca completamente numerador y denominador --de manera que queda claro qué está arriba y qué está abajo, no quedaría claro en nuestro ejemplo si a “2x” le sumamos la fracción “3/x” y luego le sumamos “2”, o si a “2x” se le suma la fracción “3/(x+2)”, o si el “2x+3”  es dividido solo por la “x” y a esto se le suma “2”. Pues bien, esto es lo que sucede en la escritura en braille, ya que el signo “partido por” se escribe en una celda.
+En nuestro caso, la expresión,
+
+"comienza fracción, 2 x + 3, sobre, x +2, fin de fracción"
+
+se escribiría en código numérico como,
+
+[26,3456,12,1346,235,3456,14,35,256,26,1246,235,3456,12,35]
+
+y en braille queda,
+
+⠢⠼⠃⠭⠖⠼⠉⠔⠲⠢⠫⠖⠼⠃⠔
+
+
+
+De manera similar sucede con las raíces compuestas. En tinta se escribe dentro del radical todo aquello a lo que se le quiere sacar raíz. En braille se deben escribir los puntos [1246, 156], ⠫⠱, para indicar raíz cuadrada, a continuación abrir paréntesis auxiliares, escribir el radicando y posteriormente cerrar paréntesis auxiliares. Por ejemplo, para escribir la expresión,
+
+"comienza raíz cuadrada de, “5x+2, fin de raíz cuadrada”,
+
+ escribimos  en código numérico,
+
+[1246,156,26,3456,1245,1346,235,3456,12,35]. 
+
+y en braille queda como,
+
+⠫⠱⠢⠼⠛⠭⠖⠼⠃⠔
 
 
 Para escribir subíndices escribimos los puntos [34], ⠌, y a continuación el subíndice. En caso de que éste sea compuesto, debemos escribirlo en paréntesis auxiliares. Por ejemplo, para representar “z” con subíndice “n-1”, escribimos: 
@@ -299,6 +332,36 @@ Para escribir subíndices escribimos los puntos [34], ⠌, y a continuación el 
 
 De manera análoga sucede con los exponentes o superíndices. El signo “elevado a” se representa con los puntos [16], ⠡. Cuando el exponente es compuesto utilizamos paréntesis auxiliares. Por ejemplo, para representar “x” elevado al exponente “n+1”, escribimos:
 ⠭⠡⠢⠝⠖⠼⠁⠔
+
+Resumimos algunos símbolos matemáticos útiles nombrados aquí en la siguiente tabla:
+
+|operación|código numérico|braille|
+|-|-|-|
+operador numerador|[3456]|⠼|
+|-|-|-|
+|comienzo de letras|[5]|⠐|
+|-|-|-|
+|\+|[235]|⠖|
+|-|-|-|
+|\-|[36]|⠤|
+|-|-|-|
+|❌|[236]|⠦|
+|-|-|-|
+|=|[2356]|⠶|
+|-|-|-|
+|potencia/superíndice|[16]|⠡|
+|-|-|-|
+|raíz cuadrada|[1246,156]|⠫⠱|
+|-|-|-|
+|subíndice|[34]|⠌|
+|-|-|-|
+|fracciones|[256]|⠲|
+|-|-|-|
+|abrir paréntesis auxiliar|[26]|⠢|
+|-|-|-|
+|cerrar paréntesis auxiliar|[35]|⠔|
+|-|-|-|
+
 
 
 
