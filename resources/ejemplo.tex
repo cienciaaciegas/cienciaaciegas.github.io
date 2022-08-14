@@ -1,0 +1,204 @@
+\documentclass[letter,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage{amsmath,amssymb,amsfonts}
+\def\beq{\begin{equation}}
+\def\eeq{\end{equation}}
+\newcommand{\derivadaN}[3]{\frac{d^{#3}#1}{d#2^{#3}}}
+\def\derivada#1#2{\frac{d#1}{d#2}}
+\title{Sobre la Importancia del Agua en la Navegación Marítima}
+\author{Rogelio Rojas Izquierdo}
+\date{30 de Febrero de 2018}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+En este trabajo resaltamos la importancia
+ del agua en la navegación marítima. Concluimos
+  que no es posible navegar sin agua a no ser que 
+sea
+ por Internet.
+\end{abstract}
+\section{Introducción}
+Creemos firmemente que la navegación marítima 
+se fundamenta en el principio de Arquímedes~\cite{arquimedes}
+ sobre cuerpos flotantes en líquidos como es el agua.
+\subsection{Principio de Arquímedes}
+Todo cuerpo sumergido en un \textit{fluido} 
+experimenta una \textbf{fuerza de empuje} hacia
+ arriba, igual al peso del volumen del fluido
+  desalojado.
+
+\section{Fundamentos Físicos}
+
+Según Albert Einstein $E=m c^{2}$. Esta
+ fórmula le dio su fama en todos los niveles. Según
+  Einstein, la masa de un cuerpo depende de su velocidad
+  , de modo tal que,
+\begin{equation}
+m=\frac{m_{0}}{\sqrt{1-\frac{v^{2}}{c^{2}}}},
+\label{masa}
+\end{equation}
+donde $m_0$ es la masa
+ en reposo del cuerpo y $c$ la velocidad
+  de la luz en el vacío. Según (\ref{masa}) no es posible
+   que un cuerpo supere la velocidad de la luz.
+
+De estas
+ ecuaciones se deduce que,
+$$E=\frac{m_0 c^2}{\sqrt{1-\frac{v^2}{c^2}}}.$$
+Las transformaciones de Lorentz se pueden escribir como:
+\begin{eqnarray}
+t^{\prime}&=&\gamma\left( t +\frac{v}{c^2}x\right)\label{t-lorentz}\\
+x^{\prime}&=&\gamma\left(x + v t\right)\label{x-lorentz}
+\end{eqnarray}
+donde $\gamma = \left[1-\frac{v^2}{c^2}\right]^{-\frac{1}{2}}$. Este sistema de transformaciones se pueden escribir como una única ecuación matricial:  
+$$\left(
+\begin{array}{c}
+ct^{\prime}\\
+x^{\prime}
+\end{array}
+\right)
+=\left(
+\begin{array}{c c}
+\gamma & \gamma\beta  \\
+\gamma\beta & \gamma
+\end{array}
+\right)
+\left(
+\begin{array}{c}
+ct\\
+x
+\end{array}
+\right)
+$$
+
+Ahora vamos a usar los paquetes de AMS. La matriz,
+$$\Gamma=\left(
+\begin{matrix}
+\gamma&\gamma\beta\\
+\gamma\beta&\gamma
+\end{matrix}
+\right)
+$$
+donde $\gamma$ y $\beta$ pertenecen a $\mathbb{R}$, 
+son los coeficientes relativistas dependientes de la velocidad.
+
+\section{Listas}
+Ahora una lista:
+
+\begin{enumerate}
+ \item Hola
+ \begin{enumerate}
+ \renewcommand{\labelenumii}{\labelenumi.\roman{enumii}}
+ \item Buenos días.
+ \item Buenas tardes.
+ \end{enumerate}
+ \item Adiós
+ \end{enumerate}
+ 
+Otra lista:
+\begin{enumerate}
+\item Álgebra.
+	\begin{enumerate}
+	\item grupos y Anillos.
+	\item Cuerpos.
+	\item Espacios Vectoriales.
+	\end{enumerate}
+\item Análisis.
+	\begin{enumerate}
+	\item Análisis real.
+	\item Análisis complejo.
+	\item Análisis funcional.
+	\end{enumerate}
+\item Geometría.
+	\begin{itemize}
+	\item Geometría Euclídea.
+		\begin{itemize}
+		\renewcommand{\labelitemii}{$\partial$}
+		\item En el plano.
+		\item En el Espacio.
+		\end{itemize}
+	\item  Geometría rimaniana.
+		\begin{itemize}
+		\item Geometría extrínseca.
+		\item Geometría intrínseca.
+		\end{itemize}
+	\end{itemize}
+\item Lógica.
+	\begin{enumerate}
+	\item Teoría de conjuntos.
+	\item Teoría de modelos.
+	\end{enumerate}
+\end{enumerate}
+Y finalmente una lista de descripción:
+\begin{description}
+\item[España:] Es un país que está 
+al sur de Europa.
+\item[Colombia:] Es un país que se encuentra en América y
+tiene costa del Caribe.
+\end{description}
+
+\section{Macros}
+Ahora un desarrollo del señor   ``sastre'':
+\beq
+f(x+h)=f(x) + h\derivada{f(x)}{x} + \frac{h^2}{2!}\derivadaN{f(x)}{x}{2} + \dots
+\eeq
+
+\section{Tablas}
+Tabla sencilla:
+\begin{table}[h]
+   \centering
+   \begin{tabular}{|c||c|l|}
+   \hline
+   País & Capital & Idioma\\
+   \hline
+   \hline
+   Francia & París & francés\\
+   \hline
+   España & Madrid & español\\
+   \hline
+   Italia & Roma & italiano\\
+   \hline
+   Colombia & Bogotá & español\\
+   \hline
+   \end{tabular}
+   \caption{Lista de países con sus capitales}
+   \label{paises}
+\end{table}
+En la tabla \ref{paises} vemos varios 
+países con sus respectivas capitales e idioma más hablado.
+\section{Figuras}
+ Según Pitágoras~\cite{pitagoras}, el cuadrado de la {\it hipotenusa} 
+ es igual a la suma de los cuadrados de los
+ {\it catetos} en un triángulo rectángulo:
+ $$h^2= a^2 +b^2,$$
+como podemos comprobar en la  figura  \ref{triangulo}.
+\begin{figure}
+\centering
+\begin{picture}(300,100)
+\put(20,20){\line(1,0){150}}\put(20,20){\line(2,1){150}}
+\put(170,20){\line(0,1){75}}
+\put(50,24){$\theta$}\put(85,60){$a$}
+\put(85,5){$\sqrt{a^2-b^2}$}\put(180,50){$b$}
+\put(160,20){\line(0,1){10}}\put(160,30){\line(1,0){10}}
+\put(48,20){\line(-1,4){3}}
+\put(220,70){$\displaystyle\mathrm{sen}\theta=\frac ba$}
+\put(220,30){$\displaystyle\cos\theta=\frac{\sqrt{a^2-b^2}}{a}$}
+\end{picture}
+\caption{ Un triángulo rectángulo.}
+\label{triangulo}
+\end{figure}   
+\section{Conclusiones}
+ Ahora vemos de forma clara y
+  nítida la importancia del agua
+   en la navegación marítima.
+
+\begin{thebibliography}{99}
+\bibitem{arquimedes} Arquímedes. {\it  Mi Principio}.
+ Phys.Lett.{\bf B}73 (1980).
+\bibitem{pitagoras} Pitagoras. {\it Triángulos}.
+ Phys.Rev.{\bf D}23 (1985).
+\end{thebibliography}
+\end{document}

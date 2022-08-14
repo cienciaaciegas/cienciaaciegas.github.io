@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Acerca de
+title: Acerca de cienciaaciegas.com
 permalink: /acerca-de/
 ---
 Todo individuo tiene derecho al acceso a la información. La Ciencia, como cualquier otro ámbito del conocimiento humano, debe ser accesible para todos.
