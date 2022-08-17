@@ -1,12 +1,10 @@
 ---
 layout: post
 title:  "Guía básica de braille matemático  !"
-date:   2022-08-07 21:29:09 +0200
+date:   2022-08-07 #21:29:09 +0200
 category: braille
 ---
-En este post. vamos  hacer un breve repaso del código braille, y daremos unas bases de braille matemático.
-
-# Guía básica para la escritura de fórmulas en braille
+En este post. vamos a hacer un breve repaso del código braille, y daremos unas bases de braille matemático.
 
 Esta guía pretende ser un documento orientativo y muy general sobre el código braille, y en especial, sobre el braille matemático. Para tener una idea más precisa y detallada de las distintas representaciones sugerimos consultar referencias dedicadas a este fin.
 
