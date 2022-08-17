@@ -2,7 +2,7 @@
 layout: post
 title:  "Guía básica de braille matemático  !"
 date:   2022-08-07 21:29:09 +0200
-categories: Braille
+category: braille
 ---
 En este post. vamos  hacer un breve repaso del código braille, y daremos unas bases de braille matemático.
 
