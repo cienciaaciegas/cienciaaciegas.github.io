@@ -33,7 +33,7 @@ plugins:
   - jekyll-feed
   - jekyll-paginate
 # post por paginas
-paginate: 5 
+paginate: 2 
 # collections
 collections:
   categorias:
