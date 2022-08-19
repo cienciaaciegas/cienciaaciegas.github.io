@@ -25,3 +25,13 @@ Bienvenido a CienciaaCiegas.com.
     <a href="{{ paginator.next_page_path }}">Más antiguo</a>
   {% endif %}
 </nav>
+
+
+
+{% for cat in site.categorias %}
+{% if cat.title=="apuntes" %}
+{% assign apu=cat %}
+{% endif %}
+{% endfor %}
+
+<p><small><a href="/categorias/">Categorías</a>|<a href="{{ apu.url }}"> Apuntes</a></small></p>
