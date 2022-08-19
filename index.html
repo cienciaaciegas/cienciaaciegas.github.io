@@ -10,7 +10,7 @@ Bienvenido a CienciaaCiegas.com.
 
 {% for post in paginator.posts %}
   <div class="post">
-    <h1>{{ post.title }}</h1>
+    <h1><small> {{ post.date | date: "%d %b, %Y" }} | [{{ post.category |upcase }}] </small>: {{ post.title }}</h1>
     {{ post.content | truncate: 200 }}
   <a href="{{post.url}}"> Leer más </a>
   </div>
@@ -25,3 +25,12 @@ Bienvenido a CienciaaCiegas.com.
     <a href="{{ paginator.next_page_path }}">Más antiguo</a>
   {% endif %}
 </nav>
+
+
+{% for cat in site.categorias %}
+{% if cat.title=="apuntes" %}
+{% assign apu=cat %}
+{% endif %}
+{% endfor %}
+
+<p><small><a href="/categorias/">Categorías</a>|<a href="{{ apu.url }}"> Apuntes</a></small></p>
