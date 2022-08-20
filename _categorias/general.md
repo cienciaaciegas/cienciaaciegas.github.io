@@ -1,4 +1,5 @@
 ---
 layout: categ
-title: general
+title: General
+category: general
 ---

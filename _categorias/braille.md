@@ -1,4 +1,5 @@
 ---
 layout: categ
-title: braille
+title: Braille
+category: braille
 ---

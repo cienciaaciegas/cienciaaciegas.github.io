@@ -1,0 +1,28 @@
+---
+layout: page
+---
+
+{% assign contador = 0 %}
+{% for post in site.posts %}
+{% if post.category=="apuntes"%}
+{% assign contador = contador | plus:1 %}
+{% endif %}
+{% endfor %}
+{% if contador!=1 %}
+<p>{{ contador }} artículos publicados en {{ page.title }}</p>
+{% else %}
+<p>{{ contador }} artículo publicado en {{ page.title }}</p>
+{% endif %}
+
+{{ content }}
+
+
+{% for item in site.apuntes %}
+{% assign contador = 0 %}
+{% for post in site.posts %}
+{% if item.category==post.subcategory %}
+{% assign contador = contador | plus:1 %}
+{% endif %}
+{% endfor %}
+<p><a href="{{ item.url }}"> {{ item.title }} ({{ contador }}) </a></p> 
+{% endfor %}

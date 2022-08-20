@@ -1,4 +1,5 @@
 ---
 layout: categ
-title: software
+title: Software
+category: software
 ---

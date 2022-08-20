@@ -26,12 +26,10 @@ Bienvenido a CienciaaCiegas.com.
   {% endif %}
 </nav>
 
-
-
+<p><small>
 {% for cat in site.categorias %}
-{% if cat.title=="apuntes" %}
-{% assign apu=cat %}
-{% endif %}
+<a href="{{ cat.url }}">{{ cat.title -}}</a>
 {% endfor %}
+</small></p>
 
-<p><small><a href="/categorias/">Categorías</a>|<a href="{{ apu.url }}"> Apuntes</a></small></p>
+

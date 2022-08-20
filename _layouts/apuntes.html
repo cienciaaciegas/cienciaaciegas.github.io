@@ -1,0 +1,56 @@
+---
+layout: page
+---
+
+
+{% assign contador = 0 %}
+{% for post in site.posts %}
+{% if post.category == "apuntes" and post.subcategory==page.category %}
+{% assign contador = contador | plus:1 %}
+{% endif %}
+{% endfor %}
+{% if contador != 1 %}
+<p>{{ contador }} artículos publicados de {{ page.title }}</p>
+{% else %}
+<p>{{ contador }} artículo publicado de {{ page.title }}</p
+{% endif %}
+
+
+{{ content }}
+
+{% assign cate = "" %}
+{% for post in site.posts %}
+{% if post.category=="apuntes" %}
+{% if post.subcategory==page.category  %}
+{% assign cate = cate | append : ", " | append : post.subsubcategory %}
+{% endif %}
+{% endif %}
+{% endfor %}
+
+{% assign category_string = cate | remove_first : ", " %}
+
+{% assign category_list_total = category_string | split : ", "%}
+{% assign category_list = category_list_total | uniq %}
+
+
+
+{% for item in category_list %}
+{% assign contador=0 %}
+{% for post in site.posts %}
+{% if post.category=="apuntes" and page.category==post.subcategory and item==post.subsubcategory %}
+{% assign contador = contador | plus:1 %}
+{% endif %}
+{% endfor %}
+<h2> {{ item }} ({{ contador }}):</h2>
+{% for post in site.posts %}
+{% if post.category=="apuntes" %}
+{% if post.subcategory==page.category %}
+{% if post.subsubcategory==item %}
+<p><small>{{ post.date | date: "%d %b, %Y" }} :<a href="{{ post.url }}"> {{ post.title}}</a></p>
+{% endif %}
+{% endif %}
+{% endif %}
+{% endfor %}
+{% endfor %}
+
+

@@ -1,4 +1,7 @@
 ---
-layout: categ
-title: apuntes
+layout: subapuntes
+title: Apuntes
+category: apuntes
 ---
+
+

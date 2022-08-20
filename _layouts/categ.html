@@ -3,12 +3,28 @@ layout: page
 ---
 
 
+{% assign contador = 0 %}
+{% for post in site.posts %}
+{% if post.category==page.category %}
+{% assign contador = contador | plus:1 %}
+{% endif %}
+{% endfor %}
+{% if contador != 1 %}
+<p>{{ contador }} artículos publicados de {{ page.title }}</p>
+{% else %}
+<p>{{ contador }} artículo publicado de {{ page.title }}</p
+{% endif %}
+
+
+
+{{ content }}
+
 
 {% for  item in site.posts %}
-{% if item.category == page.title %}
+{% if item.category == page.category %}
 <p> {{ item.date | date: "%d %b, %Y" }}: <a href="{{item.url}}" > {{ item.title }} </a> 
 </p>
 {% endif %}
 {% endfor %}
 
-{{ content }}
+

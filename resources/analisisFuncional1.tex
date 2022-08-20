@@ -1,0 +1,2403 @@
+\documentclass[12pt]{book}
+
+
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{amsthm,amsmath,amsfonts,amssymb} 
+\usepackage[all]{xy}
+
+
+\usepackage[width=4.375in, height=7.0in, top=1.0in, papersize={5.5in,8.5in}]{geometry}
+\usepackage[pdftex]{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tipa}
+
+\usepackage{textcomp}
+
+
+
+\usepackage{fancyhdr}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newtheorem{defn}{\bf Definición}[chapter]
+\newtheorem{ejemplo}{\bf Ejemplo}[chapter]
+\newtheorem{listaejemplos}{\bf Ejemplos}[chapter]
+\newtheorem{prop}{\bf Proposición}[chapter]
+\newtheorem{lema}{\it Lema}[chapter]
+\newtheorem{coro}{Corolario}[chapter]
+\def\beginejems{\begin{listaejemplos}\quad\begin{enumerate}}
+\def\endejems{\end{enumerate}\end{listaejemplos}}
+\def\NN{\mathbb{N}}
+\def\ZZ{\mathbb{Z}}
+\def\QQ{\mathbb{Q}}
+\def\RR{\mathbb{R}}
+\def\CC{\mathbb{C}}
+\def\FF{\mathbb{F}}
+\def\beqny{\begin{eqnarray*}}
+\def\eeqny{\end{eqnarray*}}
+
+\newcommand{\abs}[1]{\lvert #1\rvert }
+\newcommand{\norm}[1]{\lVert #1\rVert }
+\newcommand{\lin}[1]{\langle #1 \rangle}
+\newcommand{\Abs}[1]{\left\vert #1\right\vert}
+\newcommand{\Norm}[1]{\left\Vert #1\right\Vert }
+\newcommand{\Lin}[1]{\langle #1 \rangle}
+
+
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyhead[LE,RO]{\bfseries\thepage}
+\fancyhead[LO]{\bfseries\rightmark}
+\fancyhead[RE]{\bfseries\leftmark}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0pt}
+\addtolength{\headheight}{0.5pt}
+\setlength{\footskip}{0in}
+\renewcommand{\footruleskip}{0pt}
+\fancypagestyle{plain}{
+\fancyhead{}
+\renewcommand{\headrulewidth}{0pt}
+}
+
+
+\parskip 0.05in
+
+\begin{document}
+\frontmatter
+
+\chapter*{\Huge \center Notas de An\'alisis Funcional }
+\thispagestyle{empty}
+
+
+\newpage
+
+
+
+
+
+
+
+
+\tableofcontents
+
+\mainmatter
+
+\chapter{Espacios Lineales}
+
+
+
+
+\section{Definici\'on y ejemplos}
+
+\begin{defn} Un espacio lineal o vectorial $(X,\mathbb{F},+,\cdot)$ es una estructura donde   $X$ 
+un conjunto no vac\'{\i}o  (cuyos elementos llamaremos vectores), $\mathbb{F}$ un campo ($
+\mathbb{R}$ o $\mathbb{C}$), con dos operaciones binarias $+:X\times X\to X$, y, $\cdot:
+\mathbb{F}\times X\to X$, que dotan a $X$ de una estructura de grupo abeliano respecto de la 
+suma, $+$, y tal que:
+\begin{enumerate}
+\item $\lambda \cdot (v + w)=\lambda\cdot  v + \mu\cdot \lambda w$
+\item $(\lambda + \mu)\cdot  v=\lambda \cdot v + \mu\cdot  v$
+\item $\lambda\cdot (\mu\cdot  v)=(\lambda\mu)\cdot v$
+\item $1\cdot v=v,\hspace{1cm} 0\cdot v=\vec 0$
+\end{enumerate}
+donde $v,w \in X$, $\lambda,\mu\in\mathbb{F} $, $\vec 0$ es el elemento neutro respecto de la 
+suma y $0$ y $1$ son el cero y la unidad en $\mathbb{F}$. 
+\end{defn}
+Habitualmente no se indica el punto $\cdot$. As\'{\i} se escribe $\lambda v$ en vez de $
+\lambda\cdot v$ para $\lambda\in\mathbb{F} $ y $v\in X$.
+\begin{listaejemplos}\quad\begin{enumerate}\par
+\item Sea ${\bf s}(\mathbb{N})$ el conjunto de las sucesiones sobre $\mathbb{R}$ o $\mathbb{C}$, 
+es decir, el conjunto de las funciones $s:\mathbb{N}\to F$, con las operaciones de suma de 
+sucesiones y producto por un escalar habituales. Un elemento de ${\bf s}$ es denotado por 
+$s=(s_n)_{0}^\infty$ o simplemente $s_n$. Es claro que ${\bf s}(\mathbb{N})$ es un espacio 
+vectorial.
+\item El ${\bf c}(\mathbb{N})$ el conjunto de las sucesiones convergentes es un espacio vectorial.
+\item El conjunto ${\bf c}_0$ de las sucesiones convergentes a cero es un espacio vectorial.
+\item El conjunto ${\bf l}_0$ de las sucesiones con número de elementos no nulos  finitos (soporte 
+finito)  es un espacio vectorial.
+\item El conjunto ${\bf l}_\infty$ de sucesiones acotadas, $\sup \vert s_n\vert<\infty$, es un espacio 
+vectorial.
+\item El conjunto ${\bf l}_p$ de las sucesiones tales que $\sum_{n=1}^\infty \vert s_n\vert^p<\infty$ 
+con $p>1$ es un espacio vectorial (ver m\'as abajo).
+\item El conjunto ${\cal C}[a,b]$ de las funciones continuas en el intervalo $[a,b]$ es un espacio 
+vectorial.
+\item El espacio ${\cal C}_0[-1,1]$ de funciones cont\'{\i}nuas en el intervalo $[-1,1]$ con $f(0)=0$ 
+es un espacio lineal. 
+\end{enumerate}\end{listaejemplos}
+
+La suma de sucesiones es cerrada en ${\bf l}_p$. Para verlo, notemos que
+$$\vert x_n + y_n\vert^p \leq \left(2\max(\vert x_n\vert,\vert y_n\vert)\right)^p = 2^p \max(\vert 
+x_n\vert^p,\vert y_n\vert^p)\leq 2^p\left(\vert x_n\vert^p + \vert y_n\vert^p\right)$$
+Y por tanto,
+$$\sum_{n=0}^\infty \vert x_n + y_n\vert^p \leq 2^p\left(\sum_{n=0}^\infty \vert x_n\vert^p + 
+\sum_{n=0}^\infty \vert y_n\vert^p \right)<\infty$$
+donde $x_n$ y $y_n$ son sucesiones de ${\bf l}_p$.
+
+\begin{defn} Introduc9mos la siguiente notaci\'on. Dados $A$ y $B$ subconjuntos de $X$ y $
+\lambda \in\mathbb{F} $  y $a\in X$,  definimos:
+\begin{enumerate}
+\item $a + A := \{ b\in X \,|\, b=a+c,\, c\in A\}$ 
+\item $A+B := \{ c\in X \,|\, c=a+b,\, a\in A, \, b\in B\}$
+\item $\lambda A := \{b=\lambda c\,|\, c\in A\}$
+\end{enumerate}
+\end{defn}
+\begin{defn}Si $A\subseteq X$ y $(A,F,+,\cdot)$ con las operaciones $+$ y $cdot$ restringidas a 
+$A$ es un espacio vectorial, entonces decimos que $A$ es un subespacio vectorial de $X$.
+\end{defn} 
+
+\section{Generadores, independencia lineal y bases}
+
+\begin{defn} Sea $S\in X$ un conjunto no vac\'{\i}o. Llamamos {\it subespacio generado}  por $S$, 
+$\langle S\rangle$ o ${\rm span}(S)$, al subespacio m\'{\i}nimo que contiene a $S$. Es decir, si 
+$A\subseteq X$ es un subespacio vectorial de $X$  y $S\subseteq A$, entonces $\langle 
+S\rangle\subseteq A$.
+\end{defn}
+
+\begin{prop} El subespacio generado por el conjunto no vac\'{\i}o $S\subseteq X$ es la 
+intersecci\'on   todos los subespacios vectoriales de $X$ que contienen a $S$. Es decir,
+$$ \bigcap_{i\in J} A_i =\langle S\rangle,$$
+con $J$ el conjunto de \'{\i}ndices que etiquetan los subespacios $A_i$ que contienen a $S$,  
+$S\subseteq A_i$.
+\end{prop}
+
+\begin{defn} Una combinaci\'on lineal de un conjunto finito $S\subseteq X$ se define como,
+$$\sum_{i=1}^m \lambda_i x_i$$
+para $x_i\in S$ y $\lambda_i\in\mathbb{F} $, con $i=1,\dots,m$,.
+\end{defn}
+
+\begin{prop} Todo elemento de $\langle S\rangle$ puede escribirse como una cominaci\'on lineal de 
+elementos de $S$, es decir, para todo  $x\in \langle S\rangle$, existen un conjunto finito de 
+elementos $x_i\in S$ y $\lambda_i\in\mathbb{F} $, tales que,
+$$ x=\sum_{i=1}^m  \lambda_i x_i$$
+con $m\in\mathbb{N}$.
+\end{prop}
+ 
+ 
+\begin{defn} Un conjunto no vac\'{\i}o $S\subseteq X$  se dice linealmente independiente si 
+cualquier cominaci\'on lineal de $S$ que cumpla ,
+$$\sum_{i=1}^m \lambda_i x_i =0$$
+implica que $\lambda_i =0$ para todo $i=1,\dots,m$ y $x_i\in S$.
+\end{defn}
+ 
+
+\begin{defn} Un conjunto no vac\'{\i}o $S\subseteq$ se dice base de $X$ si $\langle S\rangle=X$ y 
+es linealmente independiente.
+\end{defn}
+
+\section{Convexidad}
+
+
+\begin{defn} Sea $S\subseteq X$ no vac\'{\i}o,, $0\leq \lambda\leq 1$,  $\vert \mu\vert\leq 1$, y 
+$x,y\in S$, entonces:
+\begin{enumerate}
+\item Si $\lambda x  + (1-\lambda)y\in S$, entonces $S$ se llama convexo.
+\item  Si $\mu x\in S$, entonces $S$ se llama balanceado.
+\item Si $S$ es convexo y balanceado, entonces $S$ se llama absolutamente convexo.
+\end{enumerate}
+\end{defn}
+\begin{prop} Un conjunto no vac\'{\i}o $S\subseteq X$ es absolutamente convexo si y solo si,
+$$ \lambda x  + \mu y \in S$$
+para todo $x,y\in S$ y $\lambda,\mu\in\mathbb{F} $ tales que,
+$$\vert \lambda\vert +\vert \mu \vert \leq 1.$$
+\end{prop}
+\begin{proof}
+La implicaci\'on rec\'{\i}proca se ve  f\'acilmente tomando $\lambda\in\mathbb{R}$ y 
+$0\leq\lambda\leq 1$, y $\mu=1-\lambda$, lo que prueba que $S$  es convexo, y por otro lado 
+tomando $\mu=0$ vemos que es balanceado.
+
+ 
+Para ver la implicaci\'on directa, supongamos que $\lambda$ y $\mu$ son ambos distintos de cero, 
+en caso contrario es evidente. Los elementos,
+$$x^\prime =\frac{\lambda}{\vert\lambda\vert}x\in S,\hspace{1cm} y^\prime=\frac{\mu}{\vert\mu\vert}
+y\in S$$
+pertenecen a $S$ pues los factores tienen m\'odulo unidad, y por ser $S$ balanceado. Tambi\'en,
+$$z^\prime\equiv \frac{\vert\lambda\vert}{\vert\lambda\vert +\vert\mu\vert} x^\prime + 
+\frac{\vert\mu\vert}{\vert\lambda\vert+\vert\mu\vert}y^\prime\in S$$
+puesto que los factores son reales comprendidos entre 0 y 1, y su suma es la unidad, y por ser $S$ 
+convexo. Finalmente,
+$$ z \equiv (\vert\lambda\vert + \vert\mu\vert)z^\prime = \vert\lambda\vert x^\prime + \vert\mu\vert 
+y^\prime=\lambda x + \mu y \in S$$
+ por ser  $\vert\lambda\vert + \vert\mu\vert\leq 1$ y por ser $S$ balanceado.
+
+\end{proof}
+
+ 
+ \begin{defn}Sea  un conjunto no vac\'{\i}o de $X$.  El generado convexo de $S$, ${\rm co}(S)$,  es 
+el menor  subconjunto convexo  de $X$ que contiene a $S$.. Equivalentemente,
+$${\rm co}(S) =\bigcap_{i\in J} C_j,$$
+con $J$ el conjunto de \'{\i}ndices que etiquetan a todos los  conjuntos $C_j$ convexos que 
+contienen a $S$.
+\end{defn}
+\noindent {\it Nota:} El conjunto ${\rm co}(S)$, a diferencia de $\langle S\rangle$, no es un 
+subespacio vectorial en general. Sin embargo, el resultado siguiente muestra una propiedad que se 
+asemeja a la propiedad de $\langle S\rangle$, que permite escribir los elementos de   ${\rm co}(S)$ 
+como ciertas combinaciones lineales de elementos de $S$.
+
+\begin{prop} Sea $S$ un subconjunto no vac\'{\i}o de $S$. Entonces para cualquier  $x\in {\rm co}
+(S)$, existen un conjunto finito de elementos $x_i\in S$,  y coeficientes reales $0\leq \lambda_i\leq 
+1$, con $i =1,\dots,m$, con,
+$$\sum_{i =1}^m \lambda_i =1,$$
+tales que,
+$$ x=\sum_{i=1}^m \lambda_i x_i.$$ 
+\end{prop}
+\begin{proof}
+Sea $C$ el conjunto de combinaciones lineales de $S$ con coeficientes reales  
+$0\leq\lambda\leq1$ tales que suman uno, es decir,
+$$C:=\{ x \,|\, x=\sum_{i=1}^m \lambda_i x_i,\, \sum_{i=1}^m \lambda_i = 1,\, m\in\mathbb{N}\}$$
+Probemos que ${\rm co}(S)=C$.
+
+
+Primero, veamos que ${\rm co}(S)\subseteq C$. Para ello notemos que $C$ es conexo, ya que 
+dados $x,y\in C$, entonces,
+$$ x=\sum_{i=1}^m \lambda_i x_i,\hspace{1cm} \sum_{i=1}^m\lambda_i=1$$
+$$ y=\sum_{i=1}^n \mu_i y_i,\hspace{1cm} \sum_{i=1}^n\mu_i=1$$
+Sea $0\leq\lambda\leq1$, entonces,
+$$\lambda x + (1-\lambda)y =\sum_{i=1}^m \lambda\lambda_i x_i + \sum_{j=1}^n(1-\lambda)\mu_j 
+y_j\in C$$
+puesto que,
+$$\sum_{i=1}^m\lambda\lambda_i + \sum_{j=1}^n  (1-\lambda)\mu_j=\lambda + (1-\lambda)=1$$
+Y puesto que evidentemente $S\subseteq C$, entonces ${\rm co}(S)\subseteq C$.
+
+
+Probemos ahora que $C\subseteq {\rm co}(S)$. Para ello procederemos por inducci\'on  sobre el 
+n\'umero de sumandos de las combinaciones lineales de $C$. Para $m=2$, es claro, ya que si 
+$x_1$ y $x_2$  pertenecen a $S$ y $\lambda_1+\lambda_2=1$, tendremos que  el elemento de 
+$C$,
+$$x^{(2)}=\lambda_1x_1+\lambda_2x_2$$
+pertenecer\'a tambi\'en a cualquier subconjunto convexo  de $X$ que contenga a $S$, y por tanto 
+estar\'a en ${\rm co}(S)$.
+  Supongamos ahora cierto que cualquier  $x^{(m)}\in  C$ representado por $m$ sumandos 
+tambi\'en  pertenece  a ${\rm co}(S)$. Consideremos el elemento de $C$,
+ $$x^{(m+1)}=\sum_{i=1}^m \lambda_i x_i + \lambda_{m+1} x_{m+1}$$
+ 
+ con $x_i\in S$, $i=1,\dots,m+1$ y,
+ $$\sum_{i=1}^{m+1} \lambda_i=1.$$
+ En caso que $\sum_{i=1}^m \lambda_i=0$, la prueba es evidente ya que $\lambda_{m+1}=1$ y 
+$x^{(m+1)}=x_{m+1}\in S\subseteq {\rm co}(S)$. En caso contrario, llamemos $\beta=\sum_{i=1}
+^{m}\lambda_i\not=0$, y por tanto $1-\beta=\lambda_{m+1}$, y podemos escribir,
+$$ x^{(m+1)} = \beta\sum_{i=1}^m\frac{\lambda_i}{\beta} x_i  +(1- \beta)  x_{m+1} = \beta 
+x^{\prime(m)}  +(1-\beta)x_{m+1}$$ 
+donde,
+ $$x^{\prime(m)}=\sum_{i=1}^m\frac{\lambda_i}{\beta} x_i$$
+pertenece a cualquier convexo que contenga a ${\rm co}(S)$, debido a que la suma $\sum_{i=1}
+^m\frac{\lambda_i}{\beta}=1$ y por hip\'otesis de inducci\'on  $x^{\prime(m)}\in {\rm co}(S)$. Y por 
+tanto tambi\'en pertenece a $ {\rm co}(S)$.
+\end{proof}
+
+\section{Espacio cociente}
+\begin{defn} Sea $M$ un subespacio vectorial de $X$ sobre $\mathbb{F}$. Entonces sean $x,y\in 
+X$, decimos que,
+$$x\equiv y (\textrm{mod}\, M)$$
+($x$ es congruente con $y$ m\'odulo $M$), si,
+$$x-y\in M.$$
+\end{defn}
+Es claro que la congruencia definida m\'as arriba es una relaci\'on de equivalencia en $X$. Las 
+clases correspondientes a dicha relaci\'on son entonces,
+$$[x]=x+M:=\{z\in X\,|\, z=x+y,\, y\in M\}$$
+
+
+\begin{defn} Sea $X$ un espacio vectorial sobre $\mathbb{F}$ y $M\subseteq X$ un subespacio 
+vectorial de $X$. Llamamos espacio factor o espacio cociente $X/M$, al espacio vectorial formado 
+por las clases de equivalencia $[x]$, con las operaciones $\cdot$ y $+$ definidas como siguen:
+\begin{enumerate}
+\item $[x]+[y]=[x+y]$
+\item $\lambda[x] = [\lambda x]$
+\end{enumerate}
+para cualesquiera $x,y\in X$ y $\lambda \in \mathbb{F}$.
+\end{defn}
+ No es dif\'{\i}cil probar que tales operaciones est\'an bien definidas. Equivalentemente podemos 
+escribir,
+ $$(x+M)+(y+M)=x+y+M,\hspace{1cm}\lambda(x+M)= \lambda x +M.$$
+ 
+ \begin{defn} Llamamos codimensi\'on de un subespacio vectorial $M\subseteq X$ a la dimensi\'on 
+de $X/M$. Es decir,
+ $$\textrm{codim} M=\textrm{dim}(X/M).$$
+ \end{defn}
+ 
+ \section{Suma directa y proyectores}
+ \begin{defn} Sean $M$ y $N$ dos subespacios vectoriales de $X$ sobre $\mathbb{F}$. Decimos 
+que $X$ es suma directa de $M$ y $N$,
+ $$X=M\oplus N,$$
+ si se cumple que :
+ \begin{enumerate}
+\item $X=M+N$
+\item $M\cap N=\{\vec 0\}.$
+\end{enumerate}
+\end{defn}
+\begin{prop} Sea $X=M\oplus N$, un espacio vectorial expresado como suma directa de dos 
+subespacios $M$ y $N$. Entonces cualquier elemento $x\in X$ puede representarse de manera 
+\'unica como $x=m+n$ con $\in M$ y $n\in N$.
+\end{prop}
+\begin{proof}
+Por ser $X=M+N$ cualquier elemento $x\in X$ puede escribirse como suma de elementos de $m\in 
+M$ y $n\in N$, es decir $x=m+n$. Veamos por otro lado que dicha representaci\'on es \'unica. Sea 
+$x=m^\prime +n^\prime$ otra representaci\'on de $x$ como suma de $m^\prime\in M$ y 
+$n^\prime\in N$. Entonces,
+$$m-m^\prime = n^\prime - n\in M\cap N =\{\vec 0\}$$
+y por tanto $m=m^\prime$ y $n=n^\prime$, y la descomposici\'on es \'unica.
+\end{proof}
+
+\begin{defn} Si $X=M\oplus N$ como en la proposici\'on anterior, decimos que $N$ ($M$) es 
+complementario de $M$ ($N$) en $X$.
+\end{defn}
+\noindent{\it Nota:} El complementario de un subespacio $M$ no es \'unico. Por ejemplo 
+considerese $M=\langle(1,0,0),(0,1,0)\rangle\subseteq\mathbb{R}^3$.. Entonces tanto 
+$N=\langle(0,0,1)\rangle$ como $N^\prime=\langle(0,1,1)\rangle$ son ambos complementarios de 
+$M$ en $\mathbb{R}^3$.
+\begin{prop} La codimensi\'on de $M$ es igual a la dimensi\'on del complementario de $M$. Es 
+decir, si $X=M\oplus N$, entonces,
+$$\textrm{codim} M = \textrm{dim} N.$$
+\end{prop}
+ \begin{proof}
+Sean ${\cal B}_M =\{u_1,u_2,\dots\}$ y ${\cal B}_N =\{v_1,v_2,\dots\}$ bases de $M$ y $N$ 
+respectivamente. Ya que $X=M\oplus N$ es claro que ${\cal B}_M\cup{\cal B}_N$ es base de $X$. 
+Entonces vamos a probar que ${\cal B}^\prime=\{[v_1],[v_2],\dots\}$ es base de $X/M$, donde $
+[v_i]$ son las clases formadas  por los elementos de la base de $N$. 
+ 
+ Veamos primero que ${\cal B}^\prime$ genera $X/M$. Sea $[w]\in X/M$, entonces puesto $w\in X$ 
+tenddremos que,
+ $$w=\lambda_1 u_1 + \lambda_2 u_2+\dots + \mu_1 v_1 + \mu_2v_2+\dots$$
+ y puesto que la primera parte de esta expresi\'on pertenece a $M$, tendremow que,
+ $$[w]= \mu_1[v_1]+\mu_2[v_2] +\dots$$
+Ahora probamos que ${\cal B}^\prime$ es linealmente independiente. Sean $\mu_1,\mu_2,\dots$ 
+en $\mathbb{F}$ tales que,
+$$ \mu_1[v_1]+\mu_2 [v_2] +\dots =[\vec 0]$$
+Entonces esto significa que  $\mu_1 v_1 + \mu_2 v_2 +\dots \in M$,, pero puesto que es una 
+combinaci\'on lineal de elementos de $N$ entonces est\'a en $M\cap N=\{ \vec 0\}$ y por tanto,
+$$ \mu_1v_1+\mu_2 v_2 +\dots =\vec 0$$
+pero como $\{v_1,v_2,\dots\}$ son linealmente independientes entonces $\mu_i=0,\,\forall i$.
+\end{proof}
+
+
+\noindent {\it Nota:} De la prueba de la proposici\'on anterior se deduce que si $X$ y $M$ son de 
+dimensi\'on finita, entonces,
+$$\textrm{dim}(X/M) = \textrm{dim} X - \textrm{dim}M$$
+y todos los subespacios complementarios a $M$ tienen la misma dimensi\'on, y por tanto son 
+isomorfos.
+ 
+
+\begin{defn} Una aplicaci\'on lineal $P:X\longrightarrow X$, es decir,  $P(\lambda v+\mu 
+w)=\lambda Pv+\mu Pw$ con $v,w\in X$ y $\lambda,\mu\in \mathbb{F}$, que cumple,
+$$P^2=P$$
+y sea $M=\textrm{Im}P=P(X)$, $N=\textrm{Ker}P=\{v\in X\,|\,Pv=\vec 0\}$. Decimos que $P$ es un 
+proyector algebraico  de $X$ sobre $M$ a lo largo de $N$, o que $M$ es una proyecci\'on de $X$ a 
+lo largo de $N$.
+\end{defn}
+\begin{prop} Sean $M$ y $N$ subespacios de $X$, y $P:X\longrightarrow X$ una aplicaci\'on lineal 
+en $X$, tal que $P(X)=M$ y $N=\textrm{Ker}P$, entonces, $P^2=P$ y $N=(I-P)(X)$ si y solo si  
+$X=M\oplus N$, y con  $Px=m$  donde  $x=m+n$ con $m\in M$ y $n\in N$ es la representaci\'on 
+\'unica de $x\in X$.
+\end{prop}
+\begin{proof}
+Demostremos la implicaci\'on directa. Dado cualquier $x\in X$, podemos escribir,
+$$x= Px + (x-Px)=x+(I-P)x=m+n$$con $m=Px\in P(X)$ y $n=(I-P)x$ que pertenece al kernel de $P$ 
+ya que $Pn= P(I-P)x=(P-P^2)x = (P-P)x=\vec 0$. As\'{\i} pues $X=M+N$. Adem\'as si $y\in M\cap 
+N$, entonces $y=Px$ para alg\'un $x\in X$, y se tiene que, $\vec 0=   Py=P^2x=Px=y$, y por tanto 
+$X=M\oplus N$.
+
+Rec\'{\i}procamente, sea $x=m+n=Px +n$, entonces $n=x-Px=(I-P)x\in N=\textrm{Ker}P$, por lo 
+que $\vec 0=Pn=(P-P^2)x$, con lo que $P^2=P$.
+\end{proof}
+ 
+
+\section{Desigualdades notables}
+En esta secci\'on se demostrar\'an desigualdades relevantes para algunos ejemplos importantes 
+que se considerar\'an mas adelante.
+
+\begin{lema}(desigualdad de Young). Sean $\alpha$ y $\beta$ n\'umeros reales no negativos, y $p$ 
+y $q$ n\'umeros reales mayores que $1$ complementarios,  es decir, tales que,
+$$\frac{1}{p}+\frac{1}{q}=1.$$
+Entonces se cumple la desigualdad,
+ $$ \alpha\beta\leq \frac{\alpha^p}{p}+\frac{\beta^q}{q}.$$
+\end{lema}
+\begin{proof}
+Fijado $\beta$, definimos la funci\'on,
+$$f(\alpha) =\frac{\alpha^p}{p}+\frac{\beta^q}{q}-\alpha\beta$$
+que es al menos  de clase ${\cal C}^{(2)}(\bar{\mathbb{R}}^+)$. Es facil ver que dicha funci\'on solo 
+tiene un m\'{\i}nimo global  en $\alpha=\beta^{\frac{1}{p-1}}$, es decir, su derivada en dicho punto 
+es nula y la segunda derivada  es positiva en todo su dominio. Adem\'as, en dicho punto la funci\'on 
+misma se anula $f(\beta^{\frac{1}{p-1}})=0$, por lo que dicha funci\'on es no negativa en todo su 
+dominio, y esto prueba la desigualdad.
+\end{proof}
+   
+   \begin{prop}(desigualdad de Holder). Sean $(x_n)$ y $(y_n)$ sucesiones de $l_p$ y $l_q$ 
+respectivamente, con $\frac{1}{p}+\frac{1}{q}=1$. Entonces se cumple la desigualdad,
+$$ \sum_{n=1}^\infty \vert x_n y_n\vert \leq \left(\sum_{n=1}^\infty \vert x_n\vert^p\right)^{\frac{1}{p}}
+\left(\sum_{n=1}^\infty\vert y_n\vert^q\right)^{\frac{1}{q}}.$$
+  \end{prop}
+ \begin{proof}
+Definamos,
+$$\alpha_n= \frac{\vert x_n\vert}{\left(\sum_{k=1}^\infty\vert x_k\vert^p\right)^\frac{1}{p}},
+\hspace{1cm} \beta_n=\frac{\vert y_n\vert}{\left(\sum_{k=1}^\infty \vert y_k\vert^q\right)^\frac{1}{q}}.$$
+Usando la desigualdad de Young vista en el lema anterior, tenemos que
+\begin{eqnarray*}
+\alpha_n\beta_n &=&\frac{\vert x_n\vert}{\left(\sum_{k=1}^\infty\vert x_k\vert^p\right)^\frac{1}{p}}
+\frac{\vert y_n\vert}{\left(\sum_{k=1}^\infty \vert y_k\vert^q\right)^\frac{1}{q}}\\
+&\leq& \frac{\alpha_n^p}{p}+\frac{\beta_n^q}{q}=\frac{\vert x_n\vert^p}{p\left(\sum_{k=1}^\infty\vert 
+x_k\vert^p\right)}+\frac{\vert y_n\vert^q}{q\left(\sum_{k=1}^\infty\vert y_k\vert^q\right)}
+\end{eqnarray*}
+Y sumando sobre los $n=1,2,\dots$, encontramos,
+\begin{eqnarray*}
+&&\frac{\sum_{n=1}^\infty\vert x_n\vert\vert y_n\vert}{\left(\sum_{k=1}^\infty \vert 
+x_k\vert^p\right)^\frac{1}{p}
+\left(\sum_{k=1}^\infty \vert y_k\vert^q\right)^\frac{1}{q}}\\
+&&\leq \frac{\sum_{n=1}^\infty \vert x_n\vert^p}{p\left(\sum_{k=1}^\infty\vert x_k\vert^p\right)}
++\frac{\sum_{n=1}^\infty \vert y_n\vert^q}{q\left(\sum_{k=1}^\infty\vert y_k\vert^q\right)}\\
+&&=\frac{1}{p}+\frac{1}{q}=1,
+\end{eqnarray*}
+de donde se sigue la desigualdad de Holder.
+\end{proof}
+\begin{prop}(desigualdad de Minkowski). Sean $(x_n)$ y $(y_n)$ sucesiones de $l_p$ con $p\geq 
+1$, entonces se sigue que, 
+$$\left(\sum_{n=1}^\infty \vert x_n + y_n\vert^p\right)^\frac{1}{p}\leq
+ \left(\sum_{n=1}^\infty \vert x_n\vert^p\right)^\frac{1}{p} + \left(\sum_{n=1}^\infty \vert 
+y_n\vert^p\right)^\frac{1}{p}$$
+\end{prop}
+\begin{proof}
+El caso $p=1$  se deduce de  la desigualdad triangular para el valor absoluto ( en $\mathbb{R}$) o 
+el m\'odulo (en $\mathbb{C}$). Para $p>1$, sea $q=\frac{p}{p-1}$ su complementario. Tenemos 
+que,
+\begin{eqnarray*}
+\sum_{n=1}^\infty \vert x_n + y_n\vert^p
+&\leq&\sum_{n=1}^\infty \vert x_n + y_n\vert^{p-1}(\vert x_n\vert +\vert y_n\vert)\\
+&=&\sum_{n=1}^\infty \alpha_n\vert x_n\vert +\sum_{n=1}^\infty \alpha_n\vert y_n\vert
+\end{eqnarray*}
+donde hemos hecho uso de la desigualdad triangular para $\vert x_n+y_n\vert\leq \vert x_n\vert +
+\vert y_n\vert$, y hemos definido $\alpha_n=\vert x_n+y_n\vert^{p-1}$. Ahora usando la 
+desigualdad de Holder para cada t\'ermino del lado derecho de la desigualdad anterior, obtenemos,
+\begin{eqnarray*}
+\sum_{n=1}^\infty \alpha_n\vert x_n\vert &\leq&\left(\sum_{n=1}^\infty \vert x_n\vert^p\right)^\frac{1}
+{p}\left(\sum_{n=1}^\infty\alpha_n^q\right)^\frac{1}{q} \\
+&=&\left(\sum_{n=1}^\infty \vert x_n\vert^p\right)^\frac{1}{p}\left(\sum_{n=1}^\infty \vert x_n + 
+y_n\vert^p\right)^\frac{p-1}{p}\\
+\sum_{n=1}^\infty \alpha_n\vert y_n\vert &\leq&\left(\sum_{n=1}^\infty \vert y_n\vert^p\right)^\frac{1}
+{p}\left(\sum_{n=1}^\infty\alpha_n^q\right)^\frac{1}{q} \\
+&=&\left(\sum_{n=1}^\infty \vert y_n\vert^p\right)^\frac{1}{p}\left(\sum_{n=1}^\infty \vert x_n + 
+y_n\vert^p\right)^\frac{p-1}{p}
+\end{eqnarray*}
+Junt\'andolo todo obtenemos finalmente,
+\begin{eqnarray*}
+\sum_{n=1}^\infty \vert x_n + y_n\vert^p
+\leq\left[\left(\sum_{n=1}^\infty \vert x_n\vert^p\right)^\frac{1}{p}\right.&+&\left.\left(\sum_{n=1}^\infty 
+\vert y_n\vert^p\right)^\frac{1}{p}\right]\times\\
+&&\times\left(\sum_{n=1}^\infty \vert x_n + y_n\vert^p\right)^\frac{p-1}{p}
+\end{eqnarray*}
+de donde se deduce f\'acilmente la desigualdad de Minkowski.
+\end{proof}
+
+
+
+
+\chapter{Espacios Normados}
+
+
+En este cap\'{\i}tulo vamos a estudiar el concepto de norma sobre un espacio vectorial, la cual nos 
+permitir dar una definici\'on precisa de l\'{\i}mite y convergencia en estos espacios.
+
+\section{Definici\'on y ejemplos}
+
+\begin{defn} Sea $X$ un espacio  vectorial sobre $\mathbb{F}$, definimos una norma sobre $X$ 
+ como una funci\'on  $\lVert\cdot\rVert :X\longrightarrow \mathbb{R}$ que cumple las siguientes 
+propiedades:
+\begin{enumerate}
+\renewcommand{\labelenumi}{\textrm{\bf N}.\arabic{enumi}.}
+\item $\lVert x\rVert \geq 0$
+\item $\lVert \lambda x\rVert =\lvert\lambda\rvert\lVert x\rVert$
+\item $\lVert x\rVert =0,\quad\Leftrightarrow\quad x=\vec 0$
+\item $\lVert x + y \rVert \leq \lVert x\rVert +\lVert y\rVert$ (desigualdad triangular)
+\end{enumerate}
+para cualesquiera $x$ y $y$ en $X$ y $\lambda$ en $\mathbb{F}$.
+\end{defn}
+\begin{listaejemplos}
+\begin{enumerate}
+\item El valor absoluto o el m\'odulo dobre $\mathbb{F}$ ($\mathbb{R}$ o $\mathbb{C}$, 
+respectivamente) es un ejemplo de norma. Prob\'emoslo para $\mathbb{C}$. Todas las 
+propiedades son evidentes salvo la \'ultima. 
+\begin{eqnarray*}
+\lVert x+y\rVert^2&=&(x+y)(x^*+y^*)\\
+&=&\lVert x\rVert^2+\lVert y\rVert^2 +2\textrm{Re}(xy^*)\\
+&\leq&\lVert x\rVert^2\lVert y\rVert^2 + 2\lVert xy^*\rVert=(\lVert x\rVert +\lVert y\rVert)^2
+\end{eqnarray*}
+\item El espacio $\mathbb{F}^n$ puede ser dotado de  distintas normas, por ejemplo:
+\begin{enumerate}
+ \item $$\lVert x\rVert_\infty=\mathop{\max}_{k\in\mathbb{Z}_n}(\lvert x_k\rvert)$$
+ \item $$\lVert x\rVert_p=\left(\sum_{k=1}^n\lvert x_k\rvert^p\right)^{\frac{1}{p}}$$
+\end{enumerate}La demostraci\'on de las propiedades de la norma se siguen f\'acilmente usando 
+entre otras la desigualdad de Minkowski.
+\item En el espacio de sucesiones acotadas en $\mathbb{F}$, la norma del supremo 
+$$\lVert x\rVert_\infty=\mathop{\sup}_{k\in\mathbb{Z}}(\lvert x_k\rvert)$$
+\item En las sucesiones $l_p(\mathbb{F})$,  la norma,
+$$\lVert x\rVert_p=\left(\sum_{k=1}^\infty \lvert x_k\rvert^p\right)^\frac{1}{p}$$
+\item En el espacio ${\cal B}[a,b]$ de funciones acotadas en el intervalo $[a,b]$, la norma,
+$$\lVert f\rVert_\infty =\mathop{\sup}_{x\in[a,b]}\lvert f(x)\rvert$$
+\item En el espacio ${\cal C}[a,b]$ de las funciones cont\'{\i}nuas en el intervalo $[a,b]$, definimos 
+las normas:
+\begin{enumerate}
+\item $$\lVert f\rVert_\infty = \mathop{\max}_{x\in[a,b]}(\lvert f(x)\rvert$$
+\item  $$\lVert f\rVert_2=\int_a^b \lvert f(x)\rvert^2\,dx$$
+\end{enumerate}
+Vamos a probar a continuaci\'on que esta \'ultima norma cumple las propiedades $\textrm{\bf N}.3$ 
+y $\textrm{\bf N}.4$. En particular, si suponemos que $\lVert f\rVert=0$ pero $f(x_0)\not= 0$ para 
+alg\'un $x_0\in[a,b]$, entonces por ser $f$ cont\'{\i}nua, debe existir un intervalo $
+(a^\prime,b^\prime)\subset [a,b]$ donde $f(x)\not=0$. Y puesto que,
+$$0\leq \int_{a^\prime}^{b^\prime}\lvert f(x)\rvert^2\,dx\leq \int_a^b\lvert f(x)\rvert^2\,dx=0$$
+y por el teorema del valor medio, tendremos,
+$$0=\int_{a^\prime}^{b^\prime}\lvert f(x)\rvert^2\,dx=\lvert f(\xi)\rvert^2(b^\prime-a^\prime)$$
+para alg\'un $xi\in(a^\prime,b^\prime)$, lo cual no se puede dar ya que el miembro derecho de la 
+ecuaci\'on no puede ser cero. Por tanto $f(x)=0$ para cualquier $x\in[a,b]$ y por tanto $f=0$. 
+
+Para probar la desigualdad triangular vamos a probar primero la desigualdad,
+$$\left\vert\textrm{Re}\int_a^b f(x)g^*(x)\,dx\right\vert\leq \left(\int_a^b\lvert f(x)
+\rvert^2\,dx\right)^\frac{1}{2}\left(\int_a^b\lvert g(x)\rvert^2\,dx\right)^\frac{1}{2}.$$
+Para probar esta desigualdad, consideremos $\lambda\in\mathbb{R}$ cualquiera. Entonces  se 
+debe cumplir,
+\begin{eqnarray*}
+0&\leq&\lVert f+\lambda g\rVert^2 =\int_a^b\lvert f(x)+\lambda g(x)\rvert^2\,dx\\
+&=&\lVert f\rVert^2+\lambda^2\lVert g\rVert^2 +2\lambda\int_a^b\textrm{Re}(f(x)g^*(x))\,dx\\
+&=&\lambda^2\alpha+2\beta\lambda +\gamma
+\end{eqnarray*}
+donde $\alpha=\lVert g\rVert^2$, $\gamma=\lVert f\rVert^2$ y $\beta=\int_a^b\textrm{Re}(f(x)g^*(x))
+\,dx$. Para que la par\'abola descrita  por el polinomio $\lambda^2\alpha+2\lambda\beta+\gamma$ 
+sea siempre positiva o cero, solo puede tener a lo sumo una ra\'{\i}z. Es decir, el discriminante debe 
+ser menor o igual a cero, esto es, 
+
+de donde,
+$$\left\vert\textrm{Re}\int_a^bf(x)g^*(x)\,dx\right\vert\leq\lVert f\rVert\lVert g\rVert$$
+
+
+Ahora podemos proceder a probar la desigualdad triangular, ya que,
+\begin{eqnarray*}
+0&\leq&\lVert f+g\rVert^2 = \lVert f\rVert^2+\lVert g\rVert^2 +2\textrm{Re}\int_a^b f(x)g^*(x)\,dx\\
+&\leq& \lVert f\rVert^2+\lVert g\rVert^2 + 2\lVert f\rVert\lVert g\rVert=(\lVert f\rVert+\lVert g\rVert)^2
+\end{eqnarray*}
+de donde se deduce la desigualdad buscada.
+\item El espacio $M_n(\mathbb{C})$ de  las matrices complejas $n\times n$, definimos la norma,
+$$\lVert A\rVert_2=\left(\textrm{tr}(A^\dagger A)\right)^\frac{1}{2}$$
+ \item en los espacios $l_\infty$ y $l_0$  de sucesiones acotadas y convergentes, respectivamente, 
+la norma $\lVert x\rVert_\infty =\sup_n(\lvert x_n\rvert)$.
+\end{enumerate}
+\end{listaejemplos}
+ 
+
+\begin{defn} Decimos que dos normas $\lVert \cdot\rVert_1$ y $\lVert \cdot\rVert_2$ sobre el 
+espacio lineal $X$ son equivalentes si existen $\alpha,\beta>0$ tales que,
+$$\alpha\lVert x\rVert_2\leq\lVert x\rVert_1\leq\beta\lVert x\rVert_2,$$
+para cualquier $x\in X$.
+\end{defn}
+\begin{prop} La equivalencia definida arriba entre dos m\'etricas en un espacio lineal  $X$ es una 
+relaci\'on de  equivalencia.
+\end{prop}
+\begin{proof}
+Es reflexiva, basta tomar  $\alpha=\beta=1$. Es sim\'etrica, ya que si $\alpha\lVert 
+x\rVert_2\leq\lVert x\rVert_1\leq\beta\lVert x\rVert_2$, entonces se tiene que $\beta^{-1}\lVert 
+x\rVert_1\leq\lVert x\rVert_2\leq\alpha^{-1}\lVert x\rVert_1$. Finalmente, es  transitiva ya que si $
+\alpha\lVert x\rVert_2\leq\lVert x\rVert_1\leq\beta\lVert x\rVert_2$ y $\alpha^\prime\lVert 
+x\rVert_3\leq\lVert x\rVert_2\leq\beta^\prime\lVert x\rVert_3$ entonces se tiene que $
+\alpha\alpha^\prime\lVert x\rVert_3\leq\lVert x\rVert_1\leq\beta\beta^\prime\lVert x\rVert_3$.
+\end{proof}
+ Como veremos m\'as adelante la equivalencia de dos normas asegurar\'an  que la convergencia 
+definida en t\'erminos de una de ellas es equivalente a la convergencia en la otra. Adem\'as se 
+probar\'a que en un espacio lineal de dimensi\'on finita todas las normas son equivalentes.
+
+
+\begin{defn}  Dado un espacio normado $(X,\lVert \cdot\rVert)$, definimos los siguientes conjuntos:
+\begin{enumerate}
+\item $B(a,r):=\{x\in X\,\, | \,\, \lVert x-a\rVert <r,\,a\in X,\,r\in \mathbb{R}\}$ y se denomina bola 
+abierta centrada en $a$ con radio $r$.
+\item $\bar B(a,r):=\{x\in X\,\,|\,\,\lVert x-a\rVert\leq r,\,a\in X,\,r\in\mathbb{R}\}$ se denomina bola 
+cerrada centrada en $a$ y de radio $r$.
+\item $S(a,r):=\{x\in X\,\,|\,\,\lVert x-a\rVert=r,\,a\in X,\, r\in\mathbb{R}\}$, se denomina una esfera 
+centrada en $a$ y de radio $r$.
+\end{enumerate}
+\end{defn}
+
+\begin{defn} Sea $A$ un subconjunto de un espacio normado $(X,\lVert \cdot\rVert)$. Entonces:
+\begin{enumerate}
+\item Decimos que $A$ es abierto si para cualquier $x\in A$  existe un $r\in\mathbb{R}$ tal que 
+$B(x,r)\subseteq A$. 
+\item Decimos que $A$ es cerrado si el complementario de $A$ en $X$ es abierto.
+\item Llamamos la clausura de $A$, y la denotamos por $\bar A$ a la intersecci\'on de todos los 
+cerrados que contienen a $A$.
+\end{enumerate}
+\end{defn}
+
+\begin{defn} Un espacio m\'etrico es un conjunto $M$ con una funci\'on $d:M\times 
+M\longrightarrow \mathbb{R}$ que llamamos distancia, $d(x,y)$ entre los elementos $x,y\in M$,  
+que cumple las siguientes propiedades:
+\begin{enumerate}
+\renewcommand{\labelenumi}{\textrm{\bf M}$\arabic{enumi}$.}
+\item $d(x,y)\geq 0$.
+\item $d(x,y)=0\quad\Leftrightarrow\quad x=y$
+\item $d(x,y)=d(y,x)\,.$  (sim\'etrica)
+\item $d(x,z)\leq  d(x,y)+d(y,z)\,.$ (desigualdad triangular)
+\end{enumerate}
+donde $x,y,z\in M$.
+\end{defn}
+
+ 
+\begin{prop} Dada una norma en $X$ espacio lineal, la funci\'on $d:X\times 
+X\longrightarrow\mathbb{R}$  definida como $d(x,y)=\lVert x-y\rVert$  con $x,y\in X$ es una 
+funci\'on distancia en $X$.
+\end{prop}
+
+\begin{prop}  Dado un espacio m\'etrico $(X,d)$  tal que $X$ es adem\'as espacio lineal. Si la 
+funci\'on distancia $d$ cumple las siguientes propiedades para cualquier $x,y\in X$ y $\lambda\in 
+\mathbb{F}$:
+\begin{enumerate}
+\item $d(x,y)=d(x+z,y+z).$
+\item $d(\lambda x,\lambda y)=\lvert \lambda\rvert d(x,y).$
+\end{enumerate}
+la  funci\'on $\lVert \cdot\rVert:X\longrightarrow\mathbb{R}$ definida como $\lVert x\rVert=d(x,\vec 
+0)$ es una norma en $X$.  definida 
+\end{prop}
+
+\begin{proof}
+Comprobamos las propiedades de la norma:\\
+N1: Inmediata.\\
+N2: Inmediata.\\
+N3: $\lVert \lambda x\rVert=d(\lambda x,\vec 0)=d(\lambda x,\lambda \vec 0)=\lvert \lambda\rvert 
+d(x,0)=\lvert \lambda\rvert\lVert x\rVert$ \\
+N4:  $\lVert x+y\rVert=d(x+y,\vec 0)=d(x+y-y,\vec 0-y)=d(x,-y) \leq d(x,\vec 0) + d(\vec 0, -y)=d(x,\vec 
+0) + d(y,\vec 0)=\lVert x\rVert+\lVert y\rVert$
+\end{proof}
+
+\section{Norma y mapeo cociente}
+Dado un subespacio vectorial $M$ de un espacio normado  $X$, si $M$ es un cerrado respecto de 
+la topología métrica inducida por la norma en $X$,  podemos dotar al espacio cociente $X/M$ de 
+una norma inducida sobre  las clases de $X/M$  del  modo siguiente:
+$$\lVert [x]\rVert:=\inf_{y\in M}\lVert x-y\rVert= \inf_{y\in M} d(x,y)=d(x,M)=$$
+Esta norma puede ser interpretada o bien como la ``mínima distancia'' entre la calse  $[x]$ y $M$ o 
+bien, como la ``distancia mínima'' entre $x$ y $M$.
+
+A continuación probamos que \'esta es efectivamente una norma en $X/M$, pero antes vemos que 
+est\'a bien definida ya que si $x^\prime$ es otro representante de la clase $[x]$ entonces 
+$x^\prime=x+y_0$ para algún $y_0\in M$ y por tanto,
+$$\lVert [x^\prime]\rVert=\inf_{y\in M}\lVert x^\prime+y\rVert=\inf_{y\in M}\lVert x+y_0+y\rVert 
+=\inf_{y^\prime\in M}\lVert x+y^\prime\rVert=\lVert [x]\rVert$$
+Denotaremos la norma cociente simplemente con el mismo símbolo $\lVert \cdot\rVert$ que la 
+norma en $X$ solo que actuando sobre las clases $\lVert [x]\rVert=\lVert x+M\rVert$.
+
+\begin{prop} Sea $M$ un subespacio lineal cerrado del espacio normado $X$. Entonces la norma 
+cociente definida anteriormente sobre el espacio vectorial cociente $X/M$ es una norma sobre 
+dicho espacio.
+\end{prop}
+\begin{proof}
+Evidentemente  $\vec 0\in M$ y por tanto $\lVert [\vec 0]\rVert=0$. Además si $\lambda \in 
+\mathbb{F}-\{0\}$ tendremos que,
+\begin{eqnarray*}
+\lVert \lambda [x]\rVert&=&\lVert [\lambda x]\rVert=\inf_{y\in M}\lVert \lambda x+y\rVert=\inf_{y\in M}
+\left\Vert\lambda\left(x+\frac{1}{\lambda} y\right)\right\Vert\\
+&=&\lvert \lambda\rvert\inf_{y^\prime\in M}\lVert x+y^\prime\rVert=\lvert \lambda\rvert\lVert [x]\rVert
+\end{eqnarray*}
+ya que $\frac{1}{\lambda} y\in M$ si y solo si $y\in M$.
+
+Por otra parte si $\lVert [x]\rVert=d(x,M)=0$ entonces $x\in \bar M$ (de lo contrario existiría una 
+bola de radio $\epsilon$ centrada en $x$ que no contiene  a ningúnb punto de $M$ y por tanto la $
+\lVert [x]\rVert\geq\epsilon$), y puesto que $M$ es cerrado $x\in\bar M=M$ y $[x]=[\vec 0]$.
+ 
+ 
+   Por último, sean $X, y\in X$ entonces,
+   \begin{eqnarray*}
+   \lVert [x]+[y]\rVert&=&\lVert [x+y]\rVert=\inf_{z\in M}\lVert x+y-z\rVert\\
+   &=& \inf_{z_1,z_2\in M}\lVert x+y-z_1-z_2\rVert\leq\inf_{z_1,z_2\in M}\left(\lVert x-z_1\rVert+\lVert 
+y-z_2\rVert\right)\\
+   &=&\lVert [x]\rVert+\lVert [y]\rVert
+\end{eqnarray*}
+   
+\end{proof}
+
+ 
+  Así la  norma cociente sobre un subespacio cerrado dota  al espacio cociente de estructura de 
+espacio normado.
+  
+  \begin{defn}  Sea $M\subseteq X$ un subespacio  cerrado de un espacio normado $X$, y sea 
+$Q_M:X\longrightarrow X/M$ la función que lleva a $x\in X$ a $Q_M(x)=[x]\in X/M$, denominamos 
+a  $Q_M$ como el mapa cociente.
+  \end{defn}
+ 
+
+\section{Convergencia en norma y completitud}
+
+ El concepto de norma nos permite definir el concepto de convergencia en espacios vectoriales.
+ 
+
+\begin{defn} Decimos que la sucesión  $(x_n)_{n=1}^\infty$ de un espacio normado $(X,\lVert 
+\cdot\rVert)$ converge a $x\in X$ si para todo $\epsilon>0$ existe un natural $N$ tal que  
+$$\lVert x_n - x\rVert<\epsilon$$
+para todo $n\geq N$. Equivalentemente $x_n$ tiende a $x$ si y solo si, 
+$$\lim_{n\to\infty}\lVert x_n-x\rVert=0.$$
+Decimos que $x_n$ tiende a $x$ {\it en norma}, o {\it fuertemente}, y denotamos,
+$$\lim_n x_n=x,\hspace{1.3cm}\textrm{ ó}\hspace{1.3cm} x_n\mathop{\to}_n x$$
+\end{defn}
+
+\begin{defn} Decimos que una sucesión $(x_n)_{n=1}^\infty$ de un espacio normado $X$ es de 
+Cauchy si para todo $\epsilon>0$ existe un $N\in\mathbb{N}$ tal que,
+$$\lVert x_n-x_m\rVert<\epsilon$$
+ si $n,m\geq N$. o equivalentemente, si, 
+ $$\lim_{n,m}\lVert x_n-x_m\rVert=0.$$
+ \end{defn}
+ 
+ \begin{lema}  Sea $(x_n)_{n=1}^\infty$ una sucesión de un conjunto  cerrado $C\subset X$ de un 
+espacio normado $X$ que converge a $x\in X$, entonces  $x\in C$.
+ \end{lema}
+  \begin{proof}
+   
+    Puesto que $x$ es punto de acumulación de $C$ (ya que cualquier  abierto que contiene a $x$ 
+contendrá elementos de $x_n\in C$ ) y por ser $C$ cerrado entonces $x\in C$.
+    \end{proof}
+\begin{lema} Sea $A\subset X$ un conjunto  no vacío  de un espacio normado $X$, y $x,y\in X$  
+entonces,
+\begin{enumerate}
+\item
+$$\lvert d(x,A)-d(y,A)\rvert \leq d(x,y)=\lVert x-y\rVert.$$
+\item 
+$$\lvert \lVert x\rVert-\lVert y\rVert\rvert\leq\lVert x-y\rVert$$
+\item Si  $\lim_n x_n=x$ entonces 
+ $$\lim_n\lVert x_n\rVert=\lVert x\rVert$$
+ \item si $lim_n x_n=x$ y $\lim_n y_n =y$, entonces,
+ $$\lim_n (x_n+y_n)=x+y$$
+ 
+ \item Si $\lim_n x_n=x$ y $\lim_n \alpha_n =\alpha$,  entonces,
+  $$\lim_n\alpha_nx_n=\alpha x$$
+  \item La clausura de un subespacio lineal en $X$ es también un  subespacio lineal.
+  
+  \item Toda sucesión de Cauchy es acotada.
+  \item Toda sucesión convergente es de Cauchy.
+  \end{enumerate}
+  \end{lema}
+\begin{proof}
+\begin{enumerate}
+\item Sea  $a\in A$, entonces,
+$$d(x,A)\leq d(x,a)\leq d(x,y)+ d(y,a)$$
+ Y por tanto, tomando el ínfimo sobre los $a\in A$, obtenemos,
+ $$ d(x,A)\leq d(x,y) + d(y,A)$$
+ de donde,
+  $$ d(x,A)-d(y,A)\leq d(x,y)$$
+  Haciendo lo mismo pero partiendo de $d(y,A\leq d(y,a)\leq d(y,x)+d(x,a)$, obtenemos además, 
+$d(y,A) - d(x,A)\leq d(x,y)$, lo que prueba la desigualdad.
+\item Si consideramos el caso anterior con $A=\{ \vec 0\}$ obtenemos la desigualdad considerada.
+\item Teniendo en cuenta que dado $\epsilon>0$ existirá un $N\in \mathbb{N}$ tal que  $\lVert x_n-
+x\rVert<\epsilon$ si $n\geq N$ entonces usando la desigualdad  anterior,
+$$\lvert \lVert x_n\rVert-\lVert x\rVert\rvert\leq \lVert x_n-x\rVert<\epsilon$$
+lo que prueba el resultado.
+\item Si $x_n\to x$ y $y_n\to y$ entonces existirá un $N\in\mathbb{N}$ tal que si $n\leq N$, 
+tendremos que $\lVert x_n-x\rVert<\epsilon/2$ y $\lVert y_n-y\rVert<\epsilon/2$ y usando la 
+desigualdad triangular,
+$$\lVert x_n+y_n-x-y\rVert\leq \lVert x_n-x\rVert+\lVert y_n-y\rVert<\epsilon$$
+\item De modo análogo,
+\begin{eqnarray*}
+\lVert  \alpha_n x_n-\alpha x\rVert&=&\lVert alpha_n x_n -\alpha x_n +\alpha x_n -\alpha x\rVert\\
+&\leq& \lvert \alpha_n-\alpha\rvert\lVert x_n\rVert+\lvert \alpha\rvert\lVert x_n-x\rVert\mathop{\to}_n 0
+\end{eqnarray*}
+puesto que la última expresión es una sucesión de números reales hemos usado que  $
+\alpha_n\beta_n\to0$ si $alpha_n$ y $\beta_n$ son convergentes y una de ellas tiende a cero.
+\item 
+\end{enumerate}
+\end{proof}
+\begin{prop}
+Sea $(X,\lVert \rVert )$ un espacio lineal normado  sobre $\mathbb{F}$, y $\{x_n\}_n=1^\infty$ una 
+sucesión de Cauchy  en $X$ la cual  contenga una subsucesión convergente, entonces es 
+convergente.
+\end{prop}
+\begin{proof}
+Sea $\{x_{n_k}\}_{k=1}^\infty$ una subsucesión convergente a $x^*\in X$. Entonces se tiene que 
+$n_k\geq k$ para todo $k$. Probaremos que para cualquier $\epsilon>0$ existe un $N\in 
+\mathbb{N}$ tal que 
+$$\lVert x_n-x^*\rVert <\epsilon,\quad \text{si}\quad n\geq N.$$
+Por ser $\{x_{n_k}\}_k$ convergente, existe un $k_0$ tal que si $k\geq  k_0$ tendremos,
+$$\lVert  x_{n_k} - x^*\rVert <\frac{\epsilon}{2}$$
+y por ser $\{x_n\}_n$ de Cauchy,  existe un $n_0$ tal que si $m\geq n\geq n_0$ tendremos que,
+$$\lVert x_n-x_m\rVert <\frac{\epsilon}{2}.$$
+Entonces eligiendo $N=n_{k^\prime}$ de modo que $n_{k^\prime}> \max(n_0,n_{k_0})$ tendremos 
+que,
+$$\lVert x_n-x^*\rVert \geq \lVert x_n-x_{n_k}\rVert +\lVert x_{n_k}-x^*\rVert <\frac{\epsilon}{2}+
+\frac{\epsilon}{2}=\epsilon$$
+si  $n>N$ y $k>k^\prime$.
+\end{proof}
+
+ 
+\begin{defn}
+Un espacio métrico $(X,d)$ en el que toda sucesión de Cauchy es convergente se dice completo.
+\end{defn}
+\begin{defn}
+Un espacio lineal normado $(X,\norm{})$ que es completo respecto de la métrica inducida por la 
+norma se dice que es de Banach.
+\end{defn}
+
+\begin{prop}
+Sea $(X,\norm{})$ un espacio de Banach, y sea $M$ un subespacio lineal de $X$, entonces $M$ 
+es cerrado si y solo si $M$ es completo.
+\end{prop}
+\begin{proof}
+Sea $M$ subespacio lineal cerrado de $X$ y sea $(x_n)$ una sucesión de Cauchy de $M$. Puesto 
+que $(x_n)$ es también sucesión de Cauchy  de $X$, entonces $x_n\to x\in X$, por ser $X$ 
+completo. Pero entonces $x$ es punto de acumulación de $M$, y por ser $M$ cerrado entonces 
+$x\in M$ y por tanto $M$ es completo.
+
+Recíprocamente, si $M$ es completo, y dado un punto de acumulación $x\in X$ de $M$, podemos 
+encontrar una sucesión $(x_n)$ de $M$ que converge a $x$. Pero dicha sucesión convergente es 
+de Cauchy, y por ser $M$ completo, esta converge en $M$ y por tanto $x\in M$, y $M$ es cerrado.
+\end{proof}
+
+\beginejems
+\item Sea $1<p<\infty$ entonces $\FF^n$ con $n\in\NN$ es un espacio de Banach con la norma $
+\norm{}_p$.
+\item  Sea $1<p<\infty$, entonces $l_p$ es un espacio de Banach.
+
+\begin{proof}
+Sea $(x_n)_{n\in\NN}$ una sucesión de Cauchy en $l_p$. Es decir, que para todo $\epsilon>0$ 
+existe un $N\in \NN$ tal que si $n,m\geq N$ tenemos que,
+$$0<\norm{x_n-x_m}_p=\left[\sum_{n=1}^\infty \abs{x_{ni} - x_{mi}}^p\right]^\frac{1}{p} <\epsilon\,,$$
+por lo que para cada índice $i$ tendremos que,
+$$\abs{x_{ni}-x_{mi}}<\epsilon\,,\forall\, n,m\geq N\,,$$
+por lo que cada sucesión numérica $(x_{ni})_{n\in\NN}$ en $\FF$ es de Cauchy, y por ser $\FF$ 
+completo, dichas sucesiones son convergentes en $\FF$, sea entonces $x_i^*$ dichos límites,
+$$\lim_{n\to\infty} x_{ni}=x_i^*$$
+Probaremos ahora que  $x^*=(x_i)_{i\in\NN}\in l_p$ y que efectivamente,
+$$\lim_{n\to\infty}\norm{x_n - x^*}_p=0\,.$$
+Primero consideramos la suma finita,
+$$0< \sum_{i=1}^k\abs{x_{ni}-x_{mi}}^p\leq  \sum_{i=1}^\infty\abs{x_{ni}-x_{mi}}^p=\norm{x_n - 
+x_m}_p^p<\epsilon^p$$
+y tomamos el límite cuando $m$ tiende a infinito, y puesto que la suma finita y el módulo y potencia 
+son funciones continuas, obtenemos que,
+$$\sum_{i=1}^k \abs{x_{ni}-x^*_i}^p\leq \epsilon^p$$
+Y ahora, puesto que la suma parcial de la izquierda es una sucesión numérica   creciente y 
+acotada, entonces converge. cuando $k$ tiende a infinito, es decir,
+\begin{equation}
+\sum_{i=1}^\infty  \abs{x_{ni}-x^*_i}^p\leq \epsilon^p <+\infty
+\label{desig}
+\end{equation}
+y por tanto la sucesión, $s_n=x_n - x^*$ pertenece a $l_p$. Y por linealidad de $l_p$ tenemos que,
+$$x^*=x_n-s_n\in l_p\,.$$
+Finalmente y como consecuencia directa de (\ref{desig}) tenemos que $x_n$ converge en norma a 
+$x^*$ como queríamos demostrar.
+\end{proof}
+\endejems
+\section{Series en espacios normados}
+
+\begin{defn} Sea $(X,\norm{})$  un espacio lineal normado y $x_n\in X$, se dice que la serie $
+\sum_{n=1}^\infty x_n $ converge  si la sucesión $s_n=\sum_{k=1}^n x_k$ converge en norma en 
+$X$.
+\end{defn}
+\begin{defn} Sea $(X,\norm{})$ un espacio lineal normado, la serie $\sum_n x_n$ converge 
+absolutamente en $X$ si la serie numérica $\sum_{n}\norm{x_n}$ converge en $\FF$.
+\end{defn}
+\begin{prop}
+Sea $(X,\norm{})$ un espacio lineal normado. Entonces $X$ es de Banach si y solo si  toda serie 
+absolutamente convergente es convergente.
+\end{prop}
+\begin{proof}
+Demostremos la implicación directa. Si $X$ es de Banach, y $\sum_n x_n $  es absolutamente 
+convergente, entonces la serie $\sum_n \norm{x_n}$ es convergente y por tanto de Cauchy. Por 
+tanto se tiene q que para todo $\epsilon>0$ existe $N\in \NN$ tal que si $n>m\geq N$ tenderemos 
+que,
+$$\left\Vert \sum_{k=m}^n x_k\right\Vert \leq \sum_{k=m}^n\norm{x_k}<\epsilon$$
+por lo que la serie  $\sum_n x_n$  es de Cauchy, y por ser $X$ de Banach, entonces es 
+convergente.
+
+
+Recíprocamente,  si toda serie absolutamente convergente es convergente veamos que $X$ es de 
+Banach. Tomemos una sucesión $x_n\in X$ de Cauchy. Vamos a encontrar una subsucesión de 
+$x_n$ que converge y así demostraremos que $x_n$ es convergente y por tanto $X$ de Banach.
+
+Para ello procedemos como sigue. Definamos recursivamente una subsucesión $x_{n_k}$ 
+mediante los enteros, $n_{k}\in \NN$, con $n_1$ tal que  para todo $m,l\geq n_{1}$ se tiene que $
+\norm{x_m-x_l}<1/2$. De nuevo escogemos $n_{2}>n_{1}$ tal que para todo $m,l\geq n_{2}$ tal 
+que $\norm{x_m-x_l}< 1/2^2$. Así recursivamente definimos $n_{p}>n_{p-1}$ tal que para todo 
+$m,l\geq n_p $ implica  $\norm{x_m-x_l}<2^{-p}$.
+
+Ahora escribimos la subsucesión como una serie,
+$$x_{n_p} = \sum_{q=1}^ps_q\,,$$ 
+donde $s_q=x_{n_q}-x_{n_{q-1}}$ para $q\geq 2$ y $s_1=x_{n_1}$. La serie así definida  es 
+absolutamente convergente. En efecto  la serie,
+$$\sum_{p=1}^\infty \norm{s_p}$$
+ es de Cauchy ya que para todo $q>r$ tenemos,
+ $$\sum_{p=r+1}^q\norm{s_p} < \frac{1}{2^{r+1}}+\dots \frac{1}{2^q}<\frac{1}{2^r}$$
+ que tiende a cero cuando $r\to \infty$.  Por tanto la serie  $\sum_p s_p$ converge y por tanto 
+también lo hace la subsucesión  $x_{n_p}$ a algún punto de $X$. Pero como hemos visto, toda 
+sucesión de Cauchy con una subsucesión convergente es convergente, y lo hace al mismo 
+elemento al que convergía la subsucesión.. Luego toda sucesión de Cauchy  de $X$ converge en 
+$X$  y por tanto $X$ es de Banach.
+\end{proof} 
+\begin{prop} Sea $(X,\norm{})$ un espacio de Banach y $\subset X$ cerrado. Entonces el espacio 
+lineal normado con la norma inducida  por el  cociente, $(X/M,\norm{}_M)$ es de Banach.
+\end{prop}
+\begin{proof}
+Primero notemos que al  ser $M$ cerrado, $(X/M,\norm{}_M)$ es  un espacio lineal normado. 
+Veamos que además es de Banach.
+
+Sea $([x_n])$ una sucesión en $X/M$ tal que la serie, $\sum_n [x_n]$ es absolutamente 
+convergente, es decir,
+$$\sum_{n=1}^\infty\norm{[x_n]}_M <\infty\,.$$
+Por la definición de la norma inducida $\norm{}_M$ para cada $n\in\NN$ podremos encontrar un 
+$y_n$ tal que,
+$$\norm{x_n-y_n}<\norm{[x_n]}_M + 2^{-n}\,.$$
+Por tanto  la serie $\sum_ n (x_n+y_n)$ de $X$ es absolutamente convergente, ya que,
+$$\sum_{n=1}^\infty\norm{x_n-y_n} <\sum_{n=1}^\infty \norm{[x_n]}_M +\sum_n=1^\infty 2^{-n}
+<\infty$$
+
+y  por ser  $X$ de Banach, la serie $\sum_n (x_n-y_n)$ es convergente en $X$, digamos  que a 
+$z\in X$.
+
+Probaremos ahora que la  serie $\sum_n [x_n]$ converge a $[z]$. En efecto, para toda suma 
+parcial tenemos,
+$$\left\Vert \sum_{n=1}^N [x_n] - z\right\Vert_{M} \leq\left\Vert \sum_{n=1}^N(x_n - y_n) -z \right\Vert 
+\mathop{\longrightarrow}_{N\to\infty}0\,,$$
+Lo que demuestra que efectivamente $\sum_n [x_n]$ converge en $X/M$ y por tanto $X/M$ es de 
+Banach.
+\end{proof}  
+\section{Conjuntos acotados, absolutamente acotados  y compactos}
+\begin{defn}
+Un subconjunto $A$ de un espacio normado $(X,\norm{})$ se dice {\emph acotado} si $A$ está 
+contenido en alguna bola $B(x,r)$ centrada en algún $x\in X$ y de radio  $r$ para algún $r>0$.
+\end{defn}
+  \begin{prop} Un subconjunto $A$ de un espacio normado $(X,\norm{})$ es acotado si y solo si 
+existe un real $C>0$  tal que $\norm{a}< C$ para todo $a\in A$.
+  \end{prop}
+ 
+ \begin{defn} Sea $A$ un subconjunto de un espacio lineal normado $(X,\norm{})$, y sea $
+\epsilon>0$. Un subconjunto $A_\epsilon\subset X$ se dice una $\epsilon-$red para $A$, si para 
+cada $x\in A$ existe un elemento $y\in A_\epsilon$ tal que $\norm{x-y}<\epsilon$.
+ \end{defn}
+  En otras palabras, $A_\epsilon\subset X$ es una $\epsilon-$red para $A\subset X$ si cada 
+elemento de $A$ está  a  una distancia menor que   $\epsilon$ de algún elemento de $A_\epsilon$, 
+en fórmulas,
+  $$A\subset \bigcup_{x\in A_\epsilon} B(x,\epsilon)$$
+  
+ 
+
+\begin{defn} Sea $A$ un subconjunto de un espacio lineal normado $(X,\norm{})$. Se dice que $A$ 
+es  {\emph totalmente acotado o  precompacto} si para cada $\epsilon>0$ existe una $\epsilon-
+$red finita  $F_\epsilon$.
+\end{defn}
+
+\begin{prop}  Un subconjunto $A\subset X$ de un espacio lineal normado $(X,\norm{})$ totalmente 
+acotado es acotado.
+\end{prop}
+\begin{proof}
+Puesto que la unión de bolas $B(x,\epsilon)$ centradas en los puntos  de cualquier    $\epsilon-
+$red finita es unión finita de conjuntos acotados, dicha unión es  acotada, y también lo será 
+cualquier subconjunto de esta, y en particular lo será $A$.
+\end{proof}
+Sin embargo, el recíproco de la  anterior proposición no es cierta como lo prueba el siguiente 
+ejemplo.
+\begin{ejemplo}  Consideremos el conjunto $A$ constituido por la bola cerrada $A=\bar{B}(0,1)$, es 
+decir el conjunto de todas las sucesiones  $x\in l_2$ tales que $\norm{x}\leq 1$. Este conjunto 
+claramente  es acotado, pero como veremos no es absolutamente acotado.
+
+Consideremos el subconjunto numerable $C=\{e_n\in L_2\quad|\quad (e_n)_{m\in \NN}
+=\delta_{nm}\}$ que claramente está en $A$. Además para $n\not= k$ se tiene que,
+$$\norm{e_n-e_k}=\sqrt{2}$$
+entonces supongamos que $A$  es absolutamente acotado y considremos una $\epsilon-$red  
+finita, $F_\epsilon$, con $\epsilon<\sqrt{2}/2$. Entonces siempre podremos escoger un punto 
+$y_n\in F_{\epsilon}$ tal que,
+$$\norm{e_n-y_n}<\frac{\sqrt{2}}{2}\,.$$
+Sin embargo, la distancia de  $y_n$ a cualquier $e_k$ con $k\not= n$ es mayor que $\epsilon$, ya 
+que,
+$$\norm{e_k-y_n}>\abs{\norm{e_k-e_n}-\norm{e_n-y_n}}> \sqrt{2}  - \frac{\sqrt{2}}{2}=\frac{\sqrt{2}}
+{2}>\epsilon$$
+y del mismo modo se puede ver que las bolas $B(e_n,\epsilon)$ son disjuntas y cada una de ellas 
+contiene a $y_n$ respectivamente, con lo que $y_n\not=y_k$ para $n\not=k$, ycon lo anterior,
+ implica que los elementos $y_n$ son necesariamente  infinitos, lo cual contradice la finitud de 
+$F_\epsilon$. 
+\end{ejemplo}
+
+ también lo sera  
+\begin{prop} Sea $A\subset X$ de un espacio lineal normado $(X,\norm{})$. Entonces, $A$ es 
+totalmente acotado si y solo si para todo  $\epsilon>0$ existe una $\epsilon-$red finita $A_\epsilon$ 
+contenida en $A$.
+\end{prop}
+\begin{proof}
+ La implicación recíproca es trivial. Para demostrar la implicación directa, sea $\epsilon>0$, y 
+consideremos una $\epsilon-$red finita $F_{\epsilon/2}$ de parámetro $\epsilon/2$. Entonces para 
+cada elemento $y_j\in F_{\epsilon/2}$ con $j=1,\dots,n$. escogemos puntos $x_j\in A$  tales que,
+ $$\norm{x_j-y_j}<\frac{\epsilon}{2}\quad\text{para cada} \quad j=1,\dots,n\,.$$
+ 
+ Entonces, $G_\epsilon\equiv\left\{x_j\right\}_{j=1}^n$ constituye una $\epsilon-$red para $A$ que 
+está contenida, trivialmente,  en $A$. Para probar que efectivamente es una $\epsilon-$red de $A$, 
+tomemos un elemento arbitrario $x\in A$. Entonces existirá un $y_j\in F_{\epsilon/2}$ para algún 
+$j$, de modo que,
+$$\norm{x-y_j}<\frac{\epsilon}{2}$$
+y por tanto, el elemento correspondiente $x_j\in G_\epsilon\subset A$, cumple que,
+$$\norm{x-x_j}<\norm{x -y_j}+\norm{y_j-x_j}<\frac{\epsilon}{2} +\frac{\epsilon}{2}=\epsilon$$
+ y en  consecuencia $G_\epsilon$ es una $\epsilon-$red finita contenida en $A$.
+\end{proof}
+
+
+\begin{prop} Sea $K\subset X$ de un espacio lineal normado $(X,\norm{})$.  $K$ es absolutamente 
+acotado si y solo si cualquier sucesión $(x_n)_{n\in\NN}\in  K$ posee una subsucesión $
+(x_{n_k})_{k\in \NN}$ que es de Cauchy.
+\end{prop}
+\begin{proof}
+ Sea $(x_n)_{n\in\NN}$ una sucesión infinita en $K$ (si fuera finita, es claro que existe una 
+subsucesión de Cauchy). Puesto que $K$ es absolutamente acotado, existe una $\epsilon-$red 
+finita en $K$ con $\epsilon=1/2$, $F_1=\{y_{1r}\}_{r=1}^{n_1}$. Entonces al menos una bola 
+$B_1=B(y_{1r_1},1/2)$ contendrá un número infinito de elementos de $(x_n)_{n\in\NN}$, a los que 
+identificamos como la subsucesión infinita , $x_{n1}$. Con esta subsucesión infinita repetimos el 
+proceso con una  $\epsilon-$red finita con $\epsilon=1/4$, $F_2=\{y_{2 2r}\}_{r=1}^{n_2}$. De 
+nuevo, existirá una bola $B_2=B(y_{2r_2},1/4)$  que contendrá infinitos elementos de $x_{n1}$, 
+que define la subsucesión $x_{2n}$. De este modo, podemos definir recursivamente  
+subsucesiones $x_{nk}$ contenidas en bolas $B_k=B(y_{kr},1/2^k)$, para todo $k\in\NN$. . La 
+subsucesión diagonal, $x_{nn}$ es de Cauchy. En efecto, sean $n>m\,,n,m\in \NN$, entonces,
+ $$\norm{x_{nn}.-x_{mm}} <\norm{x_nn - y_{mr_m}} + \norm{y_{mr_m}  - x_{mm}}< \frac{1}{2^m}+
+\frac{1}{2^m}=\frac{1}{2^{m-1}}$$
+ que tiende a cero cuando $m$ y $n$ van a infinito.
+ 
+ Recíprocamente, supongamos que toda sucesión en $K$ tiene una subsucesión de Cauchy, y 
+supongamos también que $K$ no es absolutamente acotada, y veremos que llegamos a una 
+contradicción. En efecto, puesto que $K$ no es absolutamente acotado, existe un $\epsilon>0$ 
+para el cual  no existe una $\epsilon-$red finita para $K$.  Entonces, tomando un punto cualquiera 
+de $K$,  $x_1$ , como centro de una bola de radio $\epsilon$, $B_1=B(x_1,\epsilon)$, siempre 
+podemos escoger otro punto de $K$, $x_2$ fuera de $B_1$ (de lo contrario tendríamos una $
+\epsilon-$red finita para $K$). De nuevo, la bola $B_2=B(x_2,\epsilon)$ junto con la bola $B_1$ no 
+pueden recubrir todo $K$ así que podemos escoger un $x_3\in K$ fuera de $B_1$ y $B_2$, etc. 
+Este proceso se puede repetir indefinidamente obteniendo una sucesión $x_n$ que cumple 
+evidentemente la propiedad,
+
+$$\norm{x_n-x_m}>\epsilon,\quad\forall n,m\in\NN\,,$$
+lo que hace imposible obtener de esta sucesión una subsucesión de Cauchy.
+\end{proof}
+\begin{defn} Sea $K\subset X$ de un espacio topológico $(X,\mathcal{T})$. Un recubrimiento 
+abierto de $K$ es una colección de abiertos cuya unión recubre a $K$,
+$$K\subset  \bigcup_{\alpha} U_\alpha\,.$$
+Un subrecubrimiento de un recubrimiento es simplemente una parte de este.
+\end{defn}
+En lo que sigue, la topología   a la que nos referiremos será  aquella inducida por una norma.
+
+
+\begin{defn} Sea  $K\subset X$ de un espacio topológico $(X,\mathcal{T})$. Decimos que $K$ es 
+compacto si  todo recubrimiento abierto de $K$ posee un subrecubrimiento finito de $K$.
+\end{defn}
+
+\begin{defn} Sea $K\subset X$ de un espacilo lineal normado $(C,\norm{})$. Se dice que $K$ es 
+secuencialmente compacto si toda sucesión en $K$ posee una subsucesión convergente en $K$.
+\end{defn}
+\begin{defn} Sea $\mathcal{U}$ un recubrimiento abierto de $K\subset X$ de un espacio lineal 
+normado $(X,\norm{})$, decimos que $\epsilon>0$   es número de Lebesgue para $\mathcal{U}$ si 
+para todo $x\in K$, la bola $B(x,\epsilon)$ está contenida en al menos  un abierto $U\in\mathcal{U}
+$.
+\end{defn}
+ 
+ \begin{lema} Sea $(X,\norm{})$ un espacio lineal normado y $K\subset X$ secuencialmente 
+compacto, entonces cualquier recubrimiento abierto $\mathcal{U}$ de $K$ tiene número de 
+Lebesgue.
+ \end{lema}
+ \begin{proof}
+
+ Procedamos por contradicción. Supongamos qe $K$ es secuencialmente compacto y que existe 
+un recubrimiento abierto $\mathcal{U}$ de  $K$ no posee número de Lebesgue. Entonces siempre 
+podremos encontrar una sucesión de puntos de $K$, $x_1,x_2\dots,x_k,\dots$ para los cuales las 
+bolas, $B(x_k,1/2^k)$  no están en ningún abierto de $\mathcal{U}$, para cada $k\in\NN$. Sin 
+embargo, por ser $K$ secuencialmente compacto, dicha sucesión debe poseer una  subsucesión 
+$x_{n_k}$ convergente en $K$, digamos a $x^*\in K$. Entonces $x^*\in U\in \mathcal{U}$. Por ser   
+abierto $U$ que contiene a $x^*$,   contiene una bola de radio $r>0$, $B(x^*,r)\subset U$. Además 
+para este valor de $r$ existe un $k_0\in\NN$ tal que,
+ $$\norm{x^*-x_{n_k}}<\frac{r}{2}\,, \quad \forall k\geq k_0\,,$$
+ También existe un $k_1\in\NN$ tal  que,
+$$\frac{1}{2^{n_k}} <\frac{r}{2}\,,\quad \forall k>k_1\,.$$
+Eligiendo  $k^\prime=\max(k_0,k_1)$ tendremos que para todo $k>k^\prime$,  la bola 
+$B(x_{n_k},2^{-n_k})\subset B(x^*,r)$  ya que si $x\in  B(x_{n_k},2^{-n_k})$, entonces,
+$$\norm{x-x^*}<\norm{x-x_{n_k}}+\norm{x_{n_k}-x^*}<\frac{r}{2} + \frac{r}{2}=r\,,$$
+por lo que $B(x_{n_k}, 2^{-n_k})\subset B(x^*,r)\subset U\in \mathcal{U}$ que contradice la 
+propiedad de los elementos de la sucesión $x_n$.
+\end{proof}
+\begin{prop} Sea $K\subset X$ de un  espacio lineal normado $(X,\norm{})$. Entonces  $K$ es 
+absolutamente acotado si y solo si $\bar{K}$  es compacto.
+\end{prop}
+\begin{proof}
+Demostremos primero la implicación recíproca. Si $\bar{K}$  es compacto, el recubrimiento abierto 
+formado por todas las bolas de radio $\epsilon>0$ centradas en los $x\in \bar{K}$, recubren a 
+$bar{K}$ y por tanto existe una subcolección finita de dichas bolas que también recubren $\bar{K}$ 
+y por tanto también a $K$, con lo cual $K$ es absolutamente acotado.
+
+Para probar la implicación directa usaremos el lema anterior. Consideremos un recubrimiento 
+abierto  arbitrario $\mathcal{R}$ para $\bar{K}$ que también recubrirá obviamente a $K$. Por ser 
+$K$ absolutamente acotado y por el lema anterior, dicho recubrimiento  tendrá número de 
+Lebesgue. Sea $r>0$ número de Lebesgue para $\mathcal{R}$. Por ser $K$ absolutamente 
+acotado existirá una $\epsilon-$red finita en $K$ con $\epsilon=r$, es decir habrá una colección 
+finita  de bolas centradas en puntos $x_k\in K$ ($k=1,\dots,n$), $B_k=B(x_k,r)$, que cubren todo 
+$K$.  Pero por ser $r$ número de  Lebesgue de $\mathcal{R}$ cada una de estas bolas estará 
+contenida  en algún abierto  de $\mathcal{R}$,
+$$B_k\subset U_k\in \mathcal{R},\, k=1,\dots,n\,.$$
+Y por tanto la subcolección finita $\mathcal{R}^\prime=\{U_k\in\mathcal{R}\quad|\quad  k=1,\dots, 
+n\}$ es un subrecubrimiento finito de $\bar{K}$,  y por tanto es compacto.
+\end{proof}
+
+Este último resultado justifica el nombre de precompacto para los conjuntos absolutamente 
+acotados.
+
+\begin{lema}
+Sea $K\subset X$ un  compacto  de un espacio topológico $(X,\mathcal{T}$.Entonces todo 
+subconjunto infinito $A\subset K$ posee un punto límite en $K$.
+\end{lema}
+\begin{proof}
+Recordemos que $x\in A\subset X$ es un punto límite  si cualquier abierto  que contenga a $x$ 
+contendrá algún elemento de $A$ distinto de $x$.  Procedamos entonces  por contradicción. 
+Asumamos que  $K$ es compacto y $A$ es infinito y no tiene puntos límite en $K$. Entonces 
+$$\forall x\in X-A\,, \exists U_x\in\mathcal{T}\,|\, U_x\subset X-A$$ 
+y por tanto, $X-A=\bigcup_{x\in X-A} U_x$ es abierto y en consecuencia   $A$ es cerrado. También 
+se tiene que,
+$$\forall a\in A\,\exists  U_a\in\mathcal{T}\quad|\quad a\in U_a, a^\prime\not\in U_a\,\forall 
+a^\prime\not=a, a^\prime\in A\,,$$
+es decir, que podemos recubrir $A$ con abiertos $U_a$ que solo contienen un elemento de $A$.
+
+Por tanto la colección $\mathcal{R}=X-A\,\bigcup \{ U_a \quad|\quad a\in A\}$ es un recubrimiento 
+abierto de $K$. Y por ser $K$ compacto, $\mathcal{R}$debe poseer  un subrecubrimiento finito lo 
+cual contradice el hecho de que $A$ es  infinito.
+\end{proof}
+\begin{prop}
+Sea  $K\subset X$  de un espacio lineal normado $(X,\norm{})$. $K$ es compacto si y solo  si $K$ 
+es secuencialmente compacto.
+\end{prop}
+\begin{proof}
+Demostremos primero la implicación directa. Sea $x_n$ una sucesión en $K$. si $x_n$ está 
+constituida por u número finito de puntos, es evidente que $x_n$ tiene una subsucesión 
+convergente en $K$. Sin embargo, si $x_n$  es una sucesión infinita de puntos,  por ser $K$ 
+compacto y por el lema previo $x_n$ tiene al menos   un punto límite en $K$, sea $x$ uno de estos 
+puntos límite. Entonces eligiendocualquier elemento $x_{n_1}$ de la sucesión en la bola $B(x,1)$, 
+$x_{n_2}$, con $n_2> n_1$ en la bola $B(x,1/2)$, \dots $x_{n_k}$, con $n_k>n_{k-1}$, en la bola 
+$b(x,1/k)$, etc. Así construimos una subsucesión  $x_{n_k}$ que converge a $x$.
+
+ Recíprocamente, si $K$ es secuencialmente compacto, veremos por contradicción que $K$ debe 
+ser compacto. Tomemos un recubrimiento abierto $\mathcal{R}$  de $K$ y asumamos que $K$  es 
+secuencialmente compacto pero no compacto, de modo que no existe un subrecubrimiento de $
+\mathcal{R}$. Por ser $K$ secuencialmente compacto $\mathcal{R}$ tiene número de Lebesgue, 
+sea $r>0$ uno de tales números. Elijamos $x_1\in K$, entonces la bola $B(x,r)$ está contenido en 
+algún abierto $U_1\in \mathcal{R}$. Existe otro punto $x_2\in K$ que no está en $B(x_1,r)$, ya que 
+de lo contrario $U_1$ recubre finitamente a $K$. De nuevo la bola $B(x_2,r)$ debe estar contenido 
+en un abierto  $U_2\in \mathcal{R}$, y así recursivamente encontramos una sucesión infinita 
+$x_k\in K$  tal que,
+$$\norm{x_k-x_n}>r,\quad k\not= n\,,$$
+pero dicha sucesión claramente no puede tener una subsucesión convergente lo que contradice 
+que $K$ sea secuencialmente compacto.
+
+\end{proof}
+
+La siguiente proposición caracteriza los conjuntos compactos de espacios lineales normados en t
+´términos de acotación  absoluta y completitud.
+\begin{prop}
+Sea $K\subset X$  de un espacio lineal normado $(X,\norm{})$. $K$ es compacto si y solo si es 
+absolutamente acotado  y completo.
+\end{prop}
+\begin{proof}
+Por la proposición previa, compacto es equivalente a secuencialmente compacto en un espacio 
+lineal normado. Por tanto demostraremos que$K$ es  secuencialmente compacto si y solo si  es 
+absolutamente acotado y completo. 
+
+Primero procedemos con la prueba de la implicación directa. Puesto que si $K$   es 
+secuencialmente compacto, toda subsucesión en $D$ posee una subsucesión convergente en 
+$K$, y p por tanto, dicha subsucesión es de Cauchy. Además, toda sucesión de Cauchy en $K$ , 
+por ser sucesión en un secuencialmente compacto, posee una subsucesión convergente en $K$. 
+Pero toda sucesión de Cauchy con una subsucesión convergente  es convergente y por tanto $K$ 
+es completo.
+
+ La implicación recíproca es también fácil. Si  $K$  es absolutamente acotado, toda sucesión en 
+$K$ posee una subsucesión de Cauchy. Y por ser $K$ completo, dicha subsucesión de Cauchy es 
+convergente,  y por tanto $K$  es secuencialmente compacto.
+ \end{proof}
+ 
+ \begin{coro} Todo subconjunto $K$ de un espacio de Banach es compacto  si y solo si es 
+absolutamente acotado  y cerrado.
+ \end{coro}
+ \begin{coro}
+ Todo conjunto compacto de un espacio lineal normado $(X,\norm{})$ es cerrado y acotado.
+ \end{coro}
+ Como veremos, el recíproco se cumplirá además si el espacio lineal es finito dimensional.
+ \begin{coro}
+
+Todo subconjunto $C$ cerrado de un espacio lineal normado compacto $(X,\norm{})$,  es 
+compacto.
+\end{coro}
+ \section{Espacios lineales normados finito dimensionales}
+ \begin{lema} Sea $(X,\norm{})$ un espacio lineal normado finito dimensional, y sea 
+$x_1,\dots,x_n$ una base de $X$. Entonces existe un $m>0$ tal que para toda $n-$tupla de 
+números $(\alpha_1,\dots,\alpha_n)\in\FF^n$ se tiene que,
+ $$ m\sum_{k=1}^n \abs{\alpha_k}\geq \norm{\sum_{k=1}^n \alpha_k x_k}\,.$$
+ \end{lema}
+ \begin{proof}
+ En el caso que $\sum_k \abs{\alpha_k}=0$ implica que $\alpha_k=0$ para todo $k$, y por tanto la 
+desigualdad se cumple con cualquier $m>0$. Supongamos entonces que $\sum_k\abs{\alpha_k}
+\not=0$. En primer lugar consideremos el subconjunto  tal que,
+ $$A=\{(\alpha_1,\dots,\alpha_n)\quad|\quad \sum_{k=1}^n \abs{\alpha_k}=1\}\,,$$
+  y consideremos la función $f:A\subset \FF^n\longrightarrow  \RR$, tal que,
+  $$f(\alpha_1,\dots,\alpha_n)=\norm{\sum_{k=1}^n\alpha_k x_k}\,.$$
+  De Análisis elemental sabemos que al ser $A$ cerrado y acotado, debe ser compacto  (pruébelo 
+con la norma del valor absoluto, mostrando que es absolutamente acotado y completo), y la 
+función $f$ es continua ya que si $\alpha,\beta\in A$, tendremos que,
+$$\abs{f(\alpha)-f(\beta)}=\abs{\norm{\sum_{k=1}^n\alpha_kx_k}-\norm{\sum_{k=1}^n\beta_kx_k}}
+\leq\norm{\sum_{k=1}^n (\alpha_k-\beta_k)x_k}\leq \sum_{k=1}^n \abs{\alpha_k-\beta_k}\norm{x_k}
+\leq M\sum_{k=1}^n\abs{\alpha_k-\beta_k}\,,$$
+  donde,
+  $$M=\max_{k\in\{1,\dots,n\}} \norm{x_k}\,.$$
+Así pues $f(A)\subset \RR$ también  es compacto y por tanto cerrado y acotado. Así pues, tiene 
+máximo y mínimo, en concreto existirá un punto $\mu_1,\dots,\mu_n)$ tal que,
+  $$f(\mu_1,\dots,\mu_n)=m=\inf_{\alpha\in A}f(\alpha)\,.$$
+Entonces $m\geq 0$, pero probamos que estrictamente $m>0$. Si $m=0$  entonces,
+$$\sum_{k=1}^n\abs{\mu_k}=0\,,\quad\Rightarrow \mu_k=0\,\, \forall k$$
+pero dicho punto no pertenece a  $A$. Luego hemos probado la desigualdad para todos los 
+coeficientes en $A$.
+
+Si $\alpha\not\in A$  y $\alpha\not=0$, entonces los coeficientes $\beta$,
+$$\beta_k = \frac{\alpha_k}{\sum_{l=1}^n\abs{\alpha_l}}\in  A$$
+y podemos usar la desigualdad mostrada para $\beta$, lo que  nos da la desigualdad que 
+queríamos probar una vez escribimos $\beta$ en términos de $\alpha$.
+\end{proof}
+ \begin{prop} Todas las normas definidas en un espacio lineal normado $d-$dimensional son 
+equivalentes.
+ \end{prop}
+
+\begin{proof}
+Sean $\norm{}_1$ y  $\norm{}_2$  dos normas definidas en el espacil lineal $d-$dimensional $X$. 
+Sea $\{x_1,\dots,x_d\}$ una base de $X$, entonces para todo $x\in X$ existen coeficientes $
+\alpha_1,\dots,\alpha_d\in \FF$ tales que $x=\sum_{k=1}^d \alpha_k x_k$. Entonces, por un lado,  
+debido al lema anterior, existe un $m_1>0$ tal que para todo $x\in X$, se tiene que,
+$$m_1\sum_{k=1}^d \abs{\alpha_k}\leq \norm{\sum_{k=1}^d\alpha_k x_k}_1=\norm{x}_1\,.$$
+Y por el otro lado tenemos,
+$$\norm{x}_2=\norm{\sum_{k=1}^d\alpha_k x_k}_2\leq \sum_{k=1}^d\abs{\alpha_k}M_2\,,$$
+donde $M_2=\max_k\norm{x_k}_2\not=0$. Por tanto,
+$$\frac{m_1}{M_2}\norm{x}_2\leq \norm{x}_1\,.$$
+ Usando los mismos argumentos intercambiando $1\leftrightarrow 2$ llegamos a una expresión,
+$$\frac{m_1}{M_2}\norm{x}_2\leq \norm{x}_1\leq \frac{M_1}{m_2}\norm{x}_2\,.$$
+con $m_2$ y $M_1$ definidos de forma similar a $m_1$ y $M_2$.
+\end{proof}
+\begin{prop} Todo espacio lineal normado finito dimensional es completo.
+\end{prop}
+\begin{proof}
+Sea $\{e_1,\dots,e_d\}$ una base lineal de $X$, y $x_n$ una sucesión de Cauchy en $(X,\norm{})$. 
+Entonces cada elemento de la sucesión  puede escribirse en términos de la base como,
+$$x_n =\sum_{i=1}^d \alpha_n^i e_i\,,$$
+Entonces debido al lema previo existe un $m>0$ , y a que $x_n$ es de Cauchy, para todo $
+\epsilon>0$ existe un $N\in \NN$ tal que si $n,m\geq N$, se tiene,
+$$m\sum_{i=1}^d\abs{\alpha_n^i-\alpha_m^i}\leq\norm{\sum_{i=1}^d(\alpha_n^i - \alpha_m^i)e_i}
+=\norm{x_n - x_m}<\epsilon\,.$$
+Por lo que,
+$$\abs{\alpha_n^i - \alpha_m^i}<\frac{\epsilon}{m}\,,\quad\forall m,n\geq N$$
+Así pues las $d$ sucesiónes  numéricas $(\alpha_n^i)_n$ son sucesiones de Cauchy en $\FF$ por 
+lo que son convergentes al ser $\FF$ completo. Sea $\alpha^i$ ($i=1,\dots,d$)  los límites de 
+dichas sucesiones. Entonces $x=\sum_{i=1}^d \alpha^i e_i\in X$. Queda por comprobar que 
+efectivamente $x_n$ tiende a $x$ en norma. Sea $\epsilon>0$, y $N=\max_i(N_i)$ con $N_i\in 
+\NN$ tales que si $n_i\geq N_i$ para todo $i=1,\dots,d$, se tiene que,
+$$\abs{\alpha_{n_i}^i -\alpha^i}<\frac{\epsilon}{Md}\,,$$
+donde $M=\max_i(\norm{e_i})$. Entonces para todo $n\in\NN$ tal que $n\geq N$, tenemos que,
+$$\norm{x_n-x}=\norm{\sum_{i=1}^d(\alpha_n^i - \alpha^i)e_i}\leq \sum_{i=1}^d\abs{\alpha_n^i - 
+\alpha^i}\norm{e_i}\leq \sum_{i=1}^d\abs{\alpha_n^i-\alpha^i}M<\epsilon\,,$$
+lo que demuestra que $(X,\norm{})$ es completo.
+\end{proof}
+ \begin{coro} Todo subespacio lineal  de un espacio lineal normado finito dimensional $(X,\norm{})$  
+es cerrado.
+ \end{coro}
+\begin{prop} Sea $K$ un subconjunto de un espacio lineal normado finito dimensional $(X,\norm{})
+$. Entonces $K$ es compacto si y solo si $K$ es cerrado y acotado.
+\end{prop}
+\begin{proof}
+La implicación directa ya fue probada para todo espacio lineal normado. Demostremos la 
+implicación recíproca.
+
+Sea $z_n$ una sucesión en $K$ cerrado y acotado. Probaremos que $z_n$ posee una 
+subsucesión convergente en $K$ lo que probará que $K$ es secuencialmente compacto y por 
+tanto compacto.
+
+
+Sea $\{e_1,\dots,e_d\}$ una base lineal  para $X$, entonces cada elemento de la sucesión $z_n$ 
+puede escribirse como,
+$$z_n=\sum_{i=1}^i \alpha^i_ne_i\,.$$
+Por el lema previo existe un $m>0$ tal que ,
+$$m\sum_{i=1}^d\abs{\alpha_n^i}\leq\norm{z_n}$$
+para todo $n\in \NN$. Además por ser $K$ acotado existe un $M>0$ tal que, $\norm{z}\leq M$, y 
+por tanto,
+$$\abs{\alpha_n^i}\leq \frac{M}{m}\,,$$
+para todo $i=1,\dots,d$ y $n\in \NN$, por lo que cada sucesión numérica $(\alpha^i_n)_n$ es 
+acotada, y por tanto tiene sendas subsucesiones convergentes (?' por qué?). Sean $
+(\alpha^i_{n_k})_k$ dichas subsucesiones  que convergen a $\alpha^i$. Entonces la subsucesión,
+$$z_{n_k} =\sum_{i=1}^d \alpha^i_{n_k}e_i\in K$$
+converge  en  norma a,
+$$z=\sum_{i=1}^d\alpha^ie_i \in X$$
+como puede verificarse fácilmente. Ahora bien, por ser $K$  cerrado y por ser $z$ punto de 
+acumulación de $K$ entonces $z\in K$. Así pues, toda sucesión en $D$ posee una subsucesión 
+convergente en $K$ y por tanto $K$ es compacto.
+\end{proof}  
+\begin{lema}[Riesz]
+Sea $M$ un subespacio lineal propio de un espacio lineal normado $(X,\norm{})$, y sea $B$ la 
+bola unidad cerrada en $X$, es decir, $B=\{x\in X\quad|\quad \norm{x}=1\}$. Entonces para todo $
+\epsilon>0$  existe un $x\in B$ tal que,
+$$\norm{y-x}> 1-\epsilon,\quad \forall y\in M\,.$$
+\end{lema} 
+\begin{proof}
+Sea $x^\prime\in X-B$, y sea $d$,
+$$d=\inf_{m\in M} \norm{x^\prime-m}\,.$$
+Por ser $M$ cerrado $d>0$. Y por definición de ínfimo, existe $m^\prime\in M$ tal que,
+$$d\leq\norm{x^\prime-m^\prime} < d+d\epsilon=d(1+\epsilon)\,,$$
+dado $\epsilon>0$.
+
+Ahora bien, el elemento $x$ definido,
+$$ x=\frac{x^\prime-m}{\norm{x^\prime-m}}\in B\bigcap (X-M)\,,$$
+y se tiene que para cualquier $y\in M$,
+\begin{align*}
+\norm{y-x}&=\left\Vert  y -\frac{x^\prime -m^\prime}{\norm{x^\prime - m^\prime}}\right\Vert 
+=\frac{\norm{x^\prime-y^\prime}}{\norm{x^\prime-m^\prime}}\\
+&\geq\frac{d}{\norm{x^\prime-m^\prime}} >\frac{1}{1+\epsilon}>1-\epsilon\,,
+\end{align*}
+donde $ y^\prime=y\norm{x^\prime-m^\prime}-m^\prime\in M$.
+\end{proof}
+
+\begin{prop} Sea $(X,\norm{})$ un espacio lineal normado. Entonces $X$ es finito dimensional  si y 
+solo si la bola unidad cerrada es compacta.
+\end{prop}
+\begin{proof}
+La implicación directa es fácil ya que si $X$ es finitodimensional, entonces pu puesto que la bola 
+unidad es acotada y cerrada, entonces es compacta como se probó en una proposición anterior.
+Recíprocamente, supongamos que  la bola unidad es compacta. Entonces es absolutamente 
+acotada y existe una $\epsilon-$red  finita , de razón $\epsilon=1/2$, para la bola unidad. Sea 
+$F_{1/2}=\{x_1,\dots,x_m\}$  dicha red,  y sea $M=\langle x_1,\dots, x_m\rangle$ el subespacio 
+lineal generado por los elementos de la $\epsilon-$red.
+ 
+Supongamos  ahora que $M\not= X$. Puesto que $M$ es cerrado al ser finito dimensional, 
+podemos usar el lema de Riesz con  $\epsilon =1/2$ para probar que existe un $x\in B(0,1)\bigcap 
+(X-M)$ tal  que,
+$$\norm{x-y} >\frac{1}{2}\,,\quad \forall y\in M$$
+
+En particular,
+$$\norm{x-x_k}>\frac{1}{2}\,,\quad\forall k=1,\dots,m$$
+lo que contradice que $\{x_1,\dots,x_m\}$ sea una $\epsilon-$red para $B(0,1)$. Por tanto $M=X$ y 
+$X$ es finito dimensional. 
+\end{proof}
+
+Esta última proposición nos proporciona otra forma de ver que acotado no implica absolutamente 
+acotado. Consideremos la bola unidad cerrada en $l_2$.  Dicha bola es evidentemente acotada. 
+Supongamos que también es absolutamente acotada. Entonces por ser $l_2$ completo y $B$ 
+cerrada, entonces $B$ es completa. Por tantto, la bola $B$ sería completa y¡y absolutamente 
+acotada, lo que es equivalente a que $B$ es compacta. Y por la proposición anterior $l_2$ debería 
+ser finitodimensional, lo cual es absurdo.
+
+\section{Espacios  separables y bases de Schauder}
+\begin{defn} Sea $S\subset X$ de un espacio topológico $(X,\mathcal{T})$. Se dice que $S$  es 
+denso  en $X$ si $\bar{S}=X$.
+
+Para un espacio métrico lo anterior es equivalente a decir  que  dado $x\in X$ y $\epsilon>0$, 
+existe $s\in S$ tal que $d(x,s)<\epsilon$.
+\end{defn}
+\begin{defn} Se dice que un espacio topológico $(X,\mathcal{T})$  es separable si contiene un 
+subconjunto numerable denso en $X$.
+\end{defn}
+\beginejems
+\item Los conjuntos $\RR$ y $\CC$ con la topología usual son separables.
+\item  El espacio $l_p$  es separable. Veamos que $l_0(\QQ$, el conjunto de las sucesiones con 
+valores racionales y con un conjunto de entradas distintas de cero finito,  es denso en $l_p$.  En 
+efecto, sea $x\in l_p$ y $\epsilon>0$, entonces existe $N\in\NN$ tal que,
+$$\sum_{k=N}^\infty  \abs{x_k}^p <\frac{\epsilon^p}{2}$$
+y existen racionales $q_r\in \QQ$ con $r=1,\dots,N-1$, tales qe
+$$\abs{x_r-q_r}^p<\frac{\epsilon^p}{2N}\,,r=1,\dots,N-1\,,$$
+Entonces la sucesión $s$ que vale $s_k=q_k$ si $k<N$ y $s_k=0$ en otro caso, pertenece a 
+$l_0(\QQ)$,  y se tiene que$$\norm{x-s}_p^p =\sum_{k=1}^{N-1}\abs{x_k-q_k}^p+\sum_{k=N}
+^\infty\abs{s_k}^p<\frac{epsilon^p}{2}+\frac{\epsilon^p}{2}=\epsilon^p\,,$$ 
+de donde  se deduce que $\norm{x-s}<\epsilon$.
+
+Además $l_0(\QQ)$  es la unión numerable  de conjuntos numerables  y  por tanto es un conjunto 
+numerable (ver sección de apéndice al final de este capítulo). Por tanto $l_p$ es separable.
+
+\item  El espacio $l_\infty$ de las sucesiones acotadas con la métrica del supremo no  es 
+separable. En efecto, sea $M\subset l_\infty$  el conjunto de las sucesiones formadas por $1$'s y 
+$0$'s únicamente. Claramente $M$ no es contable, ya que se puede identificar con la 
+representación binaria de los números reales, o alguno de sus intervalos. Además, para todo par 
+de  elementos distintos de $M$, $X\not=y$, se tiene que,
+$$\norm{x-y}_\infty=1\,,$$
+de modo que las bolas centradas en los elementos de $M$ y radio $1/4$ son todas disjuntas.
+ Entonces sea $A\subset l_\infty$ que sea denso. Entonces debería haber al menos un  elemento 
+distinto  $a\in A$ en cada una de las bolas antes descritas, y por tanto $A$ no puede ser 
+numerable.  
+\endejems
+
+\begin{prop}
+Un espacio lineal normado $(X,\norm{})$ es separable si y solo si existe un subconjunto $B\subset 
+X$ numerable tal que $X =\overline{\langle B\rangle}$.
+\end{prop}
+\begin{proof}
+La implicación directa: sea $B\subset X$ denso y contable, entonces dado $x\in X$ y un $\epsilon 
+>0$,  existe un $a\in B$, que por tanto también $a\in \langle B\rangle$, tal que $\norm{x - a}
+<\epsilon$ por lo que $\langle B\rangle$ es también denso.
+Recíprocamente, supongamos que $X=\overline{\langle B\rangle}$ para algún subconjunto 
+contable $B\subset X$,  y veamos que $X$ es separable. Para ello supongamos primero que $
+\FF=\RR$, y  etiquetemos   los puntos de $B$, $x_1,\dots,x_n\dots$, y consideremos el conjunto 
+$C\subset X$ definido por,
+$$C=\{ \sum_{k=1}^n \alpha_k x_k\quad|\quad   n\in\NN,\, \alpha_k\in \QQ\}\,.$$
+Primero veamos que $C$ es numerable. Para ello notemos que el producto cartesiano $\QQ\times 
+B$ es numerable  por ser producto de dos conjuntos numerables , y también lo es el conjunto $
+\mathcal{F}$ de todos los subconjuntos finitos de $\QQ\times B$ (ver apéndice al final del capítulo). 
+Y finalmente notemos que la función $f:\mathcal{F}\longrightarrow C$ que envía la $N-$tupla $
+((\alpha_1,x_1),(\alpha_2,x_2),\dots,(\alpha_N,x_N))$ al elemento, $\sum_{k=1}^N \alpha_kx_k\in 
+C$ mapea $\mathcal{F}$ sobre $C$, y por tanto $C$ es también numerable.
+Ahora probemos que $\bar C=X$. Para ello tomemos $x\in X$. Por ser $X=\overline{\langle  
+B\rangle}$, para todo $\epsilon>0$, existen $N$ coeficientes $\lambda_1,\lambda_2,\dots,
+\lambda_N\in \RR$ y puntos $x_1,x_2,\dots, x_N\in B$ tales que,
+$$\norm{x-\sum_{k=1}^N \lambda_k x_k}<\frac{\epsilon}{2}\,.$$
+Y para tales coeficientes existen racionales $\mu_1,\dots,\mu_N\in \QQ$ tales que,
+$$\abs{\lambda_k -\mu_k}<\frac{\epsilon}{2N(1+\norm{x_k})}\,,$$
+de modo que,
+\begin{align*}
+\left\Vert x-\sum_{k=1}^N\mu_k x_k\right\Vert&\leq\left\Vert x-\sum_{k=1}^N \lambda_k x_k\right\Vert 
++\left\Vert \sum_{k=1}^N(\lambda_k-\mu_k) x_k\right\Vert \\
+&<\frac{\epsilon}{2}+\sum_{k=1}^N \abs{\lambda_k-\mu_k}\norm{x_k}\\
+&<\frac{\epsilon}{2} +\sum_{k=1}^N \frac{\epsilon \norm{x}}{2N(1+\norm{x})}<\epsilon\,,
+\end{align*}
+ lo que prueba que $C$ es denso en $X$.
+ 
+ Para probar esta implicación en el caso de $\FF=\CC$ basta cambiar $C$ por aquellas 
+combinaciones con coeficientes racionales por coeficientes con parte real e imaginaria racional.
+ 
+
+
+\end{proof}
+
+\begin{ejemplo} Usando la proposición anterior podemos ver, en  otra forma alternativa, que  $l_p$ 
+es separable. Consideremos el conjunto $B$ de  las sucesiones $e_n=(\delta_nm)_{m=1}^\infty$ 
+que consisten en ceros salvo un uno en la posición n-ésima. Sea  $x\in l_p$, y dado $\epsilon>0$, 
+existe $N\in \NN$ tal que,
+$$\left[\sum_{k=N+1}^\infty \abs{x_k}^p\right]^{\frac{1}{p}}<\epsilon\,.$$
+Entonces consideremos la  combinación lineal $y=\sum_{k=1}^N x_k e_k\in \langle B\rangle$, y 
+vemos que,
+$$\norm{x-y}=\left[\sum_{k=N+1}^\infty \abs{x_k}^p\right]^{\frac{1}{p}}<\epsilon\,.$$
+
+\end{ejemplo}
+
+
+\begin{defn} Sea $(X,\norm{})$ un espacio de Banach, y $b_n$ una sucesión de $X$ tal que dado  
+$x\in X$ y $\epsilon>0$ existe una única sucesión numérica $\alpha_n\in\FF$ tal que,
+$$\left\Vert x -\sum_{k=1}^n \alpha_k b_k\right\Vert \mathop{\longrightarrow}_{n\to\infty}0\,.$$
+Se dice que $b_n$ es una base de Schauder para $(X,\norm{})$  y se escribe,
+$$x=\sum_{n=1}^\infty \alpha_n b_n\,,$$
+es la representación de $x$ en la base $b_n$.
+
+
+Otra forma de enunciar lo anterior es decir que $b_n$ es base de Schauder si $X=\overline{\langle
+\{b_n\}\rangle}$  y la representación de cualquier $x\in X$ en dicha sucesión es única. 
+\end{defn}
+
+Observese que necesariamente la base de Schauder debe ser linealmente independiente.
+
+ No todo espacio de Banach separable posee base de Schauder, aunque el recíproco si es 
+trivialmente  cierto.
+
+\begin{prop}
+ Sea $(X,\norm{})$ un espacio de Banach y $b_n$ una base de Schauder para $X$, entonces $X$ 
+es separable.
+\end{prop}
+\beginejems
+\item   $\mathcal{B}=\{e_n\}$ definida anteriormente es base de Shauder  para $l_p$ y $c_0$.
+\item $\mathcal{B}^\prime =\{e\}\cup\mathcal{B}$  con $e=(1,1,\dots)$  es base de Schauder para 
+$c$, el conjunto de sucesiones convergentes. 
+\endejems
+
+\section{Apéndice: conjuntos numerables}
+\begin{defn} Decimos que un conjunto $A$ es numerable si existe una biyección entre $A$ y $
+\NN$.
+\end{defn}
+\begin{lema} Sea $A\subset \NN$ un subconjunto infinito de $\NN$, entonces $A$ es numerable.
+\end{lema}
+\begin{proof}
+Definamos una función $f:\NN\longrightarrow A$ de forma recursiva del modo siguiente:
+$$f(1)=\min A$$
+que existe ya que $A\subset\NN$ y no es vacío, y usamos la propiedad del buen  orden en $\NN$. 
+Y definimos,
+$$f(n)=\min  C_n =\min (A-\{f(1),\dots,f(n-1)\}\,,$$
+que de nuevo existe ya que $A$ es infinito  y en virtud de la propiedad del buen orden..
+
+De este modo queda definida recursivamente  la función de $\NN$ a $A$. 
+
+Veamos primero  que $f$ es inyectiva. Supongamos que $n\not=m$, y sin pérdida de generalidad 
+$n>m$, entonces $f(m)\in \{f(1), \dots, f(n-1)\}$ y en consecuencia  $f(m)\not\in A-f(\{1,\dots,n-1\})$, 
+mientras que $f(n)=\min(A-f(\{1,\dots,n-1\})\in A-f(\{1,\dots,n-1\})$  por  lo que $f(m)\not= f(n)$.
+
+Ahora probemos que $f$ es sobreyectiva. Sea $a\in A$, entonces debe existir algún $n^\prime\in 
+\NN$ tal que $f(n^\prime>a$, ya que de lo contrario $f(\NN)$  es finito y puesto que $f$ es 
+inyectiva, $f(\NN)$  es infinito. Sea $B_a\subset \NN$ definido como,
+$$B_a=\{n\in \NN\quad | \quad f(n)\geq a\}\,,$$
+que como hemos visto es no vacío. Por tanto tiene mínimo, sea $m_0= \min B_a$. Ahora bien,  
+como  $m_0\in B_a$ tendremos que $f(m_0)\geq a$. p Por otro lado, vemos que $a\in A-\{f(1),
+\dots,f(m_0-1)\}$, y entonces por definición de $f(m_0)$ tenemos que $fm_0)\leq a$. En efecto,   
+$a\in A$, y $a\not\in \{f(1),\dots, f(m_0-1)\}$, ya que si $n<m_0$ entonces puesto que $n\not\in 
+B_a$,  tendremos que $f(n)<a$ y $a\not\in \{f(1),\dots,f( m_0-1)\}$. pero  $f(m_0)=\min (A-\{f(1),
+\dots,f(m_0-1)\}\leq a$. Así que concluimos que $f(m_0)=a$.
+
+\end{proof}
+\begin{coro} Todo subconjunto infinito de un conjunto numerable es numerable.
+\end{coro}
+
+\begin{prop} Sea $A$ un conjunto infinito.  Entonces las siguientes afirmaciones son equivalentes:
+\begin{enumerate}
+\item $A$ es numerable.
+\item existe una función sobreyectiva de $\NN$ sobre  $A$.
+\item Existe una función inyectiva de $A$ en $\NN$.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+\noindent$1\to2$ : Si $A$ es numerable existe $f$ biyectiva entre $A$ y $\NN$. Entonces $f$ es 
+sobreyectiva de $\NN$ sobre $A$.
+
+\noindent$2\to3$: Sea $f$ sobreyectiva de $\NN$ sobre $A$. Consideremos la función $g: 
+A\longrightarrow \NN$ definida del modo siguiente, 
+$$g(a)=\min  f^{-1}(a)\,,$$
+ que  está definida sobre $A$ por ser $f$ sobreyectiva y  está bien definida debido al orden en $
+\NN$.
+
+Ahora,  $g$ es en efecto inyectiva ya que $f^{-1}(a)$ es disjunto a $f^{-1}(b)$ si $a\not b$. 
+Entonces en particular $g(a)=\min f^{-1}(a)\not=\min f^{-1}(b)=g(b)$.
+
+
+\noindent$3\to1$ Sea  $f: A\longrightarrow \NN$ inyectiva, entonces $F(A)\subset \NN$ es infinito 
+(por ser $f$ inyectiva)  y por el lema previo es numerable. Por tanto , existe una biyección $g$ 
+entre $f(A)$ y $\NN$. Pero $\tilde{f}:A\longrightarrow f(A)$, con $\tilde f (a)=f(a)$ para todo $a\in 
+A$, es biyectiva entre $A$ y $f(A)$, por tanto la  función  $h=g\circ  \tilde f$ es una biyección entre  
+$A$  y $\NN$, y por tanto $A$ es numerable.
+\end{proof}
+\begin{prop}
+El producto  cartesiano, $\NN\times\NN$ es numerable.
+\end{prop}
+\begin{proof}
+Sea la función $f:\NN\times\NN\longrightarrow\NN$ que envía $(m,n)$ a $f(m,n)=2^m3^n$. Es 
+suficiente probar que $f$ es inyectiva.
+Sean $m_1,n_1)$ y $m_2,n_2)$ elementos distintos de $\NN\times\NN$, y tales que,
+$$2^{m_1}3^{n_1}=2^{m_2}3^{n_2}$$
+Primero supongamos que $m_1\not=m_2$, en concreto $m_1>m_2$, entonces,
+$$3^{n_2}=2^{m_1-m_2} 3^{n_1}$$
+lo cual es contradictorio ya qe potencia de $3$ no puede ser par. Un argumento similar puede 
+aplicarse  al caso $n_1\not=n_2$, de modo que si  $m_1,n_1)\not=(m_2,n_2)$ entonces 
+$f(m_1,n_1)\not=f(m_2,n_2)$ y por tanto $f$ es inyectiva y en virtur de la proposición anteriorr $
+\NN\\times\NN$  es numerable.
+\end{proof}
+\begin{prop} El producto cartesiano  finito de conjuntos numerables es numerable.
+
+Es decir, si $A_j$ es numerable para cada $j=1,\dots,n$, entonces,
+$$A_1\times\dots \times  A_n$$
+es numerable.
+\end{prop}
+\begin{proof}
+ Procederemos por inducción, pero antes probaremos que el producto cartesiano de dos conjuntos 
+numerables $A$ y $B$, es numerable. Puesto que $A$ y $B$ son numerables existen  sendas 
+biyecciones $f_A$ y $f_B$ de $A$ y $B$, respectivamente, a los $\NN$. Por tanto la función , 
+$f:A\times B\longrightarrow \NN\times\NN$ definida por $f(a,b)=(f_A(a),f_B(b))$ donde $a\in A$ y 
+$b\in B$ es una biyección entre  $A\times B$ y $\NN\times\NN$, y como hemos demostrado en el 
+última proposición, $\NN\times\NN$ es numerable por lo que existe una biyección $h:
+\NN\times\NN\longrightarrow \NN$ y por tanto $h\circ f:A\times B\longrightarrow \NN$ es la 
+biyección buscada.
+ 
+
+Ahora demostremos que,
+$$A_1\times A_2\times \dots\times A_n$$
+es numerable  si $A_k$ es numerable para todo $k=1,\dots,n$.
+
+Para $n=1$ es evidente. Entonces supongamos la hipótesis de inducción qe es cierto para $n-$  y 
+comprobemos que también lo es para $n$. Pero para el caso $n$ tenemos que,
+$$A_1\times\dots\times  A_{n-1}\times A_n = (A_1\times \dots A_{n-1})\times A_n=B\times A_n$$
+y por hipótesis de inducción $B=A_1\times \dots A_{n-1}$ es numerable  así como lo es, por 
+hipótesis general, $A_n$ y como hemos probado al principio de la demostración, el producto de 
+dos conjuntos numerables es numerable, y por tanto lo es el producto cartesiano de $n$ conjuntos 
+numerables.
+\end{proof}
+\begin{prop}  La unión numerable de conjuntos numerables es numerable.
+
+Es decir, si $J$ es numerable y $A_j$ es numerable para cada $j\in J$, se tiene que, 
+$$\bigcup_{j\in J} A_j\,,$$
+es numerable.
+\end{prop}   
+
+
+\begin{proof}
+Puesto que cada $A_j$  es numerable existe una función $f_j: \NN\longrightarrow A_j$ biyectiva 
+para cada $j\in J$. Además, como $J$ es numerable existe una función biyectiva $h:
+\NN\longrightarrow J$, así que podemos definir una función, 
+$$g:\NN\times\NN\longrightarrow \bigcup_{j\in J} A_j$$
+que lleva el par $(m,k)\in \NN\times \NN$  en,
+$$g(m,k)=f_{h(k)}(m)\,.$$
+
+Esta función es claramente sobreyectiva ya que  para todo $a\in \bigcup_{j\in J} A_j$ debe existir  
+al menos un  $j\in J$ tal  que $a\in U_j$, entonces por ser $h$ biyectiva, tomemos $k=h^{-1}(j)$ y al 
+ser $f_j$ biyectiva tomemos $m=f^{-1}_j(a)$ y así el  par $(m,k)$ es preimagen de $a$.
+
+Finalmente puesto que $\NN\times\NN$  es numerable también lo es la unión numerable de 
+numerables.
+\end{proof}
+\begin{prop} La familia de   todos los subconjuntos  finitos de un conjunto numerable es numerable.
+\end{prop}
+\begin{proof}
+Primero consideremos un conjunto numerable $A$ e inducimos un orden mediante una biyección 
+$g:A\longrightarrow \NN$  del modo siguiente,
+$$a\leq b,\quad\Leftrightarrow  g(a)\leq g(b),\quad \forall a,b\in A$$
+
+Sea $\mathcal{A}_n$  la colección de subconjuntos de $A$  con exáctamente  $n$ elementos 
+(cardinal igual a $n$). Definamos la función, $f_n: \mathcal{A}_n\longrightarrow A^n$ definida como 
+sigue:  
+A cada subconjunto $B\in \mathcal{N}_n$, $f_n(B)=(a_1,a_2,\dots,a_n)$ donde $a_k<a_m$ si 
+$k<m$. Está claro  que la función así definida es inyectiva ya que si $f(B)=f(C)$, entonces los 
+elementos de $B$ y $C$ son los mismos y por tanto $B=C$. Finalmente por ser $A^n$ producto 
+cartesiano  finito de numerables es isomorfo a$\NN$ y por tanto $\mathcal{A}_n$ es numerable.
+
+Ahora bien, el conjunto,
+$$\bigcup_{n\in\NN}\mathcal{A}_n$$
+ que es  la familia de todos los subconjuntos finitos  de $A$, es la unión numerable de numerables 
+y por  la proposición anterior, es numerable.  
+\end{proof}
+\begin{prop}
+El conjunto de todas  las sucesiones infinitas que toman solo los dos valores de  $\{0,1\}$ es infinito 
+no numerable.
+
+Equivalentemente el conjunt de todas las funciones $f:\NN\longrightarrow \{0,1\}$ es infinito no 
+numerable.
+\end{prop}
+\begin{proof}
+Procedamos por contradicción. Supongamos  que el conjunto $F$ de las funciones $f:
+\NN\longrightarrow\{0,1\}$ es numerable. Entonces las podemos etiquetar en virtud de una 
+biyección entre $F$ y $\NN$. Por tanto toda función $f\in F$ está etiquetada como $f_n$ para 
+algún $n\in \NN$. Consideremos la siguiente función $s:\NN\longrightarrow \{0,1\}$ definida como 
+sigue,
+$$s(k) = [f_k(k)]^c$$
+donde   el superíndice $c$  significa el elemento complementario, es decir , $1^c=0$ y $0^c=1$. 
+Entonces la hipótesis de numerabilidad de $F$ implicaría que $s=f_n$ para algún $n\in \NN$.
+
+Sin embargo esto no es así, ya que para cualquier $n\in \NN$ tenemos que,
+$$s(n)=[f_n(n)]^c  \not= f_n(n)$$ 
+por lo que no existe tal $n\in \NN$ y $F$ no puede ser numerable.
+\end{proof}
+
+\section{Ejercicios resueltos}
+
+
+
+\begin{prop} Sea $(X,\norm{})$ un espacio lineal normado. $X$ es de Banach si y solo si existe un 
+$r>0$ tal que el subconjunto $S_r\subset X$ definido por,
+ $$S_r=\left\{ x\in X\quad |\quad \norm{x} =r\right\}\,,$$
+es completo.
+\end{prop}
+\begin{proof}
+La implicación directa es fácil ya que puesto que $S_r$ es un subconjunto cerrado de un espacio 
+de Banach, este  debe ser completo para cualquier $r>0$. 
+ 
+ Para probar el recíproco  primero probaremos que si existe un $r>0$ tal que $S_r$ es 
+completo, también será completo $S_t$ para todo $t->0$. Esto es claro ya que si $x_n\in S_t$ es 
+de Cauchy, entonces la sucesión $x^\prime_n=\frac{s}{t}x_n\in S_r$ es de Cauchy en $S_r$ y por 
+tanto convergente a un punto  $x^\prime\in S_r$. Es fácil ver que $x_n$ también converge a 
+$x=\frac{t}{r}x^\prime  \in S_t$, por lo que $s_t$ es también completo.
+
+ Procedamos pues a la prueba de la proposición. Consideremos una sucesión $x_n\in X$ 
+que sea de Cauchy y que no converja a $0$. Consideremos la subsucesión  $x_{n_k}$ de los 
+elementos de $x_n$ que no se anulan. Entonces sea $m=\inf_k \norm{x_{n_k}}$. Claramente 
+$m>0$ ya que si $m=0$ existiría una subsucesión de $x_{n_k}$ que convergería a $0$, y por tanto 
+la sucesión de Cauchy $x_n$ también convergería a $0$, lo cual hemos descartado. Además por 
+ser $x_n$ de Cauchy es acotada $\norm{x_n}<M$ para algún $M>0$. Por tanto tenemos que,
+ $$m<\norm{x_{n_k}}<M\,,\quad \forall k\,.$$
+
+ 
+  Definamos la sucesión 
+$$x_k^\prime =\frac{x_{n_k}}{\norm{x_{n_k}}}\in S_1$$
+y veamos que es de Cauchy. En efecto,
+\begin{align*}
+\norm{x^\prime_k -x^\prime_l}&=\left\Vert \frac{x_{n_k}}{\norm{x_{n_k}}}  - \frac{x_{n_l}}{\norm{x_{n_l}}}\right\Vert\\
+&=\left\Vert \left(\frac{1}{\norm{x_{n_k}}}-\frac{1}{\norm{x_{n_l}}}\right)x_{n_k}+\frac{1}{\norm{x_{n_l}}}(x_{n_k}-x_{n_l})\right\Vert\\
+&\leq\left\vert\frac{1}{\norm{x_{n_k}}}-\frac{1}{\norm{x_{n_l}}}\right\vert  \norm{x_{n_k}}+\frac{1}{\norm{x_{n_l}}}\norm{x_{n_k}-x_{n_l}}\\
+&<\epsilon \left(\frac{M}{m^2} + \frac{1}{m}\right)
+\end{align*}
+donde hemos hecho  uso de que,
+$$\abs{\norm{x_{n_k}}-\norm{x_{n_l}}}<\leq \norm{x_{n_k} - x_{n_l}} \epsilon$$
+para $k,l>N$ para algún $N\in \NN$. Y por ser $S_1$ completo, la sucesión $x^\prime_k$  es convergente en $S_1$. Sea $x^\prime\in S_1$  su límite.
+.
+ 
+
+Por esta última desigualdad y por ser $\RR$ completo, la sucesión numérica $\norm{x_{n_k}}$ es convergente, digamos a $r_0>0$. Veamos que la subsucesión $x_{n_k}$ es también convergente a  $r_0 x^\prime \in X$. En efecto,
+$$\norm{x_{n_k}-r_0 x^\prime}=\norm{\norm{x_{n_k}} x^\prime_k -r_0x^\prime}\leq \abs{\norm{x_{n_k}} -r_0}\norm{x^\prime_k}+r_0\norm{x^\prime_k- x^\prime} < \epsilon (1 + r_0)$$ 
+Así pues, la subsucesión $x_{n_k}$  es convergente y al ser  $x_n$ de Cauchy también es convergente toda la sucesión. Por otro lado, si  $x_n$ convergiera a $0$ evidentemente también sería convergente, así que hemos probado que toda sucesión de Cauchy en $X$ es convergente y por tanto $X$ es de Banach.
+\end{proof}
+ 
+\chapter{Espacios de Hilbert}
+
+\section{Producto interno}
+\begin{defn} Sea $X$ un espacio lineal sobre un campo $\FF$. Una función $\langle \cdot,
+\cdot\rangle: X\times X\longrightarrow \FF$, se dice que es un producto interno para $X$  si cumple 
+las siguientes propiedades:
+\begin{enumerate}
+\renewcommand{\labelenumi}{\textrm{\bf PI}\arabic{enumi}.}
+\item $\langle  x, x\rangle >0$.
+\item $\langle x, x\rangle =0\quad \Leftrightarrow\quad x=0$.
+\item $\langle x,y\rangle=\langle y,x\rangle^*$.
+\item $\langle\alpha x, y\rangle =\alpha \langle x,y\rangle$.
+\item $\langle x + y, z\rangle = \langle x,z\rangle+\langle y,z\rangle$.
+\end{enumerate}
+con $x,y,z\in X$ y  $\alpha\in \FF$.
+\end{defn}
+
+Aun espacio vectorial con producto interno suele ser denominado {\it espacio pre-Hilbert}, o simplemente espacio con producto interno.
+
+\begin{prop}[desigualdad de Cauchy-Schwarz] Sean $x,y\in X$ para un espacio pre-Hilbert $(X,\langle\rangle)$, Entonces se tiene que,
+$$\abs{\langle x, y\rangle}^2\leq \langle x , x\rangle \langle y,y\rangle\,.$$
+La igualdad se cumple si y solo si $x$ e $y$  son linealmente dependientes.
+\end{prop}
+ \begin{proof}
+
+Si $x$ o $y$ son alguno cero, la desigualdad se cumple trivialmente. Entonces supongamos que no son nulos. Definimos $z=x-\lambda y$ con 
+$$\lambda=\frac{\langle x,y\rangle}{\langle y,y\rangle}\,.$$
+Entonces se sigue  que,
+$$0\leq\langle z,z\rangle =\langle x -\lambda y, x-\lambda y\rangle=\langle x,x\rangle - \frac{\abs{\langle x,y\rangle}^2}{\langle y,y\rangle}$$
+de lo cual se sigue la desigualdad de Cauchy-Schwarz.
+
+Es claro que si  $x$ e $y$ son linealmente dependientes la desigualdad es realmente una igualdad. Recíprocamente si  se cumple la igualdad, y $y\not=0$, entonces, es evidente del argumento anterior que $z=x-\lambda y$ con $\lambda$   anteriormente definido, cumple que  $\langle z,z\rangle=0$ y por tanto $z=0$, lo  que implica que $x$ e $y$ son linealmente dependientes. El caso $y=0$ es trivial.
+\end{proof}
+
+
+\beginejems
+\item El espacio $\FF^n$ o $l_2(n)$ de las $n-$tuplas con el producto interno,
+$$\langle x,y\rangle=\sum_{k=1}^n x_k  y_k^*\,,$$
+con $x=(x_1,\dots,x_n)$, e $y=(y_1,\dots, y_n)$. Si tomamos $\FF=\RR$ como el campo, hablamos del espacio euclideo, y si $\FF=\CC$ hablamos de el espacio unitario $n-$dimensional.
+\item El espacio $l_2(\NN)$ con el producto interno,
+$$\langle x,y\rangle =\sum_{ n=1}^\infty x_n y_n^*\,,$$
+con $x=(x_1,x_2,\dots)$ e $y=(y_1,y_2,\dots)$.
+\item el espacio $\mathcal{C}_2[0,1]$ de las funciones contínuas en el intervalo $[0,1]$, con el producto interno,
+$$\langle x, y\rangle=\int_0^1 x(t)y^*(t)\,dt\,,$$
+con $x=x(t)$ e $y=y(t)$ funciones contínuas.
+\item El espacio de matrices $n\times n$ $G(n)$ con producto interno,
+$$\langle A, B\rangle = \mathrm{tr}\, AB^\dag=\sum_{j,k=1}^n  A_{jk} B^*_{kj}\,,$$ 
+con $A_{ij}=(A)_{ij}$ y $B_{jk}=(B)_{jk}$ son las componentes de las matrices $A$ y $B$, respectivamente. 
+\endejems
+\section{Propiedades geométricas}
+\begin{prop} Sea $X$ un espacio pre-Hilbert. Entonces la función $\norm{}:X\longrightarrow\RR$ que envía $x\in X$  a $\norm{x}$ dada por,
+\begin{equation}
+\norm{x}=\sqrt{\langle x,x\rangle}\,,\label{normaInducida}
+\end{equation}
+define  una norma sobre $X$, llamada {\em norma inducida} por el producto interno sobre $X$.
+\end{prop}
+\begin{proof}
+Todas las propiedades de una norma se cumplen trivialmente, salvo la desigualdad triangular. Para comprobarla consideremos $x$  e $y$ en $X$, y  tomemos,
+\begin{align*}
+\norm{x+y}^2&=\langle x+y,x+y\rangle = \langle x,x\rangle+ \langle x,y\rangle+\langle y,x\rangle+\langle y,y\rangle\\
+&=\norm{x}^2+2\Re{\langle x,y\rangle} +\norm{y}^2\leq \norm{x}^2+2\abs{\langle x,y\rangle}+\norm{y}^2 \\
+&\leq\norm{x}^2+2\norm{x}\norm{y} +\norm{y}^2=(\norm{x}+ \norm{y})^2\,. 
+\end{align*}
+donde hemos hecho uso de que $\Re  z \leq \abs{z}$ para todo $z\in\CC$ y de la desigualdad de Cauchy-Schwarz. De aqí se sigue inmediatamente la desigualdad triangular.
+
+\end{proof}
+
+\begin{prop}[Identidad de polarización]
+Sea $X$ un espacio pre-Hilbert y $\norm{}$ la norma inducida por el producto interno $\langle\rangle$. Entonces si $\FF=\RR$ se tiene la identidad,
+\begin{equation}
+\langle x,y\rangle = \Norm{\frac{x+y}{2}}^2-\Norm{\frac{x-y}{2}}^2\,,\label{polarizacionR}
+\end{equation}
+
+y  si  $\FF=\CC$, tenemos,
+\begin{align}
+\langle x,y\rangle &= \Norm{\frac{x+y}{2}}^2-\Norm{\frac{x-y}{2}}^2\nonumber\\
+&+i\left(\Norm{\frac{x+iy}{2}}^2-\Norm{\frac{x-iy }{2}}^2\right)\,.\label{polarizacionC}
+\end{align}
+para todo $x$ e $y$ en $X$. 
+\end{prop}
+\begin{proof}
+Basta sustituir la norma inducida por su expresión en términos del producto interno (\ref{normaInducida}) y hacer uso de las propiedades del producto interno,  y comprobamos que,
+$$\norm{x+y}^2-\norm{x-y}^2=2\left(\lin{x,y}+ \lin{y,x}\right)$$
+y,
+$$\norm{x+iy}^2-\norm{x-iy}^2=-2i\left(\lin{x,y}-\lin{y,x}\right)$$
+y de aquí es inmediato probar las identidades (\ref{polarizacionR})  y (\ref{polarizacionC}).
+
+\end{proof}
+
+ Acabamos de  ver que todo espacio pre-Hilbert  es un espacio normado. Sin embargo queda la pregunta  si todo espacio normado es pre-Hilbert, es decir,  si dada una norma sobre un espacio vectorial es posible definir  un producto interno. Las identidades (\ref{polarizacionR}) y (\ref{polarizacionC}) nos  dan condiciones necesarias  para la existencia de  dicho producto, sin embargo no toda norma hace que (\ref{polarizacionR}) y (\ref{polarizacionC})   defina un verdadero producto interno. El siguiente resultado caracteriza las normas que si definen un verdadero producto interno.
+ 
+\begin{prop}[Identidad del  paralelogramo] Sea $(X,\norm{})$ un espacio normado. Entonces $\norm{}$  es inducida por un  producto interno si y solo si  se cumplen las siguientes identidades para todo $x$ e $y$ en $X$,
+\begin{equation}
+\norm{x+y}^2+\norm{x-y}^2 =  2\left(\norm{x}^2+\norm{y}^2\right)\,,\label{paralelogramo1}
+\end{equation}
+y,y,
+\begin{equation}
+\norm{x+iy}^2+\norm{x-iy}^2 =2\left(\norm{x}^2+\norm{y}^2\right)\,.\label{paralelogramo2}
+\end{equation}
+La identidad (\ref{paralelogramo1}) es necesaria y suficiente cuando $\FF=\RR$, mientras que lo  son ambas cuando $\FF=\CC$.
+\end{prop}
+\begin{proof}
+La implicación directa es similar a  la demostración de la proposición anterior y se deja como ejercicio.
+ 
+ Para probar la implicación recíproca veamos que la operación definida en (\ref{polarizacionC} en términos de una norma,) define efectivamente un producto interno.
+ 
+ En primer lugar si hacemos $x=y$ vemos que $\lin{x,x}=\norm{x}^2$ con lo cual $\lin{x,x}=0$ si y solo si $x=0$. También, por simple inspección de (\ref{polarizacionC}) vemos que $\lin{x,y}=\lin{y,x}^*$, y que $\lin{ix,y}=i\lin{x,y}$, y $\lin{-x,y}=-\lin{x,y}$  como es fácil de verificar.
+ 
+ Sea $x=u\pm w$ e $y=v\pm w$ para algunos $u,v$ y $w$ de $X$. Entonces las identidades del paralelogramo, (\ref{paralelogramo1}) y (\ref{paralelogramo2}) nos dan,
+ $$\norm{u+v\pm 2w} +\norm{u-v}=2\left(\norm{u\pm w}+\norm{v\pm w}\right)$$$$\norm{u+v\pm 2iw} +\norm{u-v}=2\left(\norm{u\pm iw}+\norm{v\pm iw}\right)$$
+Y restando cada ecuación con $+$ menos la versión $-$ y multiplicando por $i$ la segunda sustracción, obtenemos,
+\begin{align*}
+\norm{u+v +2w}&-\norm{u+v-2w}\\
+&+i\left(\norm{u+v+2iw}-\norm{u+v-2iw}\right)\\
+=2\left( \norm{u+w}\right.&\left.-\norm{u-w}+i\left[\norm{u+iw}-\norm{u-iw}\right]\right.\\
+&\left.+\norm{v+w}-\norm{v-w}+i\left[\norm{v+iw}-\norm{v-iw}\right]\right)
+\end{align*}
+ o escrito en términos del supuesto producto interno,
+ $$\lin{u+v,2w}=2\left(\lin{u,w}+\lin{v,w}\right)\,.$$
+ En concreto si hacemos  $v=0$ tenemos que en general, $\lin{u,2w}=2\lin{u,w}$, por lo que la anterior igualdad nos muestra que,
+ $$\lin{u+v,w}=\lin{u,w}+\lin{v,w}\,,$$
+ lo que prueba la propiedad lineal respecto de la suma. Más aún, dado $n\in\NN$ es fácil probar por inducción que,
+ $$\lin{nu,w}=n\lin{u,w}\,,$$
+y  además,
+$$\Lin{\frac{1}{n}u,w}=\frac{1}{n} n\Lin{\frac{1}{n}u,w}=\frac{1}{n}\lin{u,v}\,.$$
+Además, si $r\in \QQ$ entonces existen $p,q\in\NN$ tal que $r=\pm\frac{p}{q}$ de modo que también $\lin{ru,w}=r\lin{u,v}$. Finalmente para todo $\lambda\in\CC$ podemos encontrar una sucesión de números complejos,
+$$c_n=r_n+is_n\mathop{\longrightarrow}_{n\to\infty} \lambda\,,$$
+ con $r_n,s_n\in\QQ$ y $n=1,2,\dots$. Y por la continidad de la norma, podemos escribir,
+
+
+$$\lin{\lambda u,v}=\Lin{\lim_n  c_n u,v}=\lim_n\lin{c_n u,v}=\lim_n  c_n\lin{u,v}=\lambda\lin{u,v}\,,$$
+lo que prueba la última propiedad del producto interno. 
+  
+\end{proof} 
+\begin{coro} Una norma d un espacio normado $(X,\norm{})$ es inducida por un producto interno si y solo si para cada subespacio bidimensional de $X$ la norma  en dicho subespacio es inducida por un producto interno.
+\end{coro}
+ 
+\beginejems
+\item  El espacio $l_p$  con $p\not=2$ no es un espacio pre-Hilbert. Consideremos los  elementos $u=(1,1,0,\dots)$ y $v=(1,-1,0,\dots)$, de modo que $\norm{u+v}_p=2=\norm{u-v}_p$ mientras que $\norm{u}_p=2^{\frac{1}{p}}=\norm{v}_p$. ASí no se cumple la identidad del paralelogramo,
+$$\norm{u+v}^2+\norm{u-v}^2=2^2+2^2\not= 2(2^{\frac{2}{p}}+2^{\frac{2}{p}})=2(\norm{u}^2+\norm{v}^2)\,.$$
+\item El espacio $\mathcal{C}[0,1]$ con la norma del supremo no es un espacio pre-Hilbert. Consideremos las funciones $x(t)=1$ y $y(t)=1-t$, se puede comprobar que no cumplen la identidad del paralelogramo.
+\endejems
+\section{Completitud en espacios con producto interno}
+\begin{defn} Un  espacio lineal con producto interno $X$  se dice de {\emph Hilbert}  si es   completo.
+\end{defn}
+\beginejems
+\item El espacio $l_0$ con el producto estándar no es completo.
+\item El espacio $l_2$ es un espacio de Hilbert.
+\item El espacio $\mathcal{C_2}[0,1]$  es incompleto.
+\endejems
+
+
+\section{Conjuntos ortogonales}
+\begin{defn} Sea $X$ un  espacio pre-Hilbert, decimos que $x$ e $y$ de $X$ son ortogonales si $\lin{x,y}=0$, y lo denotamos  por $x\perp y$.
+\end{defn}
+\begin{defn} Sea $S\subset X$ un conjunto de un espacio pre-Hilbert. Decimos que $S$ es un  conjunto ortogonal  si para todo par $x,y\in S,\quad x\not=y$ tenmos que $\lin{x,y}=0$, son ortogonales.
+\end{defn}
+\begin{defn} Sea $X$ pre-Hilbert,  $x\in X$ y $\subset X$. Decimos que $x$ es perpendicular a $M$, $x\perp M$,  si $x\perp y$,  para todo $y\in M$.
+\end{defn}
+\begin{defn} Sea $X$ pre-Hilbert, y $M\subset X$. Denotamos por $M^\perp$ al conjunto ortogonal a $M$, es decir,
+$$M^\perp =\left\{y\in X\quad|\quad \lin{x,y}=0, \forall y\in M\right\}\,.$$
+\end{defn}
+\begin{prop} Sea $X$ un espacio pre-Hilbert. Son ciertas las siguientes afirmaciones:
+\begin{enumerate}
+\item $\{0\}^\perp=X$, y $X^\perp=\{0\}$.
+\item Sea $M\subset X$, entonces $M^\perp\subset X$ es un subespacio lineal cerrado.
+\item Sea $M\subset X$, entonces  $M\subset (M^\perp)^\perp=M^{\perp\perp}$.
+\item Sea $M\subset X$ subespacio lineal de $X$, entonces, $M\cap M^\perp=\{0\}$.
+\item Sean $M\subset X$ y $N\subset X$, tales que $M\subset N$, entonces, $N^\perp\subset M^\perp$.
+\item Sea $M\subset X$, entonces, $M^\perp=\lin{M}^\perp=\overline{\lin{M}}^\perp$.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+\begin{enumerate}
+\item Es inmediato.
+\item  Sea $x$ e $y$ de $M^\perp$, $z\in M$ y $\alpha,\beta\in\FF$, entonces $\alpha x+\beta y\in M^\perp$. En efecto, $lin{\alpha x + \beta y, z}=\alpha \lin{x,z}+\beta\lin{y,z}=0$, por lo que $M^\perp$ es subespacio lineal.
+
+Además, sea $x_n\in M^\perp$ una sucesión convergente en $X$, entonces $\lin{x_n, z}=0$ para todo $z\in M$. Por  continuidad tenemos que,
+$$\Lin{\lim_n x_n, z}=\lim_n\lin{x_n,z}=0\,,$$
+por lo que $\lim_n x_n\in M^\perp$,,  y así $M^\perp$ es cerrado.
+\item Sea $x\in M$, entonces $lin{x,y}=0$ para todo $y\in M^\perp$, por lo que $x\in  (M^\perp)^\perp$.
+\item Puesto que $M$ es subespacio lineal $0\in M$  y puesto que $\lin{x,x}=0$ si y solo si $x=0$, entonces se sigue la afirmación $M\cap M^\perp=\{0\}$.
+\item Sea $x\in N^\perp$, entonces $lin{x,z}=0$ para todo $z\in N$, y por tanto también para todo $z\in M$, por lo que $x\in M^\perp$, de lo que se sigue que $N^\perp\subset M^\perp$.
+\item Puesto que $M\subset \lin{M} \subset \overline{\lin{M}}$ tenemos que, $\overline{\lin{M}}^\perp\subset \lin{M}^\perp\subset M^\perp$. 
+
+Ahora para probar la igualdad solo necesitamos ver que además $M^\perp\subset \overline{\lin{M}}^\perp$. Sea $x\in M^\perp$, entonces $\lin{x,z}=0$ para todo $z\in M$, y por linealidad también para todo $z\in \lin{M}$. Sea $z_0\in\overline{\lin{M}}$ entonces existe una sucesión $z_n\in \lin{M}$ tal que $\lim_n z_n=z_0$. Pero por continuidad en el segundo argumento del producto interior tenemos que,
+$$\lin{x,z_0}=\Lin{x,\lim_n z_n}=\lim_n\lin{x,z_n}=0\,,$$ 
+por lo que $x\in \overline{\lin{M}}^\perp$. 
+
+\end{enumerate}
+\end{proof}
+\begin{ejemplo}
+Sea $M=l_0$ el  conjunto de todas las sucesiones de soporte finito,  con producto interno dado por el estándar en $l_2$. Entonces $l_0^\perp=\{0\}$.  En efecto, sea $\{e_n\}$ el conjunto de sucesiones $(e_n)_m=\delta_{nm}$, entonces para cualquier sucesión $y$ se tiene que, $lin{y,e_n}=y_n$. Así pues si $\lin{y,x}=0$ para toda $x\in l_0$ debe ocurrir que $y_n=0$ para todo $n\in\NN$.
+\end{ejemplo}
+\begin{prop}[Pitágoras] Sea $X$ pre-Hilbert, y $x$ e $y$ en $X$. Entonces  si $\FF=\RR$,  $x\perp y$ si y solo  si,
+\begin{equation}
+\norm{x+y}^2=\norm{x}^2+\norm{y}^2\,,\label{pitagoras1}
+\end{equation}
+Y si $\FF=\CC$, entonces $x\perp y$ si y solo si además de (\ref{pitagoras1}) tenemos que,
+\begin{equation}\norm{x + iy}^2=\norm{x}^2+\norm{y}^2\,,\label{pitagoras2}
+\end{equation}
+\end{prop}
+\begin{proof}
+Basta con darse cuenta que,
+$$\norm{x+y}^2=\norm{x}^2+\norm{y}^2+2\Re\lin{x,y}\,,$$
+y,
+$$\norm{x+iy}^2=\norm{x}^2+\norm{y}^2+2\Im\lin{x,y}\,,$$
+Por lo que $\lin{x,y}=0$ si y solo si su parte real e imaginaria son nulas, lo cual lleva  a la demostración de la proposición.
+\end{proof}
+
+\begin{coro}
+Sea $X$ pre-Hilbert y $S=\{x_1,x_2,\dots,x_n\}\subset X$. Entonces si  $S$ es ortogonal, se cumple que,
+\begin{equation}
+\Norm{\sum_{k=1}^n x_k}^2=\sum_{k=1}^n \norm{x_k}^2\,,\label{pitagorasGeneral}
+\end{equation}
+\end{coro}
+ \section{Mejor aproximación}
+ \begin{defn} Sea $X$ un pre-Hilbert y $K\subset X$ un subconjunto cerrado de $X$, y $x\in X-K$. Decimos que $y\in K$ es una mejor aproximación de $x$ en $K$ si $\norm{x-y}=d(x,K)=\inf_{z\in K}\norm{x-z}$.
+\end{defn}
+\begin{defn} Sea $X$ pre-Hilbert, y $K\subset X$ cerrado. Entonces se dice que $K$ es:
+\begin{enumerate}
+\item {\emph Proximinal} si para todo $x\in X$ existe al menos una mejor aproximación en $K$.
+\item {\emph Chebyshev}, si para todo $x\in X$ existe una única mejor aproximación en $K$.
+\end{enumerate}
+\end{defn}
+Al conjunto de puntos mejores aproximaciones de un elemento $x\in X$ en $K$  lo denotaremos por $P_K(x)$, así para un $K$  que sea Chebyshev $P_K$ es una función de $X$ en $K\subset X$ que llamaremos {\emph proyección métrica} sobre $K$.
+  
+  \begin{prop} Sea $X$ pre-Hilbert y $K\subset X$ un subconjunto completo  y convexo, entonces es Chebyshev, es decir, para todo $x\in X$ existe un único $y\in K$ que es mejor aproximación de $x$ en $K$.
+  \end{prop}
+  \begin{proof}
+Si $x\in K$ evidentemente el único mejor aproximación es el propio $x$. Por otro lado, si $x\in X-K$, sea,
+$$\delta=d(x,K)=\inf_{y\in K} \norm{x- y}\,.$$
+Por definición de ínfimo, podemos encontrar una sucesión $y_n\in K$ tal que,
+$$\norm{x-y_n}<\delta +\frac{1}{2^n}$$
+de tal modo que la sucesión numérica $s_n=\norm{x-y_n}$ tiende a $\delta$ cuando $n$ tiende a infinito.
+
+Veamos  que $y_n$ es de Cauchy. Por la ley del paralelogramo tenemos que,
+\begin{align*}
+\norm{y_n-y_m}^2 &=2\norm{y_n-x}^2+2\norm{y_m- x}^2\\
+& - 4\Norm{\frac{y_n+y_m}{2} -x}^2 \leq 2\norm{ y_n-x}^2+2\norm{y_m-x}^2 -4\delta^2\,,
+\end{align*}
+
+donde hemos hecho uso de que $K$ es convexo.  El resultado de  esta expresión es suficientemente pequeña  cuando $n,m$ son suficientemente grandes.  Así por ser $K$ completo  la sucesión $y_n$ tiene un límite $y^*\in K$.
+
+Primero veamos que $y^*$  es una mejor aproximación de $x$ en $K$. Efectivamente, por la continuidad de la norma tenemos,
+$$\norm{x-y^*}=\Norm{x-\lim_n  y_n}=\Norm{\lim_n\left(x-y_n\right)}=\lim_n\norm{x-y_n}=\delta\,.$$
+Y finalmente comprobamos que esta mejor aproximación es única. Sea $y^\prime$ otra mejor aproximación, entonces usando de nuevo la ley del paralelogramo,
+\begin{align*}
+0\leq\norm{y^\prime-y^*}^2&=2\norm{x-y^\prime}^2+ 2\norm{x-y^*}^2\\
+& - 4\Norm{x-\frac{y^\prime+y^*}{2}}^=4\delta^2-4\Norm{x-\frac{y^\prime-y^*}{2}}^2 \\
+&\leq0\,,
+\end{align*}
+lo que implica que $\norm{y^\prime-y^*}=0$, o $y^\prime=y^*$  que prueba la unicidad.
+\end{proof}
+
+Ahora una propiedad que caracteriza  a la mejor aproximación.
+\begin{prop} Sea $X$ pre-Hilbert y $K\subset X$ un  subconjunto  convexo de $X$. Dado $x\in X-K$  con $P_K(x)$ no vacío. Entonces  $y^*\in K$ es una  mejor aproximación en $K$ si y solo si para todo $y\in K$  se tiene que,
+\begin{equation}
+\Re \lin{x-y^* , y-y^*} \leq 0\,.\label{mejor}
+\end{equation}
+\end{prop}
+\begin{proof}
+ Implicación directa:
+
+Sea $y^*\in K$ u la mejor aproximación a $x\in X-K$ en $K$, y sea $y\in K$ cualquier elemento de $K$. Entonces por ser $K$ convexo el punto $y^\prime=\lambda y +(1-\lambda)y^*\in K$ para cada $\lambda\in [0,1]$, así pues tenemos que,
+\begin{align*}
+0&\leq  \norm{x-y^\prime}^2 -\norm{x-y^*}^2\\
+ &=\norm{(x-y^*) - \lambda (y-y^*)}^2
+-\norm{x-y^*}^2\\
+&=-2\lambda\Re \lin{x-y^*,y-y^*}+\lambda^2\norm{y-y^*}^2
+\end{align*}
+Es decir que si $\lambda\not=0$, tenemos que,
+$$\Re \lin{x-y^*,y-y^*}\leq\frac{\lambda}{2}\norm{y^\prime-y^*}^2\,,$$
+y puesto que  $\lambda$ puede escogerse lo más pequeño que se quiera, esta desigualdad se cumplirá siempre que,
+$$\Re \lin{x-y^*,y-y^*}\leq 0\,.$$
+
+
+Implicación recíproca:
+
+Sea $y^*\in K$ tal que,
+$$\Re\lin{x-y^*,y-y^*}\leq0\,.$$
+para todo $y\in K$. Entonces,
+\begin{align*}
+\norm{x-y}^2&=\norm{(x-y^*)-(y-y^*)}^2\\
+&=\norm{x-y^*}^2-2\Re\lin{x-y^*,y-y^*} +\norm{y-y^*}^2\\
+&\geq\norm{x-y^*}^2
+\end{align*}
+
+
+
+\end{proof}
+Puesto  que todo  subespacio lineal es convexo y todo conjunto completo y convexo es Chebyshev, tenemos los siguientes corolarios.
+\begin{coro} Sea $X$ pre-Hilbert y $M\subset X$ un subespacio lineal completo de $X$, entonces dado $x\in X-M$, su mejor aproximación $y^*\in M$ en $M$ viene caracterizado por la propiedad,
+\begin{equation}
+\lin{ x-y^*, y}=0\,,\forall y\in M\label{perpendicular}
+\end{equation}
+\end{coro}
+ \begin{proof}
+ Basta con usar la proposición anterior a $M$  para $\pm y$ y $i\pm y$.
+ \end{proof}
+\begin{coro} Sea $X$ Hilbert y $M\subset X$ un subespacio lineal cerrado de $X$, entonces dado $x\in X-M$, su mejor aproximación $y^*\in M$ en $M$ viene caracterizado por la propiedad ( (\ref{perpendicular}).
+\end{coro}
+ 
+  
+\begin{ejemplo}  Consideremos el espacio incompleto $\mathcal{C}_2[-1,1]$ y el subespacio $M$ de los polinomios  de orden menor o igual a $2$. Encontrar la mejor aproximación en $M$  de, $f(t)=t^3$.
+\end{ejemplo}
+\begin{prop}[De la proyección] Sea $\mathcal{H}$ un espacio de Hilbert y $M\subset \mathcal{H}$ un subespacio cerrado. Entonces se tiene:
+\begin{enumerate}
+\renewcommand{\labelenumi}{\alph{enumi})}
+\item $M\oplus M^\perp =\mathcal{H}\,,$
+\item
+$M^{\perp\perp}=M\,.$
+\end{enumerate}
+\end{prop}
+\begin{proof}
+\begin{enumerate}
+\renewcommand{\labelenumi}{\alph{enumi})}
+\item En primer lugar  sea $x\in \mathcal{H}$. Si $x\in M$ claramente $x=x+0$ donde $x\in M$ y $0\in M^\perp$, y es única. Por otro lado, si $x\not\in M$ por ser $M$ subespacio es convexo,y por ser cerrado y $\mathcal{H}$ completo, $M$ es también completo, luego $M$ es Chebyshev. Así existe un único $y=P_M(x)$ mejor aproximación en $M$. Por la caracterización vista anteriormente de $y$  el elemento $z=x-y$ es ortogonal a todo punto de $M$, es decir,
+$z=x-y\in M^\perp$ y así,
+$x =y + (x-y)= x+z$ con $y\in M$ y $z\in M^\perp$. Esta descomposición es única ya que si $z\in M^\perp$ entonces también $y=P_M(x)$ es  la única mejor aproximación.
+\item Ya sabemos que $M\subset M^{\perp\perp}$. Pero además si  $x\in M^{\perp\perp}\subset \mathcal{H}$, entonces $x= y +z$ con $y\in M$  y $z\in M^{\perp}$, pero entonces $z=z-y\in M^{\perp\perp}$ pues  recordemos  que $ y\in M\subset M^{\perp\perp}$, y éste último es subespacio. Así  $z\in M^\perp\cap M^{\perp\perp}=\{0\}$ y por tanto $z=0$  y $x=y\in M$. 
+\end{enumerate}
+\end{proof} Con este resultado de la proyección adquiere sentido   la aplicación $P_M$ como un verdadero proyector sobre $M$ a lo largo de $M^\perp$, por lo que se le denomina {\emph proyector ortogonal}.
+\begin{coro}Sea $\mathcal{H}$ un espacio de Hilbert y $M\subset \mathcal{H}$ un subespacio propio cerrado de $\mathcal{H}$, entonces siempre existe un  $z\not=0$ y $z\in \mathcal{H}-M$ perpendicular a $M$.
+\end{coro}
+\begin{proof}
+Sea $z^\prime \in \mathcal{H}- M$, entonces $z^\prime=y+z$ con  $y\in M$  y $z\in M^\perp$, y $z\not=0$.
+\end{proof}
+
+\begin{prop}Sea $\mathcal{H}$ un espacio de Hilbert y  $S\subset \mathcal{H}$ un subconjunto no vacío de $\mathcal{H}$. Entonces,
+\begin{enumerate}
+\renewcommand{\labelenumi}{\alph{enumi})}
+\item  $S^{\perp\perp}==\overline{\lin{S}}$.
+\item $S^\perp=\{0\}$ si y solo si $\overline{\lin{S}}=\mathcal{H}$.
+\end{enumerate}
+\end{prop}
+ \begin{proof}
+ \begin{enumerate}
+ \renewcommand{\labelenumi}{\alph{enumi})}
+ \item Como en general, $S^\perp=\overline{\lin{S}}^\perp$ y por el teorema de proyección, tenemos $\overline{\lin{S}}=\overline{\lin{S}}^{\perp\perp}=S^{\perp\perp}$.
+  
+ 
+ \item Si $S^\perp=\{ 0\}$, por la parte $a)$ tenemos que  $S^{\perp\perp}=\overline{\lin{S}}=\{0\}^\perp=\mathcal{H}$.
+ Recíprocamente,  si $\mathcal{H}=\overline{\lin{S}}$, entonces $\{0\}=\mathcal{H}^\perp=\overline{\lin{S}}^\perp=S^\perp$.
+\end{enumerate}
+\end{proof}
+ \section{Conjuntos completos y bases ortogonales}
+ 
+ \begin{defn} Sea $X$  pre-Hilbert y $S\subset X$ un subconjunto de $X$. Se dice que $S$ es un  {\emph conjunto ortonormal}  si dados dos elementos distintos $x,y\in S$, se tiene que:
+ 
+ \begin{enumerate}
+ \renewcommand{\labelenumi}{\alph{enumi})}
+ \item $\lin{x,y}=0\, x\not= y$.
+ \item $\norm{x}=1, \,\forall x\in S\,$.
+ \end{enumerate} 
+\end{defn}
+
+
+\begin{defn} Sea $X$ pre-Hilbert y $S=\{x_\alpha|\alpha \in \Lambda\}\subset X$ un conjunto ortonormal  y $x\in X$.Los coeficientes,
+$$c\alpha=\lin{ x, x_\alpha}\,\,\alpha\in\Lambda$$
+se denominan {\emph coeficientes de Fourier}, y la serie formal (ver apéndice al final del capítulo),
+$$\sum_{\alpha\in \Lambda} \lin{x,x_\alpha} x_\alpha\,,$$  se denomina {\emph serie de Fourir}.
+\end{defn}
+
+\begin{prop} Sea $X$  pre-Hilbert separable y $S$ un conjunto ortonormal. Entonces $S$ es a lo sumo numerable.
+\end{prop}
+\begin{proof}
+Si $S$ es finito no hay nada que demostrar. Por el contrario si $S$ es infinito, puesto que  $X$ es separable, existe un conjunto numerable $D=\{y_1,\dots,y_n,\dots\}$ denso en $X$. Por tanto para cada $x\in S$ existe un $n\in \NN$ tal que,
+$$\norm{x-y_n}<\frac{2}{2}\,.$$
+Eligiendo un $n\in \NN$ para cada $x\in S$ que cumpla la desigualdad anterior establecemos una función $f$ de $S$ a $\NN$. Veamos que dicha función es inyectiva. En efecto, sean $x$  y $x^\prime$ elementos distintos cualesquiera  de $S$, y $y_n$ e $y_{n^\prime}$, los elementos de $D$ correspondientes a los índices $n=f(x)$ y $n^\prime=f(x^\prime)$ respectivamente. Entonces ya que,
+$$\sqrt{2}=\norm{x-x^\prime}\leq \norm{x-y_{n^\prime}}+ \norm{y_{n^\prime}-x^\prime}\leq \norm{x-y_{n^\prime}} -\frac{\sqrt{2}}{2}\,,$$
+de donde vemos que,
+$$\norm{x-y_{n^\prime}}\geq \frac{\sqrt{2}}{2}\,,$$
+por lo que $n=f(x)\not= n^\prime=f(x^\prime)$. Por tanto $f$  es inyectiva y $S$ debe ser numerable.\
+\end{proof}
+
+\begin{prop} Sea $X$  pre-Hilbert y $S=\{x_1,\dots,x_n\}$  un conjunto ortonormal finito, y $x\in X$. La mejor aproximación de $x$  en $\lin{S}$ viene dada por,
+$$P_{\lin{S}}(x)=\sum_{k=1}^n  \lin{x, x_k} x_k\,.$$
+\end{prop}
+\begin{proof}
+Puesto que $\lin{S}$ es subespacio es convexo y al ser  finito dimensional es completo, por tanto es Chebyshev. Así existe una única  mejor aproximación $y\in \lin{S}$ que debe cumplir,
+\begin{equation}
+\lin{ x-y,z}=0\,,\forall z\in \lin{S}\label{proyec}
+\end{equation}
+
+Por  tanto podemos escribir,
+$$y=\sum_{k=1}^n \lambda_k x_k\,,$$
+y comprobar (\ref{proyec}) con cada elemento de $S$,
+$$\lin{x-\sum_k \lambda_k x_k,x_j}=0\,,j=1,\dots,n$$
+o que implica que,
+ 
+ $$\lambda_j=\lin{x,x_j}\,, j=1,\dots,n$$
+ 
+
+Otra forma directa de comprobar este hecho  es el  siguiente,
+\begin{align}
+\Norm{x-\sum_{k=1}^n\lambda_k x_k}^2&= \norm{x}^2 -2\sum_{k=1}^n\Re \lambda_k^*\lin{x,x_k}+\sum_{k=1}^n \abs{\lambda_k}^2\nonumber\\
+&=\norm{x}^2 -\sum_{k=1}^n\Abs{\lin{x,x_k}}^2 +\sum_{k=1}^n \Abs{\lambda_k-\lin{x,x_k}}^2 \nonumber\\
+&=\Norm{x-\sum_{k=1}^n \lin{x,x_k}}^2+\sum_{k=1}^n\Abs{\lambda_k\lin{x,x_k}}^2\,, \label{descomposicion}
+\end{align}
+de modo que los valores de $\lambda_k=\lin{x,x_k}$ corresponden al valor mínimo de la distancia $d(x,y)$ entre $x$ y cualquier elemento $y$ de $\lin{S}$.
+\end{proof}
+
+\begin{prop}[desigualdad de Bessel]
+Sea $X$ pre-Hilbert y $S=\{x_1,x_2,\dots\}$ un conjunto  ortonormal y $x\in X$. Entonces se cumple la desigualdad,
+$$\norm{x}^2 \geq  \sum_{n=1}^\infty \abs{\lin{x,x_n}}^2\,,$$
+\end{prop}
+\begin{proof}
+La demostración es directa. Basta considerar,
+$$0\leq \Norm{x-\sum_{k=1}^n \lin{x,x_k} x_k}^2=\norm{x}^2 -\sum_{k=1}^n\abs{\lin{x,x_k}}^2$$
+Y tomando el límite cuando $n\to \infty$ llegamos a la desigualdad de Bessel.
+\end{proof}
+\begin{coro} Sea $X$ pre-Hilbert y $S=\{x_n\}$  un conjunto ortonormal infinito numerable, y $x\in X$. Entonces la sucesión numérica  $c_n=\lin{x,x_n}$ tiende a cero cuando $n$ tiende a infinito.
+\end{coro}
+
+En la definición anterior de serie de Fourier hemos usado la terminología {\emph serie formal} ya que dichas sumas no han sido definidas (ver el apéndice al final del capítulo) para conjuntos de índices arbitrarios, sin embargo esto no es necesario debido al siguiente resultado.
+\begin{prop} Sea $X$ pre-Hilbert y $S$  un conjunto ortonormal de cardinal arbitrario. Entonces,  existen a lo sumo  un conjunto numerable  de coeficientes de Fourier no nulos para cada $x\in X$.
+\end{prop}
+\begin{proof}
+  La parte no trivial resulta cuando el cardinal de $S$ es superior a $\aleph_0$.
+ 
+ 
+   Dado $n\in \NN$ y  $x\in X$, sea el subconjunto de $S$, dado por,
+ $$C_n(x)=\{z\in S\,|\, \abs{\lin{x,z}}\geq  1/n\}$$
+Este conjunto, cuando no es    vacío,  es finito. En efecto. De no serlo, siempre podemos escoger un subconjunto numerable  de este; , dicho subconjunto    sigue siendo ortonormal, y   debido a la desigualdad de Bessel, se debe cumplir que,
+    $$\norm{x}^2 \geq \sum_{k=1}^N \abs{\lin{x, z_k}}^2\geq \frac{N}{n^2}$$
+con $z_k\in C_n(x)$ y para cualquier $N\in \NN$. Sin embargo  esto es contradictorio.
+   
+Así  pues el conjunto $C=\bigcup_n  C_n$  es numerable, es decir que el conjunto de los elementos $z$ de $S$ para los cuales $\lin{x,z}\not=0$ es numerable.
+
+    
+\end{proof} 
+
+
+\begin{prop}[Riesz-Fisher] 
+Sea $\mathcal{H}$ un espacio de Hilbert separable infinito dimensional,  y $S=\{x_n\}_{n=1}^\infty$ un conjunto ortonormal. Entonces  la serie formada  con coeficientes $c_n\in \FF$,
+$$\sum_{n=1}^\infty c_n x_n\,,$$
+converge si  y solo si la sucesión $\{c_n\}$ pertenece a  $l_2(\FF)$.
+\end{prop}
+\begin{proof}
+Implicación directa:
+
+Si $\sum_n c_n x_n$ es convergente entonces es de Cauchy, es decir,  la sucesión de las sumas parciales,
+$$s_n=\sum_{k=1}^n c_k x_k\,,$$
+es una sucesión de Cauchy, es decir que para $n>m>N\in \NN$ se tiene que,
+$$\norm{s_n-s_m}^2=\Norm{\sum_{k=m+1}^n c_k x_k}^2=\sum_{k=m+1}^n \abs{c_k}^2<\epsilon^2$$
+ con lo que la sucesión de sumas parciales,
+ $$S_n=\sum_{k=1}^n \abs{c_k}^2$$
+ es de Cauchy y por ser $\RR$ completo, la  serie $\sum_n\abs{c_n}^2$ converge y por tanto $\{c_n\} \in l_2$.
+ Implicación recíproca:
+ 
+ Supongamos ahora que $\{c_n\}\in l_2$, veamos que $sum_n c_n x_n$ converge. En efecto, la sucesión de sumas parciales de la serie es de Cauchy ya que $\sum_n \abs{c_n}^2$ es convergente y por tanto de Cauchy y se tiene  como antes que,
+ $$\norm{s_n-s_m}^2=\Norm{\sum_{k=m+1}^n c_kx_k}=\sum_{k=m+1}^n\abs{c_k}^2<\epsilon^2$$
+ para todo $n>m>N$, y por ser $\mathcal{H}$ completo,   $\sum_n c_n x_n$ converge. 
+\end{proof}
+ 
+ 
+
+\begin{coro} Sea $\mathcal{H}$ un espacio de Hilbert y $S=\{x_1,x_2,\dots\}$  un conjunto ortonormal y $x\in \mathcal{H}$. Entonces la serie de Fourier de $x$ con respecto a $S$ converge en $\mathcal{H}$, 
+$$y=\sum_{k=1}^\infty \lin{x,x_k}x_k\in \mathcal{H}\,.$$
+\end{coro}
+\begin{proof}
+Debido a la desigualdad de Bessel, la sucesión $\{c_n\}$ de los coeficientes de Fourier $c_n=\lin{x,x_n}$ pertenece a $l_2$, ya que,
+$$\sum_{n=1}^\infty \abs{c_n}^2=\sum_{n=1}^n \abs{\lin{x,x_n}}^2\leq \norm{x}^2<\infty$$
+Así que por el teorema de Riesz-Fisher  la serie de Fourier converge en $\mathcal{H}$.
+\end{proof}
+El corolario anterior pone de manifiesto que auún cuando la serie de Fourier de $x$  respecto de un conjunto ortonormal $S$ cualesquiera converge a un punto de $\mathcal{H}$ este no tiene por qué ser el punto original $x$.
+\begin{ejemplo} El conjunto $\{f_1,f_2,\dots\}$ formado por los elementos de $l_2$ dados por $(f_n)_m=\delta_{n+1\,m}=(e_{n+1})_m$ es claramente ortonormal. Dado $x\in l_2$ $x=(x_1,x_2,\dots)$  su serie de Fourier respecto de $S$ es,
+$$y=\sum_{n=1}^\infty \lin{x,f_n}  f_n=\sum_{n=1}^\infty  x_{n+1} f_n=\sum_{n=2}^\infty x_n e_n=(0,x_2,x_3,\dots)$$
+que es claramente distinto de $x$.
+\end{ejemplo}
+\begin{defn} Sea $X$ pre-Hilbert y $S=\{x_1,x_2,\dots\}$  un conjunto ortonormal. Decimos que $S$ es una {\emph base ortonormal} de $X$  si para toddo $x\in X$ se tiene que,
+$$x=\sum_{ n=1}^\infty \lin{x,x_n} x_n\,.$$
+\end{defn}
+
+ 
+\begin{defn} Sea $X$ pre-Hilbert y $S\subset X$ un conjunto ortonormal. Se dice que $S$ es completo si para todo conjunto ortonormal $T\subset X$, tal que  $S\subset X$ entonces $S=T$. Dicho de otro modo, un  conjunto   es completo si es un subconjunto ortonormal maximal.
+\end{defn}
+Así pues un subcojunto ortonormal  completo  no es subconjunto propio  de otro subconjunto ortonormal.
+\begin{prop}
+Un subconjunto ortonormal $S\subset X$ es completo si y solo si $S^\perp =0$.
+\end{prop}
+\begin{proof} 
+Sea $S$ ortonormal completo y sea  $v\in S^\perp$, entonces si $v\not=0$, el conjunto $T=\{v/\norm{v}\}\cup S$ sería un conjunto ortonormal que contendría como subconjunto propio a $S$, y por tanto $v$ debe ser nulo. Por el contrario si $S$  es ortonormal y $S^\perp=\{0\}$ entonces si existiera $T\in X$ ortonormal que contuviera a $S$ como subconjunto propio existiría un $v\in T-S$ distinto de cero, y por ser $T$ ortonormal, tendríamos que  $v\in S^\perp$ lo cual contradice la hipótesis.
+\end{proof}
+\begin{prop} Sea $\mathcal{H}$ un espacio de Hilberr separable infinito dimensional y $S$ un conjunto ortonormal. Entonces son equivalentes las siguientes afirmaciones:
+\begin{enumerate}
+\renewcommand{\labelenumi}{\roman{enumi})}
+\item[i)] $S$  es completo.
+\item[ii)] $\overline{\lin{S}}=\mathcal{H}$.
+\item[iii)] $S$ es base ortonormal de $\mathcal{H}$.
+\item[iv)] Dados $x,y\in \mathcal{h}$ se tiene la {\emph identidad de Parseval},
+$$\lin{x,y} =\sum_{k=1}^\infty  \lin{x, x_k}\lin{x_k,y}\,.$$
+\item[v)]  Dado $x\in \mathcal{H}$ se tiene,
+$$\norm{x}^2=\sum_{k=1}^\infty \abs{\lin{x,x_k}}^2\,.$$
+\end{enumerate}
+\end{prop}
+\begin{proof}
+\quad\par
+
+\begin{enumerate}
+\item[\framebox{i$\Leftrightarrow$ii}] Ya ha sido demostrado.
+\item[\framebox{i$\Rightarrow$iii}] Si $S^\perp=\{0\}$ entonces sea ,
+$$v=x-\sum_{n=1}^\infty \lin{x,x_n}x_n\,,$$
+tenemos que para todo $m\in \NN$,
+\begin{align*}
+\lin{v,x_m}&=\Lin{x-\lim_N\sum_{n=1}^N \lin{x,x_n} x_n,x_m}\\
+&=\lim_N\Lin{x-\sum_{n=1}^N \lin{x,x_n}x_n,x_m}\\
+&=\lin{x,x_m}-\lim_N\sum_{n=1}^N\lin{x,x_n}\lin{x_n,x_m}\\
+&=\lin{x,x_m}-\lin{x,x_m}=0
+\end{align*}
+por lo que $v=0$.
+\item[\framebox{iii$\Rightarrow$iv}] Sea $x,y\in \mathcal{H}$, por {\emph iii)},
+$$x=\sum_{n=1}^\infty \lin{x,x_n}x_n\,,$$
+y por tanto,
+\begin{align*}
+\lin{x,y}&=\Lin{\lim_N\sum_{n=1}^N \lin{x,x_n}x_n,y}\\
+&=\lim_N\sum_{n=1}^N \lin{x,x_n}\lin{x_n, y}=\sum_{n=1}^\infty\lin{x,x_n}\lin{x_n,y}
+\end{align*}
+
+donde hemos hecho uso de la continuidad del producto interno.
+\item[\framebox{iv$\Rightarrow$ v}] Solo hay que hacer $y=x$ en la identidad de Parseval.
+
+\item[\framebox{v$\Rightarrow$i}] Sea $x\in S^\perp$ entonces $\lin{x, x_n}=0$ para todo $x_n\in S$. Pero por la identidad de Parseval, tenemos,
+$$\norm{x}^2=\sum_{n=1}^\infty \abs{\lin{x,x_n}}^2=0$$
+de donde $x=0$ y por tanto  $S^\perp=\{0\}$.
+
+\end{enumerate}
+\end{proof}
+\begin{prop}[Gram-Schmidt] Sea $X$ pre-Hilbert y  $(x_n)$ una sucesión de vectores linealmente independientes  en $X$, y sea $M_n=\lin{\{x_1,\dots,x_n\}}$. Entonces existe una sucesión  ortonormal $(e_n)\in X$ tal que   para cada $n\in \NN$ se tiene que,
+$$M_n=\lin{\{e_1,\dots,e_n\}}$$
+\end{prop}
+\begin{proof}
+Sea $e_1=x_1/\norm{x_1}$, entonces para $n=1$ se tiene evidentemente que $\lin{\{x_1\}}=M_1=\lin{\{e_1\}}$. Supongamos cierta la afirmación para $n=k$ y probemos que también es cierta para $n=k+1$. Sea $\{e_1,\dots,e_k\}$ un conjunto ortonormal y tal que,
+$$M_k=\lin{\{x_1,\dots,x_k\}}=\lin{\{e_1,\dots,e_k\}}$$
+Sea,
+$$y_{k+1}= x_{k+1} -\sum_{\ell=1}^k\lin{ x_{k+1}, e_\ell}e_\ell$$
+que  es ortogonal a todo  $\{e_1,\dots,e_k\}$. En efecto,
+\begin{align*}
+\lin{y_{k+1}, e_m}&=\Lin{x_{k+1}-\sum_{\ell=1}^k\lin{x_{k+1},e_\ell} e_\ell,e_m}\\
+&=\lin{x_{k+1},e_m}-\lin{x_{k+1},e_m}=0
+\end{align*}
+para todo $m=1,\dots, k$. Y finalmente tomamos $e_{k+1}=y_{k+1}/\norm{y_{k+1}}$ que  tiene norma unidad y por tanto $\{e_1,\dots,e_k,e_{k+1}\}$  es ortonormal y por la propia construcción es evidente que,
+$$M_{k+1}=\lin{\{e_1,\dots, e_k,e_{k+1}\}}\,.$$  
+
+\end{proof}
+
+\begin{lema} Sea $X$ pre-Hilbert y $(x_n)\in X$ una sucesión no nula   de puntos de $X$. Entonces existe una subsucesión $(x_{n_k}\in X$    de puntos linealmente independientes, tal que para cada $n\in \NN$  se tiene  que,
+$$\lin{\{x_1,\dots, x_n\}}=\lin{\{x_{n_1},\dots , x_{n_k}\}}$$ 
+para algún $k\in \NN$.
+\end{lema}
+\begin{proof}
+Sea $x_{n_1}$ el primer elemento de $(x_n)$ distinto de cero.  Es decir, $x_n=0$ para todo $n<n_1$. $n_1$ existe ya que la sucesión es no nula. Sea $n_2\in \NN$  el mínimo natural $n>n_1$    para el cual no existe un $\alpha\in \FF$ tal que $x_n=\alpha x_{n_1}$. Si $n_2$ no existe, el conjunto $\{x_{n_1}\}$  es el conjunto buscado y ya estaría. Por el contrario, si tal natural existe, entonces tomamos $x_{n_2}$ como el siguiente elemento de la subsucesión de elementos linealmente independientes . Sea ahora $\{x_{n_1},x_{n_2},\dots, x_{n_k}\}$ el conjunto de  los primeros $k$ elementos linealmente independientes  (si existieran, y encaso contrario habríamos acabado), los cuales han sido    escogidos de $x_n$. Entonces sea $n_{k+1}\in \NN$ y tal que el menor natural  $n$  tal que $n>n_k$ y para el cual no existen $\alpha_1,\dots,\alpha_k\in \FF$ tal que $x_n =\alpha_1 x_{n_1} +\alpha_2 x_{n_2}+\dots+\alpha_k x_{n_k}$.  Si tal número no existe, ya habríamos acabado. Sin embargo en caso contrario $x_{n_k}$ sería el siguiente elemento de la sucesión linealmente independiente. 
+De esta forma hemos encontrado  recursivamente el conjunto finito o infinito $\{ x_{n_1}, x_{n_2},\dots\}$ de vectores linealmente independientes que cumplen  la tesis del lema ya que bastaría tomar como $k$ el valor máximo de la sucesión $n_\ell$ antes definida  tal que $n_\ell \leq n$.   
+\end{proof}
+\begin{prop} Sea $\mathcal{H}$ un espacio de Hilbert separable. Entonces existe   base ortonormal en $\mathcal{H}$.
+\end{prop}
+\begin{proof}
+ Puesto que $\mathcal{H}$  es separable existe un conjunto numerable $S$ tal que  $\lin{S}$ es denso en $\mathcal{H}$. Por el lema anterior podemos encontrar un subconjunto $F\subset S$ de vectores linealmente independientes  tal que $\lin{F}=\lin{S}$, y por el procedimiento de Gram-Schmidt podemos encontrar, a partir de  $F$,  un conjunto ortogonal $T$ tal que $\lin{T}=\lin{F}=\lin{S}$, que por tanto el generado por $T$ es denso en $\mathcal{H}$ y por tanto base ortonormal de $\mathcal{H}$.
+ \end{proof}
+
+Para probar la existencia de bases ortonormales en espacios de Hilbert separables se ha procedido de forma constructiva. Sin embargo, la existencia de dichas bases en espacios de Hilbert más generales también se puede asegurar pero a cambio de usar el lema de  Zorn, como probamos a continuación.
+
+\begin{prop} Todo  espacio  de Hilbert  $\mathcal{H}\not=\{0\}$ posee un conjunto ortonormal completo.
+\end{prop}
+\begin{proof}
+La familia de todos los conjuntos ortonormales de $\mathcal{H}$ que es, evidentemente, no vacía puede ordenarse  por inclusión. Toda cadena no vacía ( subcolección totalmente ordenada), tiene por cota superior la unión de toda ella
+$$C=\bigcup_{\alpha} O_\alpha$$
+que es también un conjunto ortonormal, ya que dados  $x,y\in C$ se tendrá que $x\in O_\alpha$ para algún $\alpha$, y $norm{x}=1$, y $y\in O_\beta$ para algún $\beta$, y de nuevo $\norm{y}=1$,. Y además como es cadena se tendrá que, sin pérdida de generalidad, $\O_\alpha\subset O_\beta$ y por  tanto $x,y\in O_\beta$ y así $lin{x,y}=0$, y por tanto  $C$ es ortonormal. 
+Finalmente  ,  por el lema de Zorn, la familia de los conjuntos ortonormales  posee un elemento maximal, que, por consiguiente, es un conjunto ortonormal  completo  de $\mathcal{H}$.
+\end{proof}
+\section{El teorema  de la isometría}
+\begin{defn} Sean $X$ y $V$ dos espacios lineales sobre un campo $\FF$. Decimos que $X$ e $Y$ son {\emph linealmente isomorfos} si existe una aplicación biyectiva $\phi:X\longrightarrow Y$ que sea aplicación lineal, es decir que $\phi(\lambda_1x_1+\lambda_2 x_2)=\lambda_1\phi(x_1)+\lambda_2\phi(x_2)\in Y$ para todo $\lambda_1,\lambda_2\in \FF$ y $x_1,x_2\in X$.
+\end{defn}
+\begin{defn} Sean $(X,d_X)$ y $(Y,d_Y)$ dos espacios  métricos. Se dice que    $X$ e $Y$  son isométricos si existe una biyección $\phi:X\longrightarrow$ tal que $d_Y(\phi(x_1),\phi(x_2))=d_X(x_1,x_2)$ para todo $x_1,x_2\in X$.
+\end{defn}
+\begin{defn} Sean $X$ e $Y$ dos espacios normados. Se dice que $X$ e $Y$ son isométricos si existe  una biyección entre $X$ e $Y$ que sea a la vez isomorfismo lineal  e isometría respecto de la métrica inducida por las normas.
+\end{defn}
+\begin{prop} Sean $X$ e $Y$ pre-Hilbe e isométricos como espacios normados. Entonces se cumple que para todo $u,v\in X$ y $T$  la isometría lineal entre $X$ e $Y$,
+$$\lin{T(u),T(v)}_Y=\lin{u,v}_X\,.$$
+\end{prop}
+\begin{proof} Inmediato de las expresiones del producto interno en términos de las normas.
+\end{proof}
+\begin{prop}[teorema de la isometría] Todo  espacio de Hilbert $\mathcal{H}$ separable de dimensión infinita es isométrico a $l_2$.
+\end{prop}
+\begin{proof}
+Sea $S=\{x_n\,|\,n\in\NN\}$ una base de $\mathcal{H}$, entonces definimos la aplicación $T:\mathcal{H}\longrightarrow l_2$ del modo siguiente, dado $x\in \mathcal{H}$ tenemos $T(x)=(\lin{x,x_n})_{n=1}^\infty$, es decir a cada $x$ le asignamos una sucesión formada por sus coeficientes de Fourier en la base $S$, que   por la desigualdad de Bessel  pertenece a $l_2$.
+
+Esta aplicación respeta la norma, es decir es isometría ya que por la identidad de Parseval tenemos,
+$$\norm{x}^2_{\mathcal{H}} = \sum_{n=1}^\infty \abs{lin{x,x,x_n}}^2=\norm{T(x)}_2\,.$$
+Además esta aplicación es lineal, ya que,
+\begin{align*}
+T(\lambda x+\mu y)&=(\lin{\lambda x + \mu y,x_n})_n\\
+&=(\lambda\lin{x,x_n}+\mu\lin{y,x_n})_n =\lambda(\lin{x,x_n})_n+\mu(\lin{y,x_n})_n=\lambda T(x) + \mu T(y)
+\end{align*}
+para todo $\lambda,\mu\in \FF$ y $x,y\in \mathcal{H}$.
+
+ Es sobreyectiva  en virtud del teorema de Riesz-Fisher, dada una sucesión $c\in l_2$,  existe un $x\in \mathcal{H}$ que está definido por la serie,
+ $$x=\sum_{n=1}^\infty c_n x_n\,,$$
+ que puede comprobarse fácilmente que $T(x)=(c_n)_n =c$.
+ 
+ 
+
+Finalmente para comprobar la inyectividad basta probar que si $T(x)=0$ entonces $x=0$  debido a la linealidad. Pero esto es así por ser isometría ya que,
+$$0=\norm{0}_2=\norm{T(x)}_2=\norm{x}_{\mathcal{H}}$$
+y por tanto $x=0$.
+  
+\end{proof}
+
+\section{ Apéndice: familias sumables}
+
+En este capítulo se ha definido una serie de Fourier como una suma   de los coeficientes de Fourier multiplicados  por los elementos de una base. Dicha base no es necesariamente contable y de ahí que la suma o serie  no está definida en principio. Vamos a dar aquí un sentido a la expresión,
+$$\sum_{\alpha\in A} v_\alpha$$
+donde $A$ es un conjunto cualquiera y $v_\alpha\in X$  con $X$ un espacio normado o pre-Hilbert.
+Antes de proceder, hagamos una observación sobre la notación. Al igual que las sucesiones  se indican dando sus entradas, entre paréntesis, $s=(s_n)_{n=1}^\infty$, vamos a  denominar una familia  $\{s_\alpha\}_{\alpha\in A}$, donde $A$ ahora puede ser un conjunto más general que $\NN$. Por familia, entonces  queremos decir una función $f$ de $A$ en  $X$ (el espacio vectorial),  y usamos, al igual que con las sucesiones,   la notación  $f(\alpha)=v_\alpha$. 
+
+
+ 
+
+
+ 
+\begin{defn} Sea  $X$ un espacio normado, y $\{v_\alpha\}_{\alpha\in A}$  una familia de  elementos de $X$,
+ con un conjunto de índices $A$. Decimos  que la familia $\{v_\alpha\}_{\alpha\in A}$ es {\emph sumable} y su suma es $v\in X$, y lo expresamos como,
+$$v=\sum_{\alpha\in A} v_\alpha\,,$$
+si para todo $\epsilon>0$ existe una colección finita de índices $J_0\subset A$ tal que para todo subconjunto finito de índices $J$ que contenga a $J_0$, $J_0\subset J\subset A$, se tiene que,
+$$\Norm{v-\sum_{\alpha \in J}  v_\alpha}<\epsilon\,.$$
+\end{defn}
+
+Ahora probamos algunas propiedades de conjuntos sumables de vectores. Aquí usaremos la notación usada en la definición sin necesidad de expresarlo explícitamente, así $\{v_\alpha\}_{\alpha\in A}$ será una familia de vectores, $A$  el conjunto de índices, $X$ el espacio vectorial normado o pre-Hilbert, etc.
+
+\begin{prop} Si la familia $\{v_\alpha\}_{\alpha\in A}$ es sumable, su suma es  única
+\end{prop}
+\begin{proof}
+ Si $v$ y $v^\prime$ son sumas distintas de $\{v_\alpha\}_{\alpha\in A}$, entonces dado un $\epsilon>0$, existirá sendos  conjuntos finitos $J_0$ y $J_0^\prime$ tal que cumplan las propiedades de la definición de suma para $v$ y $v^\prime$ respectivamente. Entonces basta tomar la colección de índices 
+$\tilde{J}_0 =J_0\cup J^\prime_0$ que contiene a ambos, para ver que,
+\begin{align*}
+\norm{v-v^\prime} &=\Norm{\left(v-\sum_{\alpha\in \tilde{J}_0} v_\alpha\right) +\left( \sum_{\alpha\in \tilde{J}_0} v_\alpha - v^\prime\right)}\\
+&\leq \Norm{v-\sum_{\alpha\in \tilde{J}_0} v_\alpha} +\Norm{ \sum_{\alpha\in \tilde{J}_0} v_\alpha - v^\prime} <2\epsilon
+\end{align*}
+\end{proof}
+ 
+ \begin{prop} Si $A$ es finito $V$ es sumable,  y su suma es la suma algebraica.
+\end{prop}
+\begin{proof}
+ Inmediato.
+\end{proof}
+\begin{prop} 
+Si $\{v_\alpha\}_{\alpha\in A}$  es sumable,  entonces  $v_\alpha=0$ salvo para una colección a lo sumo numerable de índices.
+\end{prop}
+\begin{proof}
+Sea $C_n\subset A$ el subconjunto de índices  $\alpha\in A$  de índices tales que $\norm{v_\alpha}\in\left[\frac{1}{n},\frac{1}{n-1}\right)$. Entonces el conjunto de índices,,
+$$C=\bigcup_{n}C_n$$
+es el conjunto de índices $\alpha$ para los cuales $\norm{v_\alpha}\not=0$. Ahora procedamos por contradicción y asumamos que $\{v_\alpha\}_{\alpha\in A}$ es sumable pero $C$ es no numerable. Si $C$ es no numerable, algún $C_n$ debe ser no numerable, sea $n_0$ tal que $C_{n_0}$ sea no numerable.
+
+Por otro lado, puesto que $\{v_\alpha\}_{\alpha\in A}$ es sumable, digamos a $v\in X$, dado $\epsilon=\frac{1}{2n_0}$ existe una colección finita  $J_0$ de índices tales que si $J$ es otra colección finita tal que  $J_0\subset J$ se debe tener,
+$$\Norm{ v-\sum_{\alpha\in J} v_\alpha}<\frac{1}{2n_0}\,.$$
+En concreto y dado $J$ podemos encontrar un índice   $\alpha_0\in C_{n_0}$ que no estuviera en $J$, ya que $C_{n_0}$  es infinito. Entonces $JP\prime =J\cup\{\alpha_0\}$ debe cumplir la misma desigualdad anterior, pero además tenemos que,
+\begin{align*}
+\Norm{ v-\sum_{\alpha\in J^\prime} v_\alpha} &=\Norm{\left(v -\sum_{\alpha\in J}  v_\alpha\right)  -v_{\alpha_0} } \\
+&\geq \Abs{\norm{v_{\alpha_0} }-\Norm{v -\sum_{\alpha\in J}  v_\alpha}}\\
+&> \frac{1}{2n_0}
+\end{align*}
+       
+       Lo  cual contradice la desigualdad anterior para $J^\prime$.
+\end{proof}  
+
+
+
+\backmatter
+
+\begin{thebibliography}{99}
+\bibitem{pinchuck}
+A. Pinchuck. {\it Notes on Functional Analysis}. 
+%http://shop.anandamarga.org/
+\bibitem{Muncres}
+Avtk. Muncres. \emph{ Topolog\'{i}a}, Ed. Reverte  (1991) \\
+ISBN: 81-7252-119-7
+\end{thebibliography}
+\end{document}
