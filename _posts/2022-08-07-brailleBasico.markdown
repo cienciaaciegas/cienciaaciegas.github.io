@@ -6,10 +6,10 @@ category: braille
 ---
 En este post. vamos a hacer un breve repaso del código braille, y daremos unas bases de braille matemático.
 
-Esta guía pretende ser un documento orientativo y muy general sobre el código braille, y en especial, sobre el braille matemático. Para tener una idea más precisa y detallada de las distintas representaciones sugerimos consultar referencias dedicadas a este fin.
+Esta guía pretende ser un documento orientativo y muy general sobre el código braille, y en especial, sobre el braille matemático. Para tener una idea más precisa y detallada de las distintas representaciones sugerimos consultar referencias dedicadas a este fin (ver por ejemplo el post de [compartolid](https://www.compartolid.es/braille-computerizado/),).
 
 
- Además, puesto que hay diferentes versiones de código braille, es posible que la descripción hecha en este pequeño tutorial no sea del todo precisa.
+ Además, puesto que hay diferentes versiones de código braille, es posible que la descripción hecha en este pequeño tutorial no sea del todo precisa. Para mayor precisión consulte la web de la [Comisión Española de Braille](https://www.once.es/servicios-sociales/braille/comision-braille-espanola/comision-braille-espanola-cbe). 
 
 
 ## 1.- INTRODUCCIÓN
